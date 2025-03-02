@@ -38,8 +38,8 @@ header h1 {
 
 /* Estilizar imagens do cabeçalho */
 .header-logo, .header-avatar {
-    width: 50px; /* Ajuste do tamanho */
-    height: 50px;
+    width: 70px; /* Ajuste do tamanho */
+    height: 70px;
     border-radius: 50%; /* Torna as imagens circulares */
     object-fit: cover;
     border: 3px solid white; /* Moldura branca ao redor */
