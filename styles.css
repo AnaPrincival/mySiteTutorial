@@ -54,6 +54,15 @@ header h1 {
     border: 3px solid white;
 }
 
+/* Estilizar ícones do Jinja apenas na página Jinja */
+.jinja-icon {
+    width: 40px; /* Reduzindo tamanho dos ícones na página Jinja */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
 /* Navegação */
 nav {
     margin-top: 10px;
