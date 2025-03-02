@@ -13,10 +13,17 @@ header {
     color: white;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
+}
+
+/* Contêiner do título com imagens */
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 /* Estilizar imagens do cabeçalho */
@@ -30,7 +37,6 @@ header {
 
 /* Ajuste do título */
 header h1 {
-    flex-grow: 1;
     text-align: center;
     margin: 0;
     font-size: 1.8em;
