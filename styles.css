@@ -12,8 +12,26 @@ header {
     background-color: #6c5b7b;
     color: white;
     padding: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+/* Estilo do título e imagens */
+header h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espaço entre os elementos */
+    margin: 0;
+}
+
+/* Ajuste das pinhas */
+.pine-icon {
+    width: 40px; /* Tamanho da pinha */
+    height: auto;
+}
+
 
 /* Navegação */
 nav ul {
@@ -27,16 +45,19 @@ nav ul li {
     margin: 0 15px;
 }
 
+/* Estilizando os botões do menu */
 nav ul li a {
     display: inline-block;
     padding: 10px 20px;
     background-color: #6c5b7b; /* Cor de fundo */
     color: white;
     text-decoration: none;
-    border-radius: 20px; /* Torna os botões arredondados */
+    border-radius: 20px; /* Bordas arredondadas */
+    border: 2px solid white; /* Borda branca permanente */
     transition: 0.3s;
 }
 
+/* Quando passar o mouse, muda a cor */
 nav ul li a:hover {
     background-color: #355c7d; /* Cor ao passar o mouse */
 }
