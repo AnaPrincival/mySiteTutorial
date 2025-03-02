@@ -13,17 +13,32 @@ header {
     color: white;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
 }
 
-/* Contêiner do título com imagens */
-.header-container {
+/* Contêiner do título e imagens */
+.header-title {
     display: flex;
     align-items: center;
     gap: 15px;
+    text-align: center;
+}
+
+/* Ajuste do título */
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* Contêiner das imagens */
+.header-images {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
 }
 
 /* Estilizar imagens do cabeçalho */
@@ -35,14 +50,11 @@ header {
     border: 3px solid white; /* Moldura branca ao redor */
 }
 
-/* Ajuste do título */
-header h1 {
-    text-align: center;
-    margin: 0;
-    font-size: 1.8em;
+/* Navegação */
+nav {
+    margin-top: 10px;
 }
 
-/* Navegação */
 nav ul {
     list-style: none;
     padding: 0;
