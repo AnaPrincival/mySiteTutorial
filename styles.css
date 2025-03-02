@@ -13,26 +13,18 @@ header {
     color: white;
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Contêiner para alinhar logo, título e avatar */
-.header-container {
-    display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 900px; /* Ajuste conforme necessário */
-    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 /* Estilizar imagens do cabeçalho */
 .header-logo, .header-avatar {
-    width: 70px; /* Ajuste o tamanho conforme necessário */
-    height: 70px;
+    width: 50px; /* Ajuste do tamanho */
+    height: 50px;
     border-radius: 50%; /* Torna as imagens circulares */
-    object-fit: cover; /* Mantém o recorte sem distorção */
+    object-fit: cover;
     border: 3px solid white; /* Moldura branca ao redor */
 }
 
@@ -41,14 +33,14 @@ header h1 {
     flex-grow: 1;
     text-align: center;
     margin: 0;
+    font-size: 1.8em;
 }
-
 
 /* Navegação */
 nav ul {
     list-style: none;
     padding: 0;
-    text-align: center; /* Mantém o alinhamento centralizado */
+    text-align: center;
 }
 
 nav ul li {
@@ -60,17 +52,17 @@ nav ul li {
 nav ul li a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #6c5b7b; /* Cor de fundo */
+    background-color: #6c5b7b;
     color: white;
     text-decoration: none;
-    border-radius: 20px; /* Bordas arredondadas */
-    border: 2px solid white; /* Borda branca permanente */
+    border-radius: 20px;
+    border: 2px solid white;
     transition: 0.3s;
 }
 
 /* Quando passar o mouse, muda a cor */
 nav ul li a:hover {
-    background-color: #355c7d; /* Cor ao passar o mouse */
+    background-color: #355c7d;
 }
 
 /* Conteúdo */
