@@ -46,7 +46,7 @@ print(texto.strip())  # Remove espaços extras
 
 
             <pre><code>frase = "maçã,banana,uva"
-print(frase.split(","))  # Divide a string por vírgula</code></pre>
+print(frase.split(","))  # Divide a string por vírgula
 
 >> ['maçã', 'banana', 'uva']</code></pre>
 
@@ -71,10 +71,12 @@ print(f"Meu nome é {nome} e eu tenho {idade} anos.")
             <h2>Argumentos de Linha de Comando</h2>
             <p>Podemos capturar argumentos passados pelo terminal usando <code>sys.argv</code>.</p>
             <pre><code>import sys
-print("Argumentos recebidos:", sys.argv)</code></pre>
-            <pre><code>$ >> python script.py arg1 arg2
+print("Argumentos recebidos:", sys.argv)
+
+$ >> python script.py arg1 arg2
 Argumentos recebidos: ['script.py', 'arg1', 'arg2']</code></pre>
 
+           
             <h3>Usando argparse para gerenciar argumentos</h3>
             <p>O módulo <code>argparse</code> é mais poderoso e permite definir argumentos opcionais e obrigatórios de forma clara.</p>
             <pre><code>import argparse
@@ -85,8 +87,9 @@ parser.add_argument("--idade", type=int, help="Idade do usuário", default=25)
 args = parser.parse_args()
 
 print(f"Nome: {args.nome}")
-print(f"Idade: {args.idade}")</code></pre>
-            <pre><code>$ >> python script.py Ana --idade 23
+print(f"Idade: {args.idade}")
+
+$ >> python script.py Ana --idade 23
 Nome: Ana
 Idade: 23</code></pre>
         </section>
@@ -97,8 +100,9 @@ Idade: 23</code></pre>
             
             <h3>Loop For</h3>
             <pre><code>for i in range(3):
-    print(f"Iteração {i}")</code></pre>
-            <pre><code> >> Iteração 0
+    print(f"Iteração {i}")
+
+>> Iteração 0
 Iteração 1
 Iteração 2</code></pre>
             
