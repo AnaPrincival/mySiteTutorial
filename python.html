@@ -40,21 +40,29 @@
             
             <h3>Removendo espaços e separando palavras</h3>
             <pre><code>texto = "  Olá, mundo!  "
-print(texto.strip())  # Remove espaços extras
+print(texto.strip())  # Remove espaços extras</code></pre>
+            <p><strong>Saída:</strong></p>
+            <pre><code>Olá, mundo!</code></pre>
 
-frase = "maçã,banana,uva"
+            <pre><code>frase = "maçã,banana,uva"
 print(frase.split(","))  # Divide a string por vírgula</code></pre>
+            <p><strong>Saída:</strong></p>
+            <pre><code>['maçã', 'banana', 'uva']</code></pre>
 
             <h3>Concatenando Strings</h3>
             <pre><code>parte1 = "Olá"
 parte2 = "Mundo"
 mensagem = parte1 + ", " + parte2 + "!"
 print(mensagem)</code></pre>
+            <p><strong>Saída:</strong></p>
+            <pre><code>Olá, Mundo!</code></pre>
 
             <h3>Formatando Strings</h3>
             <pre><code>nome = "Ana"
 idade = 23
 print(f"Meu nome é {nome} e eu tenho {idade} anos.")</code></pre>
+            <p><strong>Saída:</strong></p>
+            <pre><code>Meu nome é Ana e eu tenho 23 anos.</code></pre>
         </section>
 
         <section id="argumentos-cli">
@@ -62,35 +70,25 @@ print(f"Meu nome é {nome} e eu tenho {idade} anos.")</code></pre>
             <p>Podemos capturar argumentos passados pelo terminal usando <code>sys.argv</code>.</p>
             <pre><code>import sys
 print("Argumentos recebidos:", sys.argv)</code></pre>
-        </section>
+            <p><strong>Saída (executando com argumentos):</strong></p>
+            <pre><code>$ python script.py arg1 arg2
+Argumentos recebidos: ['script.py', 'arg1', 'arg2']</code></pre>
 
-        <section id="estruturas-dados">
-            <h2>Estruturas de Dados</h2>
-            <p>Python possui diversas estruturas para armazenar e manipular coleções de dados.</p>
-            
-            <h3>Listas</h3>
-            <pre><code>lista = [1, 2, 3, 4]
-lista.append(5)  # Adiciona um item
-print(lista)
+            <h3>Usando argparse para gerenciar argumentos</h3>
+            <p>O módulo <code>argparse</code> é mais poderoso e permite definir argumentos opcionais e obrigatórios de forma clara.</p>
+            <pre><code>import argparse
 
-# Percorrendo uma lista
-for item in lista:
-    print(item)</code></pre>
-            
-            <h3>Tuplas</h3>
-            <pre><code>tupla = (10, 20, 30)
-print(tupla[1])  # Acessando um elemento</code></pre>
-            
-            <h3>Dicionários</h3>
-            <pre><code>usuario = {"nome": "Ana", "idade": 23}
-print(usuario["nome"])
-usuario["cidade"] = "Caen"
-print(usuario)</code></pre>
-            
-            <h3>Conjuntos</h3>
-            <pre><code>conjunto = {1, 2, 3, 4}
-conjunto.add(5)
-print(conjunto)</code></pre>
+parser = argparse.ArgumentParser(description="Exemplo de argparse")
+parser.add_argument("nome", type=str, help="Nome do usuário")
+parser.add_argument("--idade", type=int, help="Idade do usuário", default=25)
+args = parser.parse_args()
+
+print(f"Nome: {args.nome}")
+print(f"Idade: {args.idade}")</code></pre>
+            <p><strong>Saída (executando com argumentos):</strong></p>
+            <pre><code>$ python script.py Ana --idade 23
+Nome: Ana
+Idade: 23</code></pre>
         </section>
 
         <section id="loops">
@@ -98,14 +96,22 @@ print(conjunto)</code></pre>
             <p>Repetição de blocos de código em Python.</p>
             
             <h3>Loop For</h3>
-            <pre><code>for i in range(5):
+            <pre><code>for i in range(3):
     print(f"Iteração {i}")</code></pre>
+            <p><strong>Saída:</strong></p>
+            <pre><code>Iteração 0
+Iteração 1
+Iteração 2</code></pre>
             
             <h3>Loop While</h3>
             <pre><code>contador = 0
-while contador < 5:
+while contador < 3:
     print(f"Contagem: {contador}")
     contador += 1</code></pre>
+            <p><strong>Saída:</strong></p>
+            <pre><code>Contagem: 0
+Contagem: 1
+Contagem: 2</code></pre>
         </section>
 
         <section id="arquivos">
@@ -115,10 +121,14 @@ while contador < 5:
             <h3>Lendo Arquivos</h3>
             <pre><code>with open("dados.txt", "r") as arquivo:
     print(arquivo.read())</code></pre>
-            
+            <p><strong>Saída (se o arquivo contém "Olá, Mundo!"):</strong></p>
+            <pre><code>Olá, Mundo!</code></pre>
+
             <h3>Escrevendo em Arquivos</h3>
             <pre><code>with open("saida.txt", "w") as arquivo:
-    arquivo.write("Olá, mundo!\n")</code></pre>
+    arquivo.write("Python é incrível!\n")</code></pre>
+            <p><strong>O arquivo <code>saida.txt</code> conterá:</strong></p>
+            <pre><code>Python é incrível!</code></pre>
         </section>
     </main>
 
