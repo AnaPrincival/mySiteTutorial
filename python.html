@@ -41,28 +41,24 @@
             <h3>Removendo espaços e separando palavras</h3>
             <pre><code>texto = "  Olá, mundo!  "
 print(texto.strip())  # Remove espaços extras</code></pre>
-            <p><strong>Saída:</strong></p>
-            <pre><code>Olá, mundo!</code></pre>
+            <pre><code> >> "Olá, mundo!"</code></pre>
 
             <pre><code>frase = "maçã,banana,uva"
 print(frase.split(","))  # Divide a string por vírgula</code></pre>
-            <p><strong>Saída:</strong></p>
-            <pre><code>['maçã', 'banana', 'uva']</code></pre>
+            <pre><code> >> ['maçã', 'banana', 'uva']</code></pre>
 
             <h3>Concatenando Strings</h3>
             <pre><code>parte1 = "Olá"
 parte2 = "Mundo"
 mensagem = parte1 + ", " + parte2 + "!"
 print(mensagem)</code></pre>
-            <p><strong>Saída:</strong></p>
-            <pre><code>Olá, Mundo!</code></pre>
+            <pre><code> >> Olá, Mundo!</code></pre>
 
             <h3>Formatando Strings</h3>
             <pre><code>nome = "Ana"
 idade = 23
 print(f"Meu nome é {nome} e eu tenho {idade} anos.")</code></pre>
-            <p><strong>Saída:</strong></p>
-            <pre><code>Meu nome é Ana e eu tenho 23 anos.</code></pre>
+            <pre><code> >> Meu nome é Ana e eu tenho 23 anos.</code></pre>
         </section>
 
         <section id="argumentos-cli">
@@ -70,8 +66,7 @@ print(f"Meu nome é {nome} e eu tenho {idade} anos.")</code></pre>
             <p>Podemos capturar argumentos passados pelo terminal usando <code>sys.argv</code>.</p>
             <pre><code>import sys
 print("Argumentos recebidos:", sys.argv)</code></pre>
-            <p><strong>Saída (executando com argumentos):</strong></p>
-            <pre><code>$ python script.py arg1 arg2
+            <pre><code>$ >> python script.py arg1 arg2
 Argumentos recebidos: ['script.py', 'arg1', 'arg2']</code></pre>
 
             <h3>Usando argparse para gerenciar argumentos</h3>
@@ -85,8 +80,7 @@ args = parser.parse_args()
 
 print(f"Nome: {args.nome}")
 print(f"Idade: {args.idade}")</code></pre>
-            <p><strong>Saída (executando com argumentos):</strong></p>
-            <pre><code>$ python script.py Ana --idade 23
+            <pre><code>$ >> python script.py Ana --idade 23
 Nome: Ana
 Idade: 23</code></pre>
         </section>
@@ -98,8 +92,7 @@ Idade: 23</code></pre>
             <h3>Loop For</h3>
             <pre><code>for i in range(3):
     print(f"Iteração {i}")</code></pre>
-            <p><strong>Saída:</strong></p>
-            <pre><code>Iteração 0
+            <pre><code> >> Iteração 0
 Iteração 1
 Iteração 2</code></pre>
             
@@ -108,8 +101,7 @@ Iteração 2</code></pre>
 while contador < 3:
     print(f"Contagem: {contador}")
     contador += 1</code></pre>
-            <p><strong>Saída:</strong></p>
-            <pre><code>Contagem: 0
+            <pre><code> >> Contagem: 0
 Contagem: 1
 Contagem: 2</code></pre>
         </section>
@@ -121,8 +113,7 @@ Contagem: 2</code></pre>
             <h3>Lendo Arquivos</h3>
             <pre><code>with open("dados.txt", "r") as arquivo:
     print(arquivo.read())</code></pre>
-            <p><strong>Saída (se o arquivo contém "Olá, Mundo!"):</strong></p>
-            <pre><code>Olá, Mundo!</code></pre>
+            <pre><code> >> Olá, Mundo!</code></pre>
 
             <h3>Escrevendo em Arquivos</h3>
             <pre><code>with open("saida.txt", "w") as arquivo:
