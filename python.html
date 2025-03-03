@@ -36,90 +36,52 @@
 
         <section id="manipulacao-strings">
             <h2>Manipulação de Strings</h2>
-            <p>Strings são sequências de caracteres. Python fornece métodos úteis para manipulá-las.</p>
-            <h3>strip e split</h3>
+            <p>Strings são sequências de caracteres. Python fornece diversos métodos úteis para manipulá-las.</p>
+            <h3>Removendo espaços e separando palavras</h3>
             <pre><code>texto = "  Olá, mundo!  "
 print(texto.strip())  # "Olá, mundo!"
 
-texto = "  Python   "
-print(texto.strip(" "))  # "Python"
-
 frase = "maçã,banana,uva"
-print(frase.split(","))  # ["maçã", "banana", "uva"]
-
-frase = "um dois três quatro"
-print(frase.split())  # ["um", "dois", "três", "quatro"]
-
-linha = "Nome: Ana; Idade: 23; Cidade: Caen"
-print(linha.split("; "))  # ['Nome: Ana', 'Idade: 23', 'Cidade: Caen']</code></pre>
+print(frase.split(","))  # ["maçã", "banana", "uva"]</code></pre>
+            <h3>Formatando Strings</h3>
+            <pre><code>nome = "Ana"
+idade = 23
+print(f"Meu nome é {nome} e eu tenho {idade} anos.")</code></pre>
         </section>
-        
+
+        <section id="argumentos-cli">
+            <h2>Argumentos de Linha de Comando</h2>
+            <p>Podemos capturar argumentos passados pelo terminal usando <code>sys.argv</code>.</p>
+            <pre><code>import sys
+print("Argumentos recebidos:", sys.argv)</code></pre>
+        </section>
+
+        <section id="estruturas-dados">
+            <h2>Estruturas de Dados</h2>
+            <p>Python possui diversas estruturas para armazenar e manipular coleções de dados.</p>
+            <h3>Listas</h3>
+            <pre><code>lista = [1, 2, 3, 4]
+lista.append(5)  # Adiciona um item
+print(lista)</code></pre>
+            <h3>Dicionários</h3>
+            <pre><code>usuario = {"nome": "Ana", "idade": 23}
+print(usuario["nome"])</code></pre>
+        </section>
+
         <section id="loops">
             <h2>Loops</h2>
-            <p>Loops são usados para repetir um bloco de código várias vezes.</p>
-            <h3>Loop for</h3>
+            <p>Repetição de blocos de código em Python.</p>
+            <h3>Loop For</h3>
             <pre><code>for i in range(5):
-    print(f"Iteração {i}")
-
-lista = ["maçã", "banana", "uva"]
-for fruta in lista:
-    print(fruta)
-
-for letra in "Python":
-    print(letra)
-
-for i in range(2, 10, 2):
-    print(i)  # Números pares de 2 a 8
-
-usuarios = {"Ana": 23, "Carlos": 30}
-for nome, idade in usuarios.items():
-    print(f"{nome} tem {idade} anos")</code></pre>
-            
-            <h3>Loop while</h3>
-            <pre><code>contador = 0
-while contador < 3:
-    print(f"Contagem: {contador}")
-    contador += 1
-
-numero = 10
-while numero > 0:
-    print(numero)
-    numero -= 2
-
-resposta = ""
-while resposta.lower() != "sim":
-    resposta = input("Deseja continuar? (sim/não): ")
-
-from random import randint
-sorteado = randint(1, 10)
-chute = 0
-while chute != sorteado:
-    chute = int(input("Adivinhe o número: "))
-    print("Errou, tente novamente!")</code></pre>
+    print(f"Iteração {i}")</code></pre>
         </section>
-        
+
         <section id="arquivos">
             <h2>Manipulação de Arquivos</h2>
-            <p>O Python permite abrir, ler e escrever arquivos de forma simples.</p>
-            <h3>Abrindo e lendo arquivos</h3>
-            <pre><code>with open("exemplo.txt", "r") as arquivo:
-    print(arquivo.read())  # Lê todo o conteúdo do arquivo
-
-with open("exemplo.txt", "r") as arquivo:
-    linhas = arquivo.readlines()  # Retorna uma lista de linhas
-    print(linhas)
-
-with open("exemplo.txt", "r") as arquivo:
-    for linha in arquivo:
-        print(linha.strip())  # Remove espaços e quebras de linha</code></pre>
-            
-            <h3>Escrevendo em arquivos</h3>
-            <pre><code>with open("saida.txt", "w") as arquivo:
-    arquivo.write("Primeira linha\n")
-    arquivo.write("Segunda linha\n")
-
-with open("saida.txt", "a") as arquivo:
-    arquivo.write("Linha adicionada no final\n")</code></pre>
+            <p>Abrindo, lendo e escrevendo arquivos em Python.</p>
+            <h3>Lendo Arquivos</h3>
+            <pre><code>with open("dados.txt", "r") as arquivo:
+    print(arquivo.read())</code></pre>
         </section>
     </main>
 
