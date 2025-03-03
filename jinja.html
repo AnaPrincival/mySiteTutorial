@@ -29,60 +29,79 @@
                 <li><a href="#introducao">Introdução ao Jinja</a></li>
                 <li><a href="#variaveis">Uso de Variáveis</a></li>
                 <li><a href="#estruturas-controle">Estruturas de Controle</a></li>
-                <li><a href="#filtros">Filtros no Jinja</a></li>
-                <li><a href="#blocos">Blocos e Herança</a></li>
+                <li><a href="#filtros">Filtros</a></li>
+                <li><a href="#macros">Macros</a></li>
+                <li><a href="#blocos-heranca">Blocos e Herança</a></li>
             </ul>
         </section>
 
         <section id="introducao">
             <h2>Introdução ao Jinja</h2>
-            <p>Jinja é um mecanismo de template poderoso para Python, permitindo a geração dinâmica de HTML.</p>
+            <p>Jinja é uma linguagem de template moderna para Python. Ele permite criar HTML dinâmico, facilitando a separação entre lógica de programação e apresentação visual.</p>
         </section>
 
         <section id="variaveis">
             <h2>Uso de Variáveis</h2>
-            <p>Podemos exibir valores dinâmicos diretamente no template:</p>
-            <pre><code>{{ nome }}</code></pre>
-            <p><strong>Saída (se nome="Ana"):</strong></p>
+            <p>No Jinja, podemos exibir variáveis dinamicamente dentro dos templates:</p>
+            <pre><code>{{ usuario }}</code></pre>
+            <p><strong>Saída (se usuario = "Ana"):</strong></p>
             <pre><code>Ana</code></pre>
         </section>
 
         <section id="estruturas-controle">
             <h2>Estruturas de Controle</h2>
-            <h3>Usando IF/ELSE</h3>
+            <h3>IF/ELSE</h3>
             <pre><code>{% if idade >= 18 %}
-    Você é maior de idade.
+    Você pode acessar o site.
 {% else %}
-    Você é menor de idade.
+    Acesso negado.
 {% endif %}</code></pre>
-            <p><strong>Saída (se idade=20):</strong></p>
-            <pre><code>Você é maior de idade.</code></pre>
+            <p><strong>Saída (se idade = 20):</strong></p>
+            <pre><code>Você pode acessar o site.</code></pre>
 
-            <h3>Usando FOR</h3>
-            <pre><code>{% for fruta in frutas %}
-    {{ fruta }}
+            <h3>FOR Loop</h3>
+            <pre><code>{% for item in lista %}
+    {{ item }}
 {% endfor %}</code></pre>
-            <p><strong>Saída (se frutas=['maçã', 'banana', 'uva']):</strong></p>
+            <p><strong>Saída (se lista = ["maçã", "banana", "uva"]):</strong></p>
             <pre><code>maçã
 banana
 uva</code></pre>
         </section>
 
         <section id="filtros">
-            <h2>Filtros no Jinja</h2>
-            <p>Jinja possui filtros para modificar variáveis diretamente no template.</p>
+            <h2>Filtros</h2>
+            <p>Filtros são usados para modificar valores no Jinja.</p>
+            <h3>Converter para maiúsculas</h3>
             <pre><code>{{ nome | upper }}</code></pre>
-            <p><strong>Saída (se nome="ana"):</strong></p>
+            <p><strong>Saída (se nome = "ana"):</strong></p>
             <pre><code>ANA</code></pre>
+
+            <h3>Formatar número</h3>
+            <pre><code>{{ preco | round(2) }}</code></pre>
+            <p><strong>Saída (se preco = 5.6789):</strong></p>
+            <pre><code>5.68</code></pre>
         </section>
 
-        <section id="blocos">
+        <section id="macros">
+            <h2>Macros</h2>
+            <p>Macros são como funções dentro dos templates, permitindo reutilização de código.</p>
+            <pre><code>{% macro saudacao(nome) %}
+    Olá, {{ nome }}!
+{% endmacro %}
+
+{{ saudacao("Ana") }}</code></pre>
+            <p><strong>Saída:</strong></p>
+            <pre><code>Olá, Ana!</code></pre>
+        </section>
+
+        <section id="blocos-heranca">
             <h2>Blocos e Herança</h2>
-            <p>Jinja permite herança de templates, reutilizando estruturas comuns.</p>
+            <p>O Jinja suporta herança de templates, permitindo reutilização de layouts.</p>
             <pre><code>{% extends "base.html" %}
 
 {% block conteudo %}
-    <h1>Bem-vindo!</h1>
+    <h1>Bem-vindo ao site!</h1>
 {% endblock %}</code></pre>
         </section>
     </main>
