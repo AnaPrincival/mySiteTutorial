@@ -45,24 +45,6 @@ header h1 {
     border: 3px solid white; /* Moldura branca ao redor */
 }
 
-/* Estilizar ícones do Python apenas na página Python */
-.python-icon {
-    width: 70px; /* Reduzindo tamanho dos ícones na página Python */
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid white;
-}
-
-/* Estilizar ícones do Jinja apenas na página Jinja */
-.jinja-icon {
-    width: 70px; /* Reduzindo tamanho dos ícones na página Jinja */
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid white;
-}
-
 /* Navegação */
 nav {
     margin-top: 10px;
@@ -91,7 +73,6 @@ nav ul li a {
     transition: 0.3s;
 }
 
-/* Quando passar o mouse, muda a cor */
 nav ul li a:hover {
     background-color: #355c7d;
 }
@@ -99,9 +80,44 @@ nav ul li a:hover {
 /* Conteúdo principal */
 main {
     padding: 20px;
-    text-align: center;
+    text-align: left;
     max-width: 800px;
     margin: 0 auto; /* Centraliza o conteúdo da página */
+}
+
+/* Estilização de seções */
+section {
+    margin-bottom: 30px; /* Adiciona espaço entre as seções */
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização de títulos */
+h2 {
+    color: #6c5b7b;
+    border-bottom: 2px solid #6c5b7b;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #355c7d;
+    margin-top: 15px;
+}
+
+/* Estilização de código */
+pre {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: "Courier New", monospace;
 }
 
 /* Rodapé */

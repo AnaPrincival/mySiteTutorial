@@ -27,6 +27,48 @@
             <h2>Introdução ao Python</h2>
             <p>Aqui você encontrará anotações sobre Python.</p>
         </section>
+        
+        <section>
+            <h2>Manipulação de Strings</h2>
+            <h3>strip e split</h3>
+            <p>O método <code>strip()</code> remove espaços em branco do início e fim de uma string.</p>
+            <pre><code>texto = "  Olá, mundo!  "
+print(texto.strip())  # "Olá, mundo!"</code></pre>
+            <p>O método <code>split()</code> divide uma string em uma lista de substrings com base em um delimitador.</p>
+            <pre><code>frase = "maçã,banana,uva"
+print(frase.split(","))  # ["maçã", "banana", "uva"]</code></pre>
+        </section>
+
+        <section>
+            <h2>Argumentos de Linha de Comando</h2>
+            <h3>argparse</h3>
+            <p>O módulo <code>argparse</code> é usado para processar argumentos passados na linha de comando.</p>
+            <pre><code>import argparse
+
+parser = argparse.ArgumentParser(description="Exemplo de argparse")
+parser.add_argument("nome", type=str, help="Nome do usuário")
+args = parser.parse_args()
+print(f"Olá, {args.nome}!")</code></pre>
+        </section>
+
+        <section>
+            <h2>Estruturas de Dados</h2>
+            <h3>Tuplas</h3>
+            <p>Tuplas são imutáveis e são definidas com parênteses.</p>
+            <pre><code>cores = ("vermelho", "azul", "verde")
+print(cores[0])  # vermelho</code></pre>
+            
+            <h3>Listas</h3>
+            <p>Listas são mutáveis e permitem adição e remoção de elementos.</p>
+            <pre><code>numeros = [1, 2, 3]
+numeros.append(4)
+print(numeros)  # [1, 2, 3, 4]</code></pre>
+            
+            <h3>Dicionários</h3>
+            <p>Dicionários armazenam pares chave-valor.</p>
+            <pre><code>dados = {"nome": "Ana", "idade": 23}
+print(dados["nome"])  # Ana</code></pre>
+        </section>
     </main>
 
     <footer>
