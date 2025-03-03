@@ -38,23 +38,30 @@
             <h2>Manipulação de Strings</h2>
             <h3>strip e split</h3>
             <pre><code>texto = "  Olá, mundo!  "
-print(texto.strip())  # "Olá, mundo!"</code></pre>
-            
-            <pre><code>frase = "maçã,banana,uva"
-print(frase.split(","))  # ["maçã", "banana", "uva"]</code></pre>
+print(texto.strip())  # "Olá, mundo!"
+
+texto = "  Python   "
+print(texto.strip(" "))  # "Python"
+
+frase = "maçã,banana,uva"
+print(frase.split(","))  # ["maçã", "banana", "uva"]
+
+frase = "um dois três quatro"
+print(frase.split())  # ["um", "dois", "três", "quatro"]</code></pre>
             
             <h3>startswith e replace</h3>
             <pre><code>mensagem = "Erro: Arquivo não encontrado"
-print(mensagem.startswith("Erro"))  # True</code></pre>
-            
-            <pre><code>texto = "Olá, mundo!"
+print(mensagem.startswith("Erro"))  # True
+
+mensagem = "Aviso: Baixa bateria"
+print(mensagem.startswith("Erro"))  # False
+
+texto = "Olá, mundo!"
 novo_texto = texto.replace("mundo", "Python")
-print(novo_texto)  # "Olá, Python!"</code></pre>
-            
-            <h3>join</h3>
-            <pre><code>palavras = ["Python", "é", "incrível"]
-frase = " ".join(palavras)
-print(frase)  # "Python é incrível"</code></pre>
+print(novo_texto)  # "Olá, Python!"
+
+frase = "banana, maçã, banana"
+print(frase.replace("banana", "laranja"))  # "laranja, maçã, laranja"</code></pre>
         </section>
         
         <section id="argumentos-cli">
@@ -64,32 +71,33 @@ print(frase)  # "Python é incrível"</code></pre>
 
 parser = argparse.ArgumentParser(description="Exemplo de argparse")
 parser.add_argument("nome", type=str, help="Nome do usuário")
+parser.add_argument("idade", type=int, help="Idade do usuário")
 args = parser.parse_args()
-print(f"Olá, {args.nome}!")</code></pre>
+print(f"Olá, {args.nome}! Você tem {args.idade} anos.")</code></pre>
         </section>
         
         <section id="estruturas-dados">
             <h2>Estruturas de Dados</h2>
-            <h3>Tuplas</h3>
-            <pre><code>cores = ("vermelho", "azul", "verde")
-print(cores[0])  # vermelho</code></pre>
-            
             <h3>Listas e append</h3>
             <pre><code>numeros = [1, 2, 3]
 numeros.append(4)
-print(numeros)  # [1, 2, 3, 4]</code></pre>
-            
-            <h3>Dicionários</h3>
-            <pre><code>dados = {"nome": "Ana", "idade": 23}
-dados["cidade"] = "Caen"
-print(dados)  # {"nome": "Ana", "idade": 23, "cidade": "Caen"}</code></pre>
+print(numeros)  # [1, 2, 3, 4]
+
+nomes = []
+nomes.append("Ana")
+nomes.append("Carlos")
+print(nomes)  # ["Ana", "Carlos"]</code></pre>
         </section>
         
         <section id="loops">
             <h2>Loops</h2>
             <h3>Loop for</h3>
             <pre><code>for i in range(5):
-    print(f"Iteração {i}")</code></pre>
+    print(f"Iteração {i}")
+
+lista = ["maçã", "banana", "uva"]
+for fruta in lista:
+    print(fruta)</code></pre>
             
             <h3>Loop while</h3>
             <pre><code>contador = 0
@@ -102,12 +110,13 @@ while contador < 3:
             <h2>Manipulação de Arquivos</h2>
             <h3>Abrindo e lendo arquivos</h3>
             <pre><code>with open("exemplo.txt", "r") as arquivo:
-    conteudo = arquivo.read()
-    print(conteudo)</code></pre>
+    for linha in arquivo:
+        print(linha.strip())</code></pre>
             
             <h3>Escrevendo em arquivos</h3>
             <pre><code>with open("saida.txt", "w") as arquivo:
-    arquivo.write("Este é um teste!")</code></pre>
+    arquivo.write("Este é um teste!\n")
+    arquivo.write("Mais uma linha de teste.")</code></pre>
         </section>
     </main>
 
