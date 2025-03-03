@@ -3,124 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia de Python</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
-    </style>
+    <title>Python - Meu Site Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Manipulação de Strings</h1>
-    
-    <h2>Removendo Espaços e Separando Palavras</h2>
-    <p>Strings são sequências de caracteres em Python e oferecem diversos métodos úteis para manipulação.</p>
-    <pre>
-texto = "  Olá, mundo!  "
-print(texto.strip())  # "Olá, mundo!"
-print(texto.lstrip())  # "Olá, mundo!  "
-print(texto.rstrip())  # "  Olá, mundo!"
+    <header>
+        <div class="header-container">
+            <img src="python.png" alt="Ícone do Python" class="python-icon">
+            <h1>Python</h1>
+            <img src="python.png" alt="Ícone do Python" class="python-icon">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="python.html">Python</a></li>
+                <li><a href="jinja.html">Jinja</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Índice</h2>
+            <ul>
+                <li><a href="#manipulacao-strings">Manipulação de Strings</a></li>
+                <li><a href="#argumentos-cli">Argumentos de Linha de Comando</a></li>
+                <li><a href="#estruturas-dados">Estruturas de Dados</a></li>
+                <li><a href="#loops">Loops</a></li>
+                <li><a href="#arquivos">Manipulação de Arquivos</a></li>
+            </ul>
+        </section>
+
+        <section id="manipulacao-strings">
+            <h2>Manipulação de Strings</h2>
+            <p>Strings são sequências de caracteres. Python fornece diversos métodos úteis para manipulá-las.</p>
+            
+            <h3>Removendo espaços e separando palavras</h3>
+            <pre><code>texto = "  Olá, mundo!  "
+print(texto.strip())  # Remove espaços extras
+
 frase = "maçã,banana,uva"
-print(frase.split(","))  # ["maçã", "banana", "uva"]
-frase2 = "Python é incrível"
-print(frase2.split())  # ["Python", "é", "incrível"]
-    </pre>
+print(frase.split(","))  # Divide a string por vírgula</code></pre>
 
-    <h2>Formatando Strings</h2>
-    <pre>
-nome = "Ana"
+            <h3>Concatenando Strings</h3>
+            <pre><code>parte1 = "Olá"
+parte2 = "Mundo"
+mensagem = parte1 + ", " + parte2 + "!"
+print(mensagem)</code></pre>
+
+            <h3>Formatando Strings</h3>
+            <pre><code>nome = "Ana"
 idade = 23
-print(f"Meu nome é {nome} e eu tenho {idade} anos.")
-print("Meu nome é {} e eu tenho {} anos.".format(nome, idade))
-print("Meu nome é %s e eu tenho %d anos." % (nome, idade))
-    </pre>
+print(f"Meu nome é {nome} e eu tenho {idade} anos.")</code></pre>
+        </section>
 
-    <h1>Argumentos de Linha de Comando</h1>
-    <pre>
-import sys
-print("Argumentos recebidos:", sys.argv)
+        <section id="argumentos-cli">
+            <h2>Argumentos de Linha de Comando</h2>
+            <p>Podemos capturar argumentos passados pelo terminal usando <code>sys.argv</code>.</p>
+            <pre><code>import sys
+print("Argumentos recebidos:", sys.argv)</code></pre>
+        </section>
 
-import argparse
-parser = argparse.ArgumentParser(description="Processa alguns números.")
-parser.add_argument("numero1", type=int, help="Primeiro número")
-parser.add_argument("numero2", type=int, help="Segundo número")
-args = parser.parse_args()
-print("Soma:", args.numero1 + args.numero2)
-    </pre>
+        <section id="estruturas-dados">
+            <h2>Estruturas de Dados</h2>
+            <p>Python possui diversas estruturas para armazenar e manipular coleções de dados.</p>
+            
+            <h3>Listas</h3>
+            <pre><code>lista = [1, 2, 3, 4]
+lista.append(5)  # Adiciona um item
+print(lista)
 
-    <h1>Estruturas de Dados</h1>
-    
-    <h2>Listas</h2>
-    <pre>
-lista = [1, 2, 3, 4]
-lista.append(5)
-lista.remove(3)
-print(lista[0])
+# Percorrendo uma lista
 for item in lista:
-    print(item)
-    </pre>
-    
-    <h2>Tuplas</h2>
-    <pre>
-coordenadas = (10, 20)
-print(coordenadas[0])
-pessoa = ("Ana", 23, "Engenheira")
-print(pessoa)
-    </pre>
-    
-    <h2>Dicionários</h2>
-    <pre>
-usuario = {"nome": "Ana", "idade": 23, "cidade": "Caen"}
+    print(item)</code></pre>
+            
+            <h3>Tuplas</h3>
+            <pre><code>tupla = (10, 20, 30)
+print(tupla[1])  # Acessando um elemento</code></pre>
+            
+            <h3>Dicionários</h3>
+            <pre><code>usuario = {"nome": "Ana", "idade": 23}
 print(usuario["nome"])
-usuario["profissao"] = "Engenheira"
-usuario.pop("idade")
-for chave, valor in usuario.items():
-    print(f"{chave}: {valor}")
-    </pre>
+usuario["cidade"] = "Caen"
+print(usuario)</code></pre>
+            
+            <h3>Conjuntos</h3>
+            <pre><code>conjunto = {1, 2, 3, 4}
+conjunto.add(5)
+print(conjunto)</code></pre>
+        </section>
 
-    <h1>Loops</h1>
-    <h2>Loop For</h2>
-    <pre>
-for i in range(5):
-    print(f"Iteração {i}")
-for fruta in ["maçã", "banana", "uva"]:
-    print(fruta)
-for chave, valor in {"nome": "Ana", "idade": 23}.items():
-    print(f"{chave}: {valor}")
-    </pre>
-    
-    <h2>Loop While</h2>
-    <pre>
-contador = 0
+        <section id="loops">
+            <h2>Loops</h2>
+            <p>Repetição de blocos de código em Python.</p>
+            
+            <h3>Loop For</h3>
+            <pre><code>for i in range(5):
+    print(f"Iteração {i}")</code></pre>
+            
+            <h3>Loop While</h3>
+            <pre><code>contador = 0
 while contador < 5:
-    print(f"Contador: {contador}")
-    contador += 1
-    </pre>
+    print(f"Contagem: {contador}")
+    contador += 1</code></pre>
+        </section>
 
-    <h1>Manipulação de Arquivos</h1>
-    <h2>Lendo Arquivos</h2>
-    <pre>
-with open("dados.txt", "r") as arquivo:
-    conteudo = arquivo.read()
-    print(conteudo)
-    </pre>
-    
-    <h2>Escrevendo em Arquivos</h2>
-    <pre>
-with open("saida.txt", "w") as arquivo:
-    arquivo.write("Hello, World!\n")
-    </pre>
-    
-    <h2>Adicionando Conteúdo a um Arquivo</h2>
-    <pre>
-with open("saida.txt", "a") as arquivo:
-    arquivo.write("Nova linha adicionada!\n")
-    </pre>
-    
-    <h2>Lendo Linha por Linha</h2>
-    <pre>
-with open("saida.txt", "r") as arquivo:
-    for linha in arquivo:
-        print(linha.strip())
-    </pre>
+        <section id="arquivos">
+            <h2>Manipulação de Arquivos</h2>
+            <p>Abrindo, lendo e escrevendo arquivos em Python.</p>
+            
+            <h3>Lendo Arquivos</h3>
+            <pre><code>with open("dados.txt", "r") as arquivo:
+    print(arquivo.read())</code></pre>
+            
+            <h3>Escrevendo em Arquivos</h3>
+            <pre><code>with open("saida.txt", "w") as arquivo:
+    arquivo.write("Olá, mundo!\n")</code></pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ana Princival</p>
+    </footer>
 </body>
 </html>
