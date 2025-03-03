@@ -6,6 +6,9 @@ body {
     background-color: #f8f8f8;
     color: #333;
     text-align: center; /* Centraliza todo o conteúdo da página */
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da tela */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Cabeçalho */
@@ -27,6 +30,7 @@ header {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap; /* Permite que os elementos se ajustem em telas pequenas */
 }
 
 /* Ajuste do título */
@@ -57,8 +61,15 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: block;
+    margin: 10px 0; /* Melhor espaçamento para navegação vertical */
+}
+
+@media (min-width: 600px) {
+    nav ul li {
+        display: inline; /* Mantém horizontal apenas em telas maiores */
+        margin: 0 15px;
+    }
 }
 
 /* Estilizando os botões do menu */
@@ -83,6 +94,7 @@ main {
     text-align: left;
     max-width: 800px;
     margin: 0 auto; /* Centraliza o conteúdo da página */
+    flex: 1; /* Faz o conteúdo principal ocupar o espaço disponível */
 }
 
 /* Estilização de seções */
@@ -111,9 +123,10 @@ h3 {
 pre {
     background: #2d2d2d;
     color: #f8f8f2;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 8px;
     overflow-x: auto;
+    border-left: 5px solid #6c5b7b; /* Adiciona uma barra colorida à esquerda */
 }
 
 code {
@@ -129,14 +142,13 @@ code {
     border: 2px solid white;
 }
 
-
 /* Rodapé */
 footer {
     background-color: #355c7d;
     color: white;
     text-align: center;
     padding: 10px;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }

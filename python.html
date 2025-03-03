@@ -24,22 +24,38 @@
 
     <main>
         <section>
-            <h2>Introdução ao Python</h2>
-            <p>Aqui você encontrará anotações sobre Python.</p>
+            <h2>Índice</h2>
+            <ul>
+                <li><a href="#manipulacao-strings">Manipulação de Strings</a></li>
+                <li><a href="#argumentos-cli">Argumentos de Linha de Comando</a></li>
+                <li><a href="#estruturas-dados">Estruturas de Dados</a></li>
+            </ul>
         </section>
-        
-        <section>
+
+        <section id="manipulacao-strings">
             <h2>Manipulação de Strings</h2>
             <h3>strip e split</h3>
             <p>O método <code>strip()</code> remove espaços em branco do início e fim de uma string.</p>
             <pre><code>texto = "  Olá, mundo!  "
 print(texto.strip())  # "Olá, mundo!"</code></pre>
+            
             <p>O método <code>split()</code> divide uma string em uma lista de substrings com base em um delimitador.</p>
             <pre><code>frase = "maçã,banana,uva"
 print(frase.split(","))  # ["maçã", "banana", "uva"]</code></pre>
+            
+            <h3>startswith</h3>
+            <p>O método <code>startswith()</code> verifica se uma string começa com um determinado prefixo.</p>
+            <pre><code>mensagem = "Erro: Arquivo não encontrado"
+print(mensagem.startswith("Erro"))  # True</code></pre>
+            
+            <h3>join</h3>
+            <p>O método <code>join()</code> junta uma lista de strings em uma única string, separada por um delimitador.</p>
+            <pre><code>palavras = ["Python", "é", "incrível"]
+frase = " ".join(palavras)
+print(frase)  # "Python é incrível"</code></pre>
         </section>
-
-        <section>
+        
+        <section id="argumentos-cli">
             <h2>Argumentos de Linha de Comando</h2>
             <h3>argparse</h3>
             <p>O módulo <code>argparse</code> é usado para processar argumentos passados na linha de comando.</p>
@@ -50,8 +66,8 @@ parser.add_argument("nome", type=str, help="Nome do usuário")
 args = parser.parse_args()
 print(f"Olá, {args.nome}!")</code></pre>
         </section>
-
-        <section>
+        
+        <section id="estruturas-dados">
             <h2>Estruturas de Dados</h2>
             <h3>Tuplas</h3>
             <p>Tuplas são imutáveis e são definidas com parênteses.</p>
