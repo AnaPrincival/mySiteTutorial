@@ -1,198 +1,126 @@
-# Manipulação de Strings
-
-## Removendo Espaços e Separando Palavras
-Strings são sequências de caracteres em Python e oferecem diversos métodos úteis para manipulação.
-
-```python
-# Removendo espaços extras no início e no final da string
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Python</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Manipulação de Strings</h1>
+    
+    <h2>Removendo Espaços e Separando Palavras</h2>
+    <p>Strings são sequências de caracteres em Python e oferecem diversos métodos úteis para manipulação.</p>
+    <pre>
 texto = "  Olá, mundo!  "
 print(texto.strip())  # "Olá, mundo!"
-
-# Removendo espaços apenas do lado esquerdo
 print(texto.lstrip())  # "Olá, mundo!  "
-
-# Removendo espaços apenas do lado direito
 print(texto.rstrip())  # "  Olá, mundo!"
-
-# Separando uma string em uma lista de palavras
 frase = "maçã,banana,uva"
 print(frase.split(","))  # ["maçã", "banana", "uva"]
-
-# Separando por espaço
 frase2 = "Python é incrível"
 print(frase2.split())  # ["Python", "é", "incrível"]
-```
+    </pre>
 
-## Formatando Strings
-Python permite formatar strings de maneira dinâmica:
-
-```python
+    <h2>Formatando Strings</h2>
+    <pre>
 nome = "Ana"
 idade = 23
 print(f"Meu nome é {nome} e eu tenho {idade} anos.")
-
-# Outra forma de formatação
 print("Meu nome é {} e eu tenho {} anos.".format(nome, idade))
-
-# Formatação com placeholders
 print("Meu nome é %s e eu tenho %d anos." % (nome, idade))
-```
+    </pre>
 
-## Argumentos de Linha de Comando
-Podemos capturar argumentos passados pelo terminal usando `sys.argv` ou `argparse`:
-
-```python
+    <h1>Argumentos de Linha de Comando</h1>
+    <pre>
 import sys
 print("Argumentos recebidos:", sys.argv)
 
-# Utilizando argparse para lidar com argumentos nomeados
 import argparse
 parser = argparse.ArgumentParser(description="Processa alguns números.")
 parser.add_argument("numero1", type=int, help="Primeiro número")
 parser.add_argument("numero2", type=int, help="Segundo número")
 args = parser.parse_args()
 print("Soma:", args.numero1 + args.numero2)
-```
+    </pre>
 
----
-# Estruturas de Dados
-Python possui diversas estruturas para armazenar e manipular coleções de dados.
-
-## Listas
-Listas são coleções ordenadas e mutáveis. Suportam vários métodos para manipulação:
-
-```python
-# Criando uma lista
+    <h1>Estruturas de Dados</h1>
+    
+    <h2>Listas</h2>
+    <pre>
 lista = [1, 2, 3, 4]
-print(lista)
-
-# Adicionando elementos
 lista.append(5)
-print(lista)  # [1, 2, 3, 4, 5]
-
-# Removendo elementos
 lista.remove(3)
-print(lista)  # [1, 2, 4, 5]
-
-# Acessando elementos
-print(lista[0])  # 1
-
-# Percorrendo uma lista
+print(lista[0])
 for item in lista:
     print(item)
-```
-
-## Tuplas
-Tuplas são semelhantes a listas, mas são imutáveis (não podem ser alteradas após a criação):
-
-```python
-# Criando uma tupla
+    </pre>
+    
+    <h2>Tuplas</h2>
+    <pre>
 coordenadas = (10, 20)
-print(coordenadas)
-
-# Acessando elementos
-print(coordenadas[0])  # 10
-
-# Tentando modificar um elemento (isso gera erro)
-# coordenadas[0] = 30  # TypeError
-
-# Tupla com elementos diferentes
+print(coordenadas[0])
 pessoa = ("Ana", 23, "Engenheira")
 print(pessoa)
-```
-
-## Dicionários
-Dicionários armazenam pares chave-valor e são mutáveis:
-
-```python
-# Criando um dicionário
+    </pre>
+    
+    <h2>Dicionários</h2>
+    <pre>
 usuario = {"nome": "Ana", "idade": 23, "cidade": "Caen"}
-print(usuario)
-
-# Acessando valores
-print(usuario["nome"])  # Ana
-
-# Adicionando uma nova chave
+print(usuario["nome"])
 usuario["profissao"] = "Engenheira"
-print(usuario)
-
-# Removendo um item
 usuario.pop("idade")
-print(usuario)
-
-# Percorrendo um dicionário
 for chave, valor in usuario.items():
     print(f"{chave}: {valor}")
-```
+    </pre>
 
----
-# Loops
-Os loops permitem a repetição de blocos de código em Python.
-
-## Loop For
-
-```python
-# Percorrendo uma sequência de números
+    <h1>Loops</h1>
+    <h2>Loop For</h2>
+    <pre>
 for i in range(5):
     print(f"Iteração {i}")
-
-# Iterando sobre uma lista
-frutas = ["maçã", "banana", "uva"]
-for fruta in frutas:
+for fruta in ["maçã", "banana", "uva"]:
     print(fruta)
-
-# Iterando sobre um dicionário
-dados = {"nome": "Ana", "idade": 23}
-for chave, valor in dados.items():
+for chave, valor in {"nome": "Ana", "idade": 23}.items():
     print(f"{chave}: {valor}")
-```
-
-## Loop While
-
-```python
-# Executa enquanto a condição for verdadeira
+    </pre>
+    
+    <h2>Loop While</h2>
+    <pre>
 contador = 0
 while contador < 5:
     print(f"Contador: {contador}")
     contador += 1
-```
+    </pre>
 
----
-# Manipulação de Arquivos
-Podemos abrir, ler e escrever arquivos em Python.
-
-## Lendo Arquivos
-
-```python
-# Abrindo um arquivo para leitura
+    <h1>Manipulação de Arquivos</h1>
+    <h2>Lendo Arquivos</h2>
+    <pre>
 with open("dados.txt", "r") as arquivo:
     conteudo = arquivo.read()
     print(conteudo)
-```
-
-## Escrevendo em Arquivos
-
-```python
-# Escrevendo em um arquivo (sobrescreve o conteúdo)
+    </pre>
+    
+    <h2>Escrevendo em Arquivos</h2>
+    <pre>
 with open("saida.txt", "w") as arquivo:
     arquivo.write("Hello, World!\n")
-```
-
-## Adicionando Conteúdo a um Arquivo
-
-```python
-# Escrevendo sem apagar o conteúdo existente
+    </pre>
+    
+    <h2>Adicionando Conteúdo a um Arquivo</h2>
+    <pre>
 with open("saida.txt", "a") as arquivo:
     arquivo.write("Nova linha adicionada!\n")
-```
-
-## Lendo Linha por Linha
-
-```python
-# Lendo o arquivo linha por linha
+    </pre>
+    
+    <h2>Lendo Linha por Linha</h2>
+    <pre>
 with open("saida.txt", "r") as arquivo:
     for linha in arquivo:
         print(linha.strip())
-```
-
-Esses exemplos fornecem uma base sólida para entender a manipulação de strings, estruturas de dados e arquivos em Python.
+    </pre>
+</body>
+</html>
