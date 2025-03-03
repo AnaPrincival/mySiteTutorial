@@ -110,10 +110,12 @@ Iteração 2</code></pre>
             <pre><code>contador = 0
 while contador < 3:
     print(f"Contagem: {contador}")
-    contador += 1</code></pre>
-            <pre><code> >> Contagem: 0
+    contador += 1
+
+>> Contagem: 0
 Contagem: 1
 Contagem: 2</code></pre>
+
         </section>
 
         <section id="arquivos">
@@ -122,13 +124,13 @@ Contagem: 2</code></pre>
             
             <h3>Lendo Arquivos</h3>
             <pre><code>with open("dados.txt", "r") as arquivo:
-    print(arquivo.read())</code></pre>
-            <pre><code> >> Olá, Mundo!</code></pre>
+    print(arquivo.read())
+>> Olá, Mundo!</code></pre>
 
             <h3>Escrevendo em Arquivos</h3>
             <pre><code>with open("saida.txt", "w") as arquivo:
     arquivo.write("Python é incrível!\n")</code></pre>
-            <p><strong>O arquivo <code>saida.txt</code> conterá:</strong></p>
+            <p>O arquivo <code>saida.txt</code> conterá:</p>
             <pre><code>Python é incrível!</code></pre>
         </section>
     </main>
