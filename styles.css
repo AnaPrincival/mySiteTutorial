@@ -120,6 +120,16 @@ code {
     font-family: "Courier New", monospace;
 }
 
+/* Ajustar tamanho dos ícones específicos das páginas Python e Jinja */
+.python-icon, .jinja-icon {
+    width: 50px; /* Diminui o tamanho das imagens */
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+
 /* Rodapé */
 footer {
     background-color: #355c7d;
