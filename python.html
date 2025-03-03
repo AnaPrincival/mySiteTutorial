@@ -36,6 +36,7 @@
 
         <section id="manipulacao-strings">
             <h2>Manipulação de Strings</h2>
+            <p>Strings são sequências de caracteres. Python fornece métodos úteis para manipulá-las.</p>
             <h3>strip e split</h3>
             <pre><code>texto = "  Olá, mundo!  "
 print(texto.strip())  # "Olá, mundo!"
@@ -47,76 +48,78 @@ frase = "maçã,banana,uva"
 print(frase.split(","))  # ["maçã", "banana", "uva"]
 
 frase = "um dois três quatro"
-print(frase.split())  # ["um", "dois", "três", "quatro"]</code></pre>
-            
-            <h3>startswith e replace</h3>
-            <pre><code>mensagem = "Erro: Arquivo não encontrado"
-print(mensagem.startswith("Erro"))  # True
+print(frase.split())  # ["um", "dois", "três", "quatro"]
 
-mensagem = "Aviso: Baixa bateria"
-print(mensagem.startswith("Erro"))  # False
-
-texto = "Olá, mundo!"
-novo_texto = texto.replace("mundo", "Python")
-print(novo_texto)  # "Olá, Python!"
-
-frase = "banana, maçã, banana"
-print(frase.replace("banana", "laranja"))  # "laranja, maçã, laranja"</code></pre>
-        </section>
-        
-        <section id="argumentos-cli">
-            <h2>Argumentos de Linha de Comando</h2>
-            <h3>argparse</h3>
-            <pre><code>import argparse
-
-parser = argparse.ArgumentParser(description="Exemplo de argparse")
-parser.add_argument("nome", type=str, help="Nome do usuário")
-parser.add_argument("idade", type=int, help="Idade do usuário")
-args = parser.parse_args()
-print(f"Olá, {args.nome}! Você tem {args.idade} anos.")</code></pre>
-        </section>
-        
-        <section id="estruturas-dados">
-            <h2>Estruturas de Dados</h2>
-            <h3>Listas e append</h3>
-            <pre><code>numeros = [1, 2, 3]
-numeros.append(4)
-print(numeros)  # [1, 2, 3, 4]
-
-nomes = []
-nomes.append("Ana")
-nomes.append("Carlos")
-print(nomes)  # ["Ana", "Carlos"]</code></pre>
+linha = "Nome: Ana; Idade: 23; Cidade: Caen"
+print(linha.split("; "))  # ['Nome: Ana', 'Idade: 23', 'Cidade: Caen']</code></pre>
         </section>
         
         <section id="loops">
             <h2>Loops</h2>
+            <p>Loops são usados para repetir um bloco de código várias vezes.</p>
             <h3>Loop for</h3>
             <pre><code>for i in range(5):
     print(f"Iteração {i}")
 
 lista = ["maçã", "banana", "uva"]
 for fruta in lista:
-    print(fruta)</code></pre>
+    print(fruta)
+
+for letra in "Python":
+    print(letra)
+
+for i in range(2, 10, 2):
+    print(i)  # Números pares de 2 a 8
+
+usuarios = {"Ana": 23, "Carlos": 30}
+for nome, idade in usuarios.items():
+    print(f"{nome} tem {idade} anos")</code></pre>
             
             <h3>Loop while</h3>
             <pre><code>contador = 0
 while contador < 3:
     print(f"Contagem: {contador}")
-    contador += 1</code></pre>
-        </section>
+    contador += 1
 
+numero = 10
+while numero > 0:
+    print(numero)
+    numero -= 2
+
+resposta = ""
+while resposta.lower() != "sim":
+    resposta = input("Deseja continuar? (sim/não): ")
+
+from random import randint
+sorteado = randint(1, 10)
+chute = 0
+while chute != sorteado:
+    chute = int(input("Adivinhe o número: "))
+    print("Errou, tente novamente!")</code></pre>
+        </section>
+        
         <section id="arquivos">
             <h2>Manipulação de Arquivos</h2>
+            <p>O Python permite abrir, ler e escrever arquivos de forma simples.</p>
             <h3>Abrindo e lendo arquivos</h3>
             <pre><code>with open("exemplo.txt", "r") as arquivo:
+    print(arquivo.read())  # Lê todo o conteúdo do arquivo
+
+with open("exemplo.txt", "r") as arquivo:
+    linhas = arquivo.readlines()  # Retorna uma lista de linhas
+    print(linhas)
+
+with open("exemplo.txt", "r") as arquivo:
     for linha in arquivo:
-        print(linha.strip())</code></pre>
+        print(linha.strip())  # Remove espaços e quebras de linha</code></pre>
             
             <h3>Escrevendo em arquivos</h3>
             <pre><code>with open("saida.txt", "w") as arquivo:
-    arquivo.write("Este é um teste!\n")
-    arquivo.write("Mais uma linha de teste.")</code></pre>
+    arquivo.write("Primeira linha\n")
+    arquivo.write("Segunda linha\n")
+
+with open("saida.txt", "a") as arquivo:
+    arquivo.write("Linha adicionada no final\n")</code></pre>
         </section>
     </main>
 
