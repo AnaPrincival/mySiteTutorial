@@ -24,206 +24,206 @@
 
     <main>
 
-        <!-- ÍNDICE -->
+        <!-- INDEX -->
         <section>
-            <h2>Índice</h2>
-            <p>Esta página reúne exemplos, explicações e pequenos trechos de código que uso como referência rápida quando estou programando em Python. O objetivo não é ensinar do zero, mas organizar conceitos que aparecem no dia a dia — desde manipulação básica de texto até interação com arquivos, argumentos de terminal e estruturas mais comuns.</p>
+            <h2>Index</h2>
+            <p>This page gathers examples, explanations, and short code snippets that I use as a quick reference when programming in Python. The goal is not to teach from scratch, but to organize concepts that appear frequently in daily use — from basic text manipulation to file handling, command-line arguments, and common data structures.</p>
             <ul>
-                <li><a href="#variaveis-tipos">Variáveis e tipos básicos</a></li>
-                <li><a href="#manipulacao-strings">Manipulação de Strings</a></li>
-                <li><a href="#funcoes">Funções</a></li>
+                <li><a href="#variables-types">Variables and basic types</a></li>
+                <li><a href="#string-manipulation">String Manipulation</a></li>
+                <li><a href="#functions">Functions</a></li>
                 <li><a href="#list-comprehensions">List Comprehensions</a></li>
-                <li><a href="#estruturas-dados">Estruturas de Dados</a></li>
-                <li><a href="#tratamento-erros">Tratamento de Erros</a></li>
-                <li><a href="#argumentos-cli">Argumentos de Linha de Comando</a></li>
-                <li><a href="#datas">Datas e Horários</a></li>
+                <li><a href="#data-structures">Data Structures</a></li>
+                <li><a href="#error-handling">Error Handling</a></li>
+                <li><a href="#cli-arguments">Command-Line Arguments</a></li>
+                <li><a href="#dates">Dates and Time</a></li>
                 <li><a href="#json">JSON</a></li>
                 <li><a href="#requests">Requests</a></li>
-                <li><a href="#arquivos">Manipulação de Arquivos</a></li>
-                <li><a href="#caminhos">Caminhos e arquivos (pathlib)</a></li>
-                <li><a href="#subprocessos">Rodar comandos do sistema</a></li>
+                <li><a href="#files">File Handling</a></li>
+                <li><a href="#paths">Paths and files (pathlib)</a></li>
+                <li><a href="#subprocesses">Running System Commands</a></li>
             </ul>
         </section>
     
     
-        <!-- VARIÁVEIS E TIPOS -->
-        <section id="variaveis-tipos">
-            <h2>Variáveis e tipos básicos</h2>
-            <p>Python não exige declarar tipos explícitos, e isso torna o código mais direto — mas também exige atenção ao manipular valores. Aqui estão alguns exemplos que costumo usar para lembrar como o Python infere tipos automaticamente.</p>
+        <!-- VARIABLES AND TYPES -->
+        <section id="variables-types">
+            <h2>Variables and basic types</h2>
+            <p>Python does not require explicit type declarations. This makes the code more direct, but also means we need to pay attention to the values being handled. Here are some examples showing how Python infers types automatically.</p>
     
-            <pre><code>nome = "Ana"
-    idade = 23
-    altura = 1.64
-    estudando = True
+            <pre><code>name = "Ana"
+    age = 23
+    height = 1.64
+    studying = True
     
-    print(type(nome))
-    print(type(idade))</code></pre>
+    print(type(name))
+    print(type(age))</code></pre>
         </section>
     
     
-        <!-- STRINGS -->
-        <section id="manipulacao-strings">
-            <h2>Manipulação de Strings</h2>
-            <p>Strings são muito usadas em Python, principalmente quando manipulamos dados, criamos mensagens, processamos arquivos ou tratamos entradas do usuário. Aqui estão as operações que mais aparecem no dia a dia.</p>
+        <!-- STRING MANIPULATION -->
+        <section id="string-manipulation">
+            <h2>String Manipulation</h2>
+            <p>Strings are extremely common in Python, especially when working with text, logs, user input, or data cleaning. Here are the operations I use the most.</p>
             
-            <h3>Removendo espaços desnecessários</h3>
-            <p><code>strip()</code> remove espaços no começo e no fim da string. É útil para limpar dados de arquivos, logs ou textos gerados automaticamente.</p>
-            <pre><code>texto = "  Olá, mundo!  "
-    print(texto.strip())
+            <h3>Removing extra spaces</h3>
+            <p><code>strip()</code> removes whitespace at the beginning and end of the string. Very useful when processing data from files or user input.</p>
+            <pre><code>text = "  Hello, world!  "
+    print(text.strip())
     
-    >> "Olá, mundo!"</code></pre>
+    >> "Hello, world!"</code></pre>
     
-            <h3>Separando itens com split()</h3>
-            <p>Quando uma string contém valores separados por vírgula, espaço ou outro delimitador, <code>split()</code> transforma o texto em uma lista.</p>
-            <pre><code>frutas = "maçã,banana,uva"
-    lista = frutas.split(",")
+            <h3>Splitting strings</h3>
+            <p><code>split()</code> transforms a string into a list, based on a separator.</p>
+            <pre><code>fruits = "apple,banana,grape"
+    lst = fruits.split(",")
     
-    >> ['maçã', 'banana', 'uva']</code></pre>
+    >> ['apple', 'banana', 'grape']</code></pre>
     
-            <h3>Concatenando textos</h3>
-            <p>O jeito mais moderno e limpo de juntar textos é usando f-strings. É o formato mais legível e o que uso sempre.</p>
-            <pre><code>saudacao = "Olá"
-    destino = "mundo"
+            <h3>Concatenating strings</h3>
+            <p>The cleanest and most modern way to combine text in Python is using f-strings.</p>
+            <pre><code>greeting = "Hello"
+    target = "world"
     
-    mensagem = f"{saudacao}, {destino}!"
-    print(mensagem)</code></pre>
+    message = f"{greeting}, {target}!"
+    print(message)</code></pre>
     
-            <h3>Formatando mensagens com variáveis</h3>
-            <p>Combinar textos com valores numéricos é muito comum. F-strings deixam isso claro e seguro.</p>
-            <pre><code>nome = "Ana"
-    idade = 23
+            <h3>Formatting messages with variables</h3>
+            <p>Very useful when mixing text and numbers.</p>
+            <pre><code>name = "Ana"
+    age = 23
     
-    print(f"Meu nome é {nome} e eu tenho {idade} anos.")</code></pre>
+    print(f"My name is {name} and I am {age} years old.")</code></pre>
         </section>
     
     
-        <!-- FUNÇÕES -->
-        <section id="funcoes">
-            <h2>Funções</h2>
-            <p>Funções organizam o código, evitam repetição e tornam trechos reutilizáveis. Mesmo nos scripts mais simples, é sempre bom quebrar o código em funções. Aqui estão alguns exemplos básicos.</p>
+        <!-- FUNCTIONS -->
+        <section id="functions">
+            <h2>Functions</h2>
+            <p>Functions help organize code, avoid repetition, and make logic reusable. Even in simple scripts, it's worth breaking tasks into functions. Here are some basic examples.</p>
     
-            <pre><code>def saudacao(nome):
-        return f"Olá, {nome}!"
+            <pre><code>def greet(name):
+        return f"Hello, {name}!"
     
-    print(saudacao("Ana"))</code></pre>
+    print(greet("Ana"))</code></pre>
     
-            <h3>Funções com argumentos padrão</h3>
-            <p>Úteis quando queremos permitir que a função funcione mesmo sem receber todos os argumentos.</p>
+            <h3>Default arguments</h3>
+            <p>Useful when we want a function to work even without all arguments provided.</p>
     
-            <pre><code>def somar(a, b=0):
+            <pre><code>def add(a, b=0):
         return a + b
     
-    somar(5)    # 5
-    somar(5, 7) # 12</code></pre>
+    add(5)    # 5
+    add(5, 7) # 12</code></pre>
         </section>
     
     
         <!-- LIST COMPREHENSIONS -->
         <section id="list-comprehensions">
             <h2>List Comprehensions</h2>
-            <p>Uma das construções mais úteis de Python. Permite criar listas novas a partir de outras listas, aplicando transformações ou filtragens, tudo em uma linha clara.</p>
+            <p>One of Python’s most powerful constructs. It lets us create lists in a clean and expressive way.</p>
     
-            <pre><code>quadrados = [x**2 for x in range(5)]
+            <pre><code>squares = [x**2 for x in range(5)]
     
     >> [0, 1, 4, 9, 16]</code></pre>
     
-            <p>Com filtro:</p>
-            <pre><code>pares = [n for n in range(10) if n % 2 == 0]
+            <p>With a filter:</p>
+            <pre><code>evens = [n for n in range(10) if n % 2 == 0]
     >> [0, 2, 4, 6, 8]</code></pre>
         </section>
     
     
-        <!-- ESTRUTURAS DE DADOS -->
-        <section id="estruturas-dados">
-            <h2>Estruturas de Dados</h2>
-            <p>Python oferece várias estruturas para armazenar coleções. Aqui estão exemplos que uso com frequência.</p>
+        <!-- DATA STRUCTURES -->
+        <section id="data-structures">
+            <h2>Data Structures</h2>
+            <p>Python offers several ways to store collections of values. These are the ones I use most frequently.</p>
     
-            <h3>Listas</h3>
-            <pre><code>frutas = ["maçã", "banana", "uva"]
-    frutas.append("mamão")</code></pre>
+            <h3>Lists</h3>
+            <pre><code>fruits = ["apple", "banana", "grape"]
+    fruits.append("papaya")</code></pre>
     
-            <h3>Dicionários</h3>
-            <pre><code>pessoa = {"nome": "Ana", "idade": 23}
-    print(pessoa["nome"])</code></pre>
+            <h3>Dictionaries</h3>
+            <pre><code>person = {"name": "Ana", "age": 23}
+    print(person["name"])</code></pre>
     
-            <h3>Tuplas (imutáveis)</h3>
-            <pre><code>coordenadas = (10, 20)
-    coordenadas[0]</code></pre>
+            <h3>Tuples (immutable)</h3>
+            <pre><code>coords = (10, 20)
+    coords[0]</code></pre>
     
-            <h3>Sets (sem duplicatas)</h3>
-            <pre><code>numeros = {1, 2, 2, 3}
+            <h3>Sets (no duplicates)</h3>
+            <pre><code>numbers = {1, 2, 2, 3}
     >> {1, 2, 3}</code></pre>
         </section>
     
     
-        <!-- TRATAMENTO DE ERROS -->
-        <section id="tratamento-erros">
-            <h2>Tratamento de Erros</h2>
-            <p>Quando algo pode dar errado — conversão, leitura de arquivo, entrada do usuário — usamos <code>try/except</code> para evitar que o programa quebre.</p>
+        <!-- ERROR HANDLING -->
+        <section id="error-handling">
+            <h2>Error Handling</h2>
+            <p>When something can fail — reading a file, converting a value, user input — we use <code>try/except</code> to prevent the script from crashing.</p>
     
             <pre><code>try:
-        numero = int("abc")
+        number = int("abc")
     except ValueError:
-        print("Erro: valor inválido")</code></pre>
+        print("Error: invalid value")</code></pre>
         </section>
     
     
-        <!-- ARGUMENTOS DE LINHA DE COMANDO -->
-        <section id="argumentos-cli">
-            <h2>Argumentos de Linha de Comando</h2>
-            <p>Python permite receber argumentos diretamente do terminal, o que é útil para scripts.</p>
+        <!-- COMMAND-LINE ARGUMENTS -->
+        <section id="cli-arguments">
+            <h2>Command-Line Arguments</h2>
+            <p>Python can read arguments directly from the terminal, which is useful for scripts that need input values.</p>
     
             <h3>sys.argv</h3>
             <pre><code>import sys
     print(sys.argv)</code></pre>
     
             <h3>argparse</h3>
-            <p>Quando queremos algo mais organizado, usamos argparse:</p>
+            <p>When we want organized and documented arguments, we use argparse:</p>
     
             <pre><code>import argparse
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("nome")
-    parser.add_argument("--idade", default=25)
+    parser.add_argument("name")
+    parser.add_argument("--age", default=25)
     args = parser.parse_args()
     
-    print(args.nome, args.idade)</code></pre>
+    print(args.name, args.age)</code></pre>
         </section>
     
     
-        <!-- DATAS -->
-        <section id="datas">
-            <h2>Datas e Horários</h2>
-            <p>Trabalhar com datas é muito comum quando lidamos com relatórios, logs ou organização temporal.</p>
+        <!-- DATES -->
+        <section id="dates">
+            <h2>Dates and Time</h2>
+            <p>Working with dates is common when generating reports, managing logs, or dealing with timestamps.</p>
     
             <pre><code>from datetime import datetime
     
-    agora = datetime.now()
-    print(agora.strftime("%d/%m/%Y %H:%M"))</code></pre>
+    now = datetime.now()
+    print(now.strftime("%d/%m/%Y %H:%M"))</code></pre>
         </section>
     
     
         <!-- JSON -->
         <section id="json">
             <h2>JSON</h2>
-            <p>JSON é um formato muito usado para armazenar e trocar dados. Python oferece suporte nativo.</p>
+            <p>JSON is widely used to store and exchange structured data. Python supports it natively.</p>
     
-            <h3>Objeto → JSON</h3>
+            <h3>Object → JSON</h3>
             <pre><code>import json
     
-    dados = {"nome": "Ana", "idade": 23}
-    json_str = json.dumps(dados)</code></pre>
+    data = {"name": "Ana", "age": 23}
+    json_str = json.dumps(data)</code></pre>
     
-            <h3>JSON → Objeto</h3>
+            <h3>JSON → Object</h3>
             <pre><code>obj = json.loads(json_str)
-    print(obj["nome"])</code></pre>
+    print(obj["name"])</code></pre>
         </section>
     
     
         <!-- REQUESTS -->
         <section id="requests">
             <h2>Requests</h2>
-            <p>Requests é uma das bibliotecas mais populares para fazer requisições HTTP.</p>
+            <p>Requests is one of the most popular libraries for making HTTP requests.</p>
     
             <pre><code>import requests
     
@@ -232,25 +232,25 @@
         </section>
     
     
-        <!-- ARQUIVOS -->
-        <section id="arquivos">
-            <h2>Manipulação de Arquivos</h2>
-            <p>A leitura e escrita de arquivos é uma das tarefas mais frequentes em scripts.</p>
+        <!-- FILE HANDLING -->
+        <section id="files">
+            <h2>File Handling</h2>
+            <p>Reading and writing files is one of the most common tasks in scripts.</p>
     
-            <h3>Lendo arquivos</h3>
-            <pre><code>with open("dados.txt") as f:
+            <h3>Reading files</h3>
+            <pre><code>with open("data.txt") as f:
         print(f.read())</code></pre>
     
-            <h3>Escrevendo arquivos</h3>
-            <pre><code>with open("saida.txt", "w") as f:
-        f.write("Python é incrível!")</code></pre>
+            <h3>Writing files</h3>
+            <pre><code>with open("output.txt", "w") as f:
+        f.write("Python is amazing!")</code></pre>
         </section>
     
     
         <!-- PATHLIB -->
-        <section id="caminhos">
-            <h2>Caminhos e arquivos (pathlib)</h2>
-            <p><code>pathlib</code> torna muito mais fácil manipular caminhos e arquivos, especialmente no Linux.</p>
+        <section id="paths">
+            <h2>Paths and files (pathlib)</h2>
+            <p><code>pathlib</code> makes it easier to handle file paths, especially on Linux.</p>
     
             <pre><code>from pathlib import Path
     
@@ -260,15 +260,16 @@
     
     
         <!-- SUBPROCESS -->
-        <section id="subprocessos">
-            <h2>Rodar comandos do sistema</h2>
-            <p>Útil para chamar comandos externos dentro de scripts Python.</p>
+        <section id="subprocesses">
+            <h2>Running System Commands</h2>
+            <p>Useful when calling external programs within a Python script.</p>
     
             <pre><code>import subprocess
     subprocess.run(["ls", "-l"])</code></pre>
         </section>
     
     </main>
+    
     
 
 
