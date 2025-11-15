@@ -52,12 +52,13 @@
             <p>Python does not require explicit type declarations. This makes the code more direct, but also means we need to pay attention to the values being handled. Here are some examples showing how Python infers types automatically.</p>
     
             <pre><code>name = "Ana"
-    age = 23
-    height = 1.64
-    studying = True
-    
-    print(type(name))
-    print(type(age))</code></pre>
+            age = 23
+            height = 1.64
+            studying = True
+            
+            print(type(name))   # &lt;class 'str'&gt;
+            print(type(age))    # &lt;class 'int'&gt;
+            </code></pre>
         </section>
     
     
@@ -69,31 +70,44 @@
             <h3>Removing extra spaces</h3>
             <p><code>strip()</code> removes whitespace at the beginning and end of the string. Very useful when processing data from files or user input.</p>
             <pre><code>text = "  Hello, world!  "
-    print(text.strip())
-    
-    >> "Hello, world!"</code></pre>
+            print(text.strip())
+            
+            # Output:
+            # "Hello, world!"
+            </code></pre>
     
             <h3>Splitting strings</h3>
             <p><code>split()</code> transforms a string into a list, based on a separator.</p>
             <pre><code>fruits = "apple,banana,grape"
-    lst = fruits.split(",")
-    
-    >> ['apple', 'banana', 'grape']</code></pre>
+            lst = fruits.split(",")
+            
+            print(lst)
+            # Output:
+            # ['apple', 'banana', 'grape']
+            </code></pre>
     
             <h3>Concatenating strings</h3>
             <p>The cleanest and most modern way to combine text in Python is using f-strings.</p>
             <pre><code>greeting = "Hello"
-    target = "world"
-    
-    message = f"{greeting}, {target}!"
-    print(message)</code></pre>
+            target = "world"
+            
+            message = f"{greeting}, {target}!"
+            print(message)
+            
+            # Output:
+            # Hello, world!
+            </code></pre>
     
             <h3>Formatting messages with variables</h3>
             <p>Very useful when mixing text and numbers.</p>
             <pre><code>name = "Ana"
-    age = 23
-    
-    print(f"My name is {name} and I am {age} years old.")</code></pre>
+            age = 23
+            
+            print(f"My name is {name} and I am {age} years old.")
+            
+            # Output:
+            # My name is Ana and I am 23 years old.
+            </code></pre>
         </section>
     
     
@@ -103,18 +117,23 @@
             <p>Functions help organize code, avoid repetition, and make logic reusable. Even in simple scripts, it's worth breaking tasks into functions. Here are some basic examples.</p>
     
             <pre><code>def greet(name):
-        return f"Hello, {name}!"
-    
-    print(greet("Ana"))</code></pre>
+            return f"Hello, {name}!"
+            
+            print(greet("Ana"))
+            
+            # Output:
+            # Hello, Ana!
+            </code></pre>
     
             <h3>Default arguments</h3>
             <p>Useful when we want a function to work even without all arguments provided.</p>
     
             <pre><code>def add(a, b=0):
-        return a + b
-    
-    add(5)    # 5
-    add(5, 7) # 12</code></pre>
+            return a + b
+        
+            print(add(5))      # 5
+            print(add(5, 7))   # 12
+            </code></pre>
         </section>
     
     
@@ -124,12 +143,19 @@
             <p>One of Python’s most powerful constructs. It lets us create lists in a clean and expressive way.</p>
     
             <pre><code>squares = [x**2 for x in range(5)]
-    
-    >> [0, 1, 4, 9, 16]</code></pre>
+            print(squares)
+            
+            # Output:
+            # [0, 1, 4, 9, 16]
+            </code></pre>
     
             <p>With a filter:</p>
             <pre><code>evens = [n for n in range(10) if n % 2 == 0]
-    >> [0, 2, 4, 6, 8]</code></pre>
+            print(evens)
+            
+            # Output:
+            # [0, 2, 4, 6, 8]
+            </code></pre>
         </section>
     
     
@@ -140,19 +166,36 @@
     
             <h3>Lists</h3>
             <pre><code>fruits = ["apple", "banana", "grape"]
-    fruits.append("papaya")</code></pre>
+            fruits.append("papaya")
+            print(fruits)
+            
+            # Output:
+            # ['apple', 'banana', 'grape', 'papaya']
+            </code></pre>
     
             <h3>Dictionaries</h3>
             <pre><code>person = {"name": "Ana", "age": 23}
-    print(person["name"])</code></pre>
+            print(person["name"])
+            
+            # Output:
+            # Ana
+            </code></pre>
     
             <h3>Tuples (immutable)</h3>
             <pre><code>coords = (10, 20)
-    coords[0]</code></pre>
+            print(coords[0])
+            
+            # Output:
+            # 10
+            </code></pre>
     
             <h3>Sets (no duplicates)</h3>
             <pre><code>numbers = {1, 2, 2, 3}
-    >> {1, 2, 3}</code></pre>
+            print(numbers)
+            
+            # Output:
+            # {1, 2, 3}
+            </code></pre>
         </section>
     
     
@@ -162,9 +205,13 @@
             <p>When something can fail — reading a file, converting a value, user input — we use <code>try/except</code> to prevent the script from crashing.</p>
     
             <pre><code>try:
-        number = int("abc")
-    except ValueError:
-        print("Error: invalid value")</code></pre>
+            number = int("abc")
+            except ValueError:
+            print("Error: invalid value")
+            
+            # Output:
+            # Error: invalid value
+            </code></pre>
         </section>
     
     
@@ -175,19 +222,27 @@
     
             <h3>sys.argv</h3>
             <pre><code>import sys
-    print(sys.argv)</code></pre>
+            print(sys.argv)
+            
+            # Output example:
+            # ['script.py', 'arg1', 'arg2']
+            </code></pre>
     
             <h3>argparse</h3>
             <p>When we want organized and documented arguments, we use argparse:</p>
     
             <pre><code>import argparse
     
-    parser = argparse.ArgumentParser()
-    parser.add_argument("name")
-    parser.add_argument("--age", default=25)
-    args = parser.parse_args()
-    
-    print(args.name, args.age)</code></pre>
+            parser = argparse.ArgumentParser()
+            parser.add_argument("name")
+            parser.add_argument("--age", default=25)
+            args = parser.parse_args()
+            
+            print(args.name, args.age)
+            
+            # Example output:
+            # Ana 25
+            </code></pre>
         </section>
     
     
@@ -198,8 +253,12 @@
     
             <pre><code>from datetime import datetime
     
-    now = datetime.now()
-    print(now.strftime("%d/%m/%Y %H:%M"))</code></pre>
+            now = datetime.now()
+            print(now.strftime("%d/%m/%Y %H:%M"))
+            
+            # Example output:
+            # 15/11/2025 18:42
+            </code></pre>
         </section>
     
     
@@ -211,12 +270,21 @@
             <h3>Object → JSON</h3>
             <pre><code>import json
     
-    data = {"name": "Ana", "age": 23}
-    json_str = json.dumps(data)</code></pre>
+            data = {"name": "Ana", "age": 23}
+            json_str = json.dumps(data)
+            print(json_str)
+            
+            # Example output:
+            # {"name": "Ana", "age": 23}
+            </code></pre>
     
             <h3>JSON → Object</h3>
             <pre><code>obj = json.loads(json_str)
-    print(obj["name"])</code></pre>
+            print(obj["name"])
+            
+            # Output:
+            # Ana
+            </code></pre>
         </section>
     
     
@@ -227,8 +295,12 @@
     
             <pre><code>import requests
     
-    r = requests.get("https://api.github.com")
-    print(r.status_code)</code></pre>
+            r = requests.get("https://api.github.com")
+            print(r.status_code)
+            
+            # Example output:
+            # 200
+            </code></pre>
         </section>
     
     
@@ -239,11 +311,19 @@
     
             <h3>Reading files</h3>
             <pre><code>with open("data.txt") as f:
-        print(f.read())</code></pre>
+            print(f.read())
+        
+            # Output example:
+            # (contents of data.txt)
+            </code></pre>
     
             <h3>Writing files</h3>
             <pre><code>with open("output.txt", "w") as f:
-        f.write("Python is amazing!")</code></pre>
+            f.write("Python is amazing!")
+        
+            # After running, output.txt contains:
+            # Python is amazing!
+            </code></pre>
         </section>
     
     
@@ -254,8 +334,12 @@
     
             <pre><code>from pathlib import Path
     
-    p = Path("/home/ana")
-    print(p.exists())</code></pre>
+            p = Path("/home/ana")
+            print(p.exists())
+            
+            # Output example:
+            # True
+            </code></pre>
         </section>
     
     
@@ -265,14 +349,18 @@
             <p>Useful when calling external programs within a Python script.</p>
     
             <pre><code>import subprocess
-    subprocess.run(["ls", "-l"])</code></pre>
+            subprocess.run(["ls", "-l"])
+            
+            # Output example:
+            # total 8
+            # -rw-r--r-- 1 ana ana  120 Nov 15  file.txt
+            # drwxr-xr-x 1 ana ana 4096 Nov 15  folder/
+            </code></pre>
         </section>
     
     </main>
     
     
-
-
     <footer>
         <p>&copy; 2025 Ana Princival</p>
     </footer>
