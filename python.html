@@ -23,6 +23,7 @@
     </header>
 
     <main>
+
         <section>
             <h2>Índice</h2>
             <ul>
@@ -33,107 +34,144 @@
                 <li><a href="#arquivos">Manipulação de Arquivos</a></li>
             </ul>
         </section>
-
+    
+        <!-- =============================== -->
+        <!-- MANIPULAÇÃO DE STRINGS -->
+        <!-- =============================== -->
+    
         <section id="manipulacao-strings">
             <h2>Manipulação de Strings</h2>
-            <p>Strings são sequências de caracteres. Python fornece diversos métodos úteis para manipulá-las.</p>
+            <p>Strings são sequências de caracteres. Python oferece métodos simples e poderosos para analisar, limpar e transformar textos.</p>
             
             <h3>Removendo espaços e separando palavras</h3>
             <pre><code>texto = "  Olá, mundo!  "
-print(texto.strip())  # Remove espaços extras
-
->> "Olá, mundo!"</code></pre>
-
-
-            <pre><code>frase = "maçã,banana,uva"
-print(frase.split(","))  # Divide a string por vírgula
-
->> ['maçã', 'banana', 'uva']</code></pre>
-
-            <h3>Concatenando Strings</h3>
-            <pre><code>Parte1 = "Olá"
-Parte2 = "Mundo"
-mensagem = Parte1 + ", " + Parte2 + "!"
-print(mensagem)
-
->> Olá, Mundo!</code></pre>
-
-
-            <h3>Formatando Strings</h3>
+    print(texto.strip())   # Remove espaços antes e depois
+    
+    >> "Olá, mundo!"</code></pre>
+    
+            <pre><code>fruta_str = "maçã,banana,uva"
+    lista = fruta_str.split(",")   # Separa pela vírgula
+    print(lista)
+    
+    >> ['maçã', 'banana', 'uva']</code></pre>
+    
+            <h3>Concatenando strings</h3>
+            <pre><code>saudacao = "Olá"
+    destino = "mundo"
+    
+    mensagem = f"{saudacao}, {destino}!"
+    print(mensagem)
+    
+    >> Olá, mundo!</code></pre>
+    
+            <h3>Formatando strings com f-strings</h3>
             <pre><code>nome = "Ana"
-idade = 23
-print(f"Meu nome é {nome} e eu tenho {idade} anos.")
-
->> Meu nome é Ana e eu tenho 23 anos.</code></pre>
+    idade = 23
+    
+    print(f"Meu nome é {nome} e eu tenho {idade} anos.")
+    
+    >> Meu nome é Ana e eu tenho 23 anos.</code></pre>
         </section>
-
+    
+        <!-- =============================== -->
+        <!-- ARGUMENTOS DE LINHA DE COMANDO -->
+        <!-- =============================== -->
+    
         <section id="argumentos-cli">
             <h2>Argumentos de Linha de Comando</h2>
-            <p>Podemos capturar argumentos passados pelo terminal usando <code>sys.argv</code>.</p>
+            <p>Usamos módulos como <code>sys</code> e <code>argparse</code> para receber valores passados pelo terminal.</p>
+    
+            <h3>Capturando argumentos com sys.argv</h3>
             <pre><code>import sys
-print("Argumentos recebidos:", sys.argv)
-
-$ >> python script.py arg1 arg2
-Argumentos recebidos: ['script.py', 'arg1', 'arg2']</code></pre>
-
-           
-            <h3>Usando argparse para gerenciar argumentos</h3>
-            <p>O módulo <code>argparse</code> é mais poderoso e permite definir argumentos opcionais e obrigatórios de forma clara.</p>
+    
+    print("Argumentos recebidos:", sys.argv)
+    
+    $ python script.py arg1 arg2
+    >> Argumentos recebidos: ['script.py', 'arg1', 'arg2']</code></pre>
+    
+            <h3>Gerenciando argumentos com argparse</h3>
+            <p><code>argparse</code> permite criar argumentos obrigatórios e opcionais de forma organizada.</p>
+    
             <pre><code>import argparse
-
-parser = argparse.ArgumentParser(description="Exemplo de argparse")
-parser.add_argument("nome", type=str, help="Nome do usuário")
-parser.add_argument("--idade", type=int, help="Idade do usuário", default=25)
-args = parser.parse_args()
-
-print(f"Nome: {args.nome}")
-print(f"Idade: {args.idade}")
-
-$ >> python script.py Ana --idade 23
-Nome: Ana
-Idade: 23</code></pre>
+    
+    parser = argparse.ArgumentParser(description="Exemplo de argparse")
+    parser.add_argument("nome", type=str, help="Nome da pessoa")
+    parser.add_argument("--idade", type=int, default=25, help="Idade opcional")
+    args = parser.parse_args()
+    
+    print(f"Nome: {args.nome}")
+    print(f"Idade: {args.idade}")
+    
+    $ python script.py Ana --idade 23
+    >> Nome: Ana
+    >> Idade: 23</code></pre>
         </section>
-
+    
+        <!-- =============================== -->
+        <!-- ESTRUTURAS DE DADOS -->
+        <!-- =============================== -->
+    
+        <section id="estruturas-dados">
+            <h2>Estruturas de Dados</h2>
+            <p>Python oferece estruturas versáteis para armazenar coleções de valores.</p>
+    
+            <h3>Listas</h3>
+            <pre><code>frutas = ["maçã", "banana", "uva"]
+    frutas.append("mamão")
+    print(frutas)
+    
+    >> ['maçã', 'banana', 'uva', 'mamão']</code></pre>
+    
+            <h3>Dicionários</h3>
+            <pre><code>pessoa = {"nome": "Ana", "idade": 23}
+    print(pessoa["nome"])
+    
+    >> Ana</code></pre>
+    
+            <h3>Tuplas (imutáveis)</h3>
+            <pre><code>coordenadas = (10, 20)
+    print(coordenadas[0])
+    
+    >> 10</code></pre>
+    
+            <h3>Sets (não ordenados e sem duplicatas)</h3>
+            <pre><code>numeros = {1, 2, 2, 3}
+    print(numeros)
+    
+    >> {1, 2, 3}</code></pre>
+        </section>
+    
+        <!-- =============================== -->
+        <!-- LOOPS -->
+        <!-- =============================== -->
+    
         <section id="loops">
             <h2>Loops</h2>
-            <p>Repetição de blocos de código em Python.</p>
+            <p>Loops permitem repetir ações enquanto uma condição for verdadeira.</p>
             
-            <h3>Loop For</h3>
+            <h3>Loop for</h3>
             <pre><code>for i in range(3):
-    print(f"Iteração {i}")
-
->> Iteração 0
-Iteração 1
-Iteração 2</code></pre>
+        print(f"Iteração {i}")
+    
+    >> Iteração 0
+    >> Iteração 1
+    >> Iteração 2</code></pre>
             
-            <h3>Loop While</h3>
+            <h3>Loop while</h3>
             <pre><code>contador = 0
-while contador < 3:
-    print(f"Contagem: {contador}")
-    contador += 1
-
->> Contagem: 0
-Contagem: 1
-Contagem: 2</code></pre>
-
+    
+    while contador < 3:
+        print(contador)
+        contador += 1
+    
+    >> 0
+    >> 1
+    >> 2</code></pre>
         </section>
-
-        <section id="arquivos">
-            <h2>Manipulação de Arquivos</h2>
-            <p>Abrindo, lendo e escrevendo arquivos em Python.</p>
-            
-            <h3>Lendo Arquivos</h3>
-            <pre><code>with open("dados.txt", "r") as arquivo:
-    print(arquivo.read())
->> Olá, Mundo!</code></pre>
-
-            <h3>Escrevendo em Arquivos</h3>
-            <pre><code>with open("saida.txt", "w") as arquivo:
-    arquivo.write("Python é incrível!\n")</code></pre>
-            <p>O arquivo <code>saida.txt</code> conterá:</p>
-            <pre><code>Python é incrível!</code></pre>
-        </section>
-    </main>
+    
+        <!-- =============================== -->
+        <!-- ARQUIVOS -->
+    
 
     <footer>
         <p>&copy; 2025 Ana Princival</p>
