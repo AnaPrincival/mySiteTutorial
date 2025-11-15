@@ -51,7 +51,8 @@
             <h2>Variables and basic types</h2>
             <p>Python does not require explicit type declarations. This makes the code more direct, but also means we need to pay attention to the values being handled. Here are some examples showing how Python infers types automatically.</p>
     
-            <pre><code>name = "Ana"
+            <pre><code>
+    name = "Ana"
     age = 23
     height = 1.64
     studying = True
@@ -69,7 +70,8 @@
             
             <h3>Removing extra spaces</h3>
             <p><code>strip()</code> removes whitespace at the beginning and end of the string. Very useful when processing data from files or user input.</p>
-            <pre><code>text = "  Hello, world!  "
+            <pre><code>
+    text = "  Hello, world!  "
     print(text.strip())
     
     # Output:
@@ -78,7 +80,8 @@
     
             <h3>Splitting strings</h3>
             <p><code>split()</code> transforms a string into a list, based on a separator.</p>
-            <pre><code>fruits = "apple,banana,grape"
+            <pre><code>
+    fruits = "apple,banana,grape"
     lst = fruits.split(",")
     
     print(lst)
@@ -88,7 +91,8 @@
     
             <h3>Concatenating strings</h3>
             <p>The cleanest and most modern way to combine text in Python is using f-strings.</p>
-            <pre><code>greeting = "Hello"
+            <pre><code>
+    greeting = "Hello"
     target = "world"
     
     message = f"{greeting}, {target}!"
@@ -116,7 +120,8 @@
             <h2>Functions</h2>
             <p>Functions help organize code, avoid repetition, and make logic reusable. Even in simple scripts, it's worth breaking tasks into functions. Here are some basic examples.</p>
     
-            <pre><code>def greet(name):
+            <pre><code>
+        def greet(name):
         return f"Hello, {name}!"
     
     print(greet("Ana"))
@@ -128,7 +133,8 @@
             <h3>Default arguments</h3>
             <p>Useful when we want a function to work even without all arguments provided.</p>
     
-            <pre><code>def add(a, b=0):
+            <pre><code>
+        def add(a, b=0):
         return a + b
     
     print(add(5))      # 5
@@ -142,7 +148,8 @@
             <h2>List Comprehensions</h2>
             <p>One of Python’s most powerful constructs. It lets us create lists in a clean and expressive way.</p>
     
-            <pre><code>squares = [x**2 for x in range(5)]
+            <pre><code>
+    squares = [x**2 for x in range(5)]
     print(squares)
     
     # Output:
@@ -150,7 +157,8 @@
     </code></pre>
     
             <p>With a filter:</p>
-            <pre><code>evens = [n for n in range(10) if n % 2 == 0]
+            <pre><code>
+    evens = [n for n in range(10) if n % 2 == 0]
     print(evens)
     
     # Output:
@@ -174,7 +182,8 @@
     </code></pre>
     
             <h3>Dictionaries</h3>
-            <pre><code>person = {"name": "Ana", "age": 23}
+            <pre><code>
+    person = {"name": "Ana", "age": 23}
     print(person["name"])
     
     # Output:
@@ -182,7 +191,8 @@
     </code></pre>
     
             <h3>Tuples (immutable)</h3>
-            <pre><code>coords = (10, 20)
+            <pre><code>
+    coords = (10, 20)
     print(coords[0])
     
     # Output:
@@ -190,7 +200,8 @@
     </code></pre>
     
             <h3>Sets (no duplicates)</h3>
-            <pre><code>numbers = {1, 2, 2, 3}
+            <pre><code>
+    numbers = {1, 2, 2, 3}
     print(numbers)
     
     # Output:
@@ -204,7 +215,8 @@
             <h2>Error Handling</h2>
             <p>When something can fail — reading a file, converting a value, user input — we use <code>try/except</code> to prevent the script from crashing.</p>
     
-            <pre><code>try:
+            <pre><code>
+        try:
         number = int("abc")
     except ValueError:
         print("Error: invalid value")
@@ -221,7 +233,8 @@
             <p>Python can read arguments directly from the terminal, which is useful for scripts that need input values.</p>
     
             <h3>sys.argv</h3>
-            <pre><code>import sys
+            <pre><code>
+    import sys
     print(sys.argv)
     
     # Output example:
@@ -231,7 +244,8 @@
             <h3>argparse</h3>
             <p>When we want organized and documented arguments, we use argparse:</p>
     
-            <pre><code>import argparse
+            <pre><code>
+    import argparse
     
     parser = argparse.ArgumentParser()
     parser.add_argument("name")
@@ -251,7 +265,8 @@
             <h2>Dates and Time</h2>
             <p>Working with dates is common when generating reports, managing logs, or dealing with timestamps.</p>
     
-            <pre><code>from datetime import datetime
+            <pre><code>
+    from datetime import datetime
     
     now = datetime.now()
     print(now.strftime("%d/%m/%Y %H:%M"))
@@ -268,7 +283,8 @@
             <p>JSON is widely used to store and exchange structured data. Python supports it natively.</p>
     
             <h3>Object → JSON</h3>
-            <pre><code>import json
+            <pre><code>
+    import json
     
     data = {"name": "Ana", "age": 23}
     json_str = json.dumps(data)
@@ -279,7 +295,8 @@
     </code></pre>
     
             <h3>JSON → Object</h3>
-            <pre><code>obj = json.loads(json_str)
+            <pre><code>
+    obj = json.loads(json_str)
     print(obj["name"])
     
     # Output:
@@ -293,7 +310,8 @@
             <h2>Requests</h2>
             <p>Requests is one of the most popular libraries for making HTTP requests.</p>
     
-            <pre><code>import requests
+            <pre><code>
+    import requests
     
     r = requests.get("https://api.github.com")
     print(r.status_code)
@@ -310,7 +328,8 @@
             <p>Reading and writing files is one of the most common tasks in scripts.</p>
     
             <h3>Reading files</h3>
-            <pre><code>with open("data.txt") as f:
+            <pre><code>
+        with open("data.txt") as f:
         print(f.read())
     
     # Output example:
@@ -318,7 +337,8 @@
     </code></pre>
     
             <h3>Writing files</h3>
-            <pre><code>with open("output.txt", "w") as f:
+            <pre><code>
+        with open("output.txt", "w") as f:
         f.write("Python is amazing!")
     
     # After running, output.txt contains:
@@ -332,7 +352,8 @@
             <h2>Paths and files (pathlib)</h2>
             <p><code>pathlib</code> makes it easier to handle file paths, especially on Linux.</p>
     
-            <pre><code>from pathlib import Path
+            <pre><code>
+    from pathlib import Path
     
     p = Path("/home/ana")
     print(p.exists())
@@ -348,7 +369,8 @@
             <h2>Running System Commands</h2>
             <p>Useful when calling external programs within a Python script.</p>
     
-            <pre><code>import subprocess
+            <pre><code>
+    import subprocess
     subprocess.run(["ls", "-l"])
     
     # Output example:
