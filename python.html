@@ -168,48 +168,115 @@
         </section>
     
     
-        <!-- DATA STRUCTURES -->
-        <section id="data-structures">
-            <h2>Data Structures</h2>
-            <p>Python offers several ways to store collections of values. These are the ones I use most frequently.</p>
+              <!-- DATA STRUCTURES -->
+              <section id="data-structures">
+                <h2>Data Structures</h2>
+                <p>Python offers several ways to store collections of values.</p>
     
-            <h3>Lists</h3>
-            <pre><code>
+                <h3>Lists</h3>
+                <p>Lists are mutable, ordered collections. You can add, remove, or modify elements.</p>
+                <pre><code>
     fruits = ["apple", "banana", "grape"]
     fruits.append("papaya")
     print(fruits)
     
     # Output:
     # ['apple', 'banana', 'grape', 'papaya']
-    </code></pre>
+                </code></pre>
     
-            <h3>Dictionaries</h3>
-            <pre><code>
+                <p>Accessing and modifying elements:</p>
+                <pre><code>
+    fruits[1] = "kiwi"
+    print(fruits)
+    
+    # Output:
+    # ['apple', 'kiwi', 'grape', 'papaya']
+                </code></pre>
+    
+                <p>Useful operations:</p>
+                <pre><code>
+    print(len(fruits))      # 4
+    print(fruits[:2])       # slicing → ['apple', 'kiwi']
+    print("grape" in fruits)  # True
+                </code></pre>
+    
+                <h3>Dictionaries</h3>
+                <p>Dictionaries map keys to values. They are mutable and extremely useful.</p>
+                <pre><code>
     person = {"name": "Ana", "age": 23}
     print(person["name"])
     
     # Output:
     # Ana
-    </code></pre>
+                </code></pre>
     
-            <h3>Tuples (immutable)</h3>
-            <pre><code>
+                <p>Adding or modifying keys:</p>
+                <pre><code>
+    person["city"] = "Grenoble"
+    person["age"] = 24
+    print(person)
+    
+    # Output:
+    # {'name': 'Ana', 'age': 24, 'city': 'Grenoble'}
+                </code></pre>
+    
+                <p>Iterating over keys and values:</p>
+                <pre><code>
+    for key, value in person.items():
+        print(key, value)
+    
+    # Output:
+    # name Ana
+    # age 24
+    # city Grenoble
+                </code></pre>
+    
+                <h3>Tuples (immutable)</h3>
+                <p>Tuples are ordered and immutable. Great for values that shouldn't change.</p>
+                <pre><code>
     coords = (10, 20)
     print(coords[0])
     
     # Output:
     # 10
-    </code></pre>
+                </code></pre>
     
-            <h3>Sets (no duplicates)</h3>
-            <pre><code>
+                <p>Tuple unpacking:</p>
+                <pre><code>
+    x, y = coords
+    print(x, y)
+    
+    # Output:
+    # 10 20
+                </code></pre>
+    
+                <h3>Sets (no duplicates)</h3>
+                <p>Sets remove duplicates automatically and allow fast membership checks.</p>
+                <pre><code>
     numbers = {1, 2, 2, 3}
     print(numbers)
     
     # Output:
     # {1, 2, 3}
-    </code></pre>
-        </section>
+                </code></pre>
+    
+                <p>Common operations:</p>
+                <pre><code>
+    a = {1, 2, 3}
+    b = {3, 4, 5}
+    
+    print(a.union(b))        # {1, 2, 3, 4, 5}
+    print(a.intersection(b)) # {3}
+    print(a - b)             # {1, 2}
+                </code></pre>
+    
+                <p>Fast membership check:</p>
+                <pre><code>
+    print(3 in a)   # True
+    print(10 in a)  # False
+                </code></pre>
+            </section>
+    
     
     
         <!-- ERROR HANDLING -->
