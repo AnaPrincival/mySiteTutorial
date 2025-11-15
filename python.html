@@ -24,38 +24,65 @@
 
     <main>
 
+        <!-- Índice -->
         <section>
             <h2>Índice</h2>
             <ul>
+                <li><a href="#variaveis-tipos">Variáveis e tipos básicos</a></li>
                 <li><a href="#manipulacao-strings">Manipulação de Strings</a></li>
-                <li><a href="#argumentos-cli">Argumentos de Linha de Comando</a></li>
+                <li><a href="#funcoes">Funções</a></li>
+                <li><a href="#list-comprehensions">List Comprehensions</a></li>
                 <li><a href="#estruturas-dados">Estruturas de Dados</a></li>
-                <li><a href="#loops">Loops</a></li>
+                <li><a href="#tratamento-erros">Tratamento de Erros</a></li>
+                <li><a href="#argumentos-cli">Argumentos de Linha de Comando</a></li>
+                <li><a href="#datas">Datas e Horários</a></li>
+                <li><a href="#json">JSON</a></li>
+                <li><a href="#requests">Requests</a></li>
                 <li><a href="#arquivos">Manipulação de Arquivos</a></li>
+                <li><a href="#caminhos">Caminhos e arquivos (pathlib)</a></li>
+                <li><a href="#subprocessos">Rodar comandos do sistema</a></li>
             </ul>
         </section>
     
-        <!-- =============================== -->
-        <!-- MANIPULAÇÃO DE STRINGS -->
-        <!-- =============================== -->
+    
+        <!-- ======================================== -->
+        <!-- VARIÁVEIS E TIPOS -->
+        <!-- ======================================== -->
+    
+        <section id="variaveis-tipos">
+            <h2>Variáveis e tipos básicos</h2>
+            <p>Python permite criar variáveis sem declarar tipo explicitamente.</p>
+    
+            <pre><code>nome = "Ana"
+    idade = 23
+    altura = 1.64
+    estudando = True
+    
+    print(type(nome))   # <class 'str'>
+    print(type(idade))  # <class 'int'></code></pre>
+        </section>
+    
+    
+        <!-- ======================================== -->
+        <!-- STRINGS -->
+        <!-- ======================================== -->
     
         <section id="manipulacao-strings">
             <h2>Manipulação de Strings</h2>
-            <p>Strings são sequências de caracteres. Python oferece métodos simples e poderosos para analisar, limpar e transformar textos.</p>
+            <p>Strings são sequências de caracteres usadas para representar textos.</p>
             
-            <h3>Removendo espaços e separando palavras</h3>
+            <h3>Strip e Split</h3>
             <pre><code>texto = "  Olá, mundo!  "
-    print(texto.strip())   # Remove espaços antes e depois
+    print(texto.strip())
     
     >> "Olá, mundo!"</code></pre>
     
             <pre><code>fruta_str = "maçã,banana,uva"
-    lista = fruta_str.split(",")   # Separa pela vírgula
-    print(lista)
+    lista = fruta_str.split(",")
     
     >> ['maçã', 'banana', 'uva']</code></pre>
     
-            <h3>Concatenando strings</h3>
+            <h3>Concatenação e f-strings</h3>
             <pre><code>saudacao = "Olá"
     destino = "mundo"
     
@@ -63,62 +90,56 @@
     print(mensagem)
     
     >> Olá, mundo!</code></pre>
-    
-            <h3>Formatando strings com f-strings</h3>
-            <pre><code>nome = "Ana"
-    idade = 23
-    
-    print(f"Meu nome é {nome} e eu tenho {idade} anos.")
-    
-    >> Meu nome é Ana e eu tenho 23 anos.</code></pre>
         </section>
     
-        <!-- =============================== -->
-        <!-- ARGUMENTOS DE LINHA DE COMANDO -->
-        <!-- =============================== -->
     
-        <section id="argumentos-cli">
-            <h2>Argumentos de Linha de Comando</h2>
-            <p>Usamos módulos como <code>sys</code> e <code>argparse</code> para receber valores passados pelo terminal.</p>
+        <!-- ======================================== -->
+        <!-- FUNÇÕES -->
+        <!-- ======================================== -->
     
-            <h3>Capturando argumentos com sys.argv</h3>
-            <pre><code>import sys
+        <section id="funcoes">
+            <h2>Funções</h2>
     
-    print("Argumentos recebidos:", sys.argv)
+            <pre><code>def saudacao(nome):
+        return f"Olá, {nome}!"
     
-    $ python script.py arg1 arg2
-    >> Argumentos recebidos: ['script.py', 'arg1', 'arg2']</code></pre>
+    print(saudacao("Ana"))</code></pre>
     
-            <h3>Gerenciando argumentos com argparse</h3>
-            <p><code>argparse</code> permite criar argumentos obrigatórios e opcionais de forma organizada.</p>
+            <h3>Argumentos padrão</h3>
+            <pre><code>def somar(a, b=0):
+        return a + b
     
-            <pre><code>import argparse
-    
-    parser = argparse.ArgumentParser(description="Exemplo de argparse")
-    parser.add_argument("nome", type=str, help="Nome da pessoa")
-    parser.add_argument("--idade", type=int, default=25, help="Idade opcional")
-    args = parser.parse_args()
-    
-    print(f"Nome: {args.nome}")
-    print(f"Idade: {args.idade}")
-    
-    $ python script.py Ana --idade 23
-    >> Nome: Ana
-    >> Idade: 23</code></pre>
+    print(somar(5))   # 5
+    print(somar(5, 7))  # 12</code></pre>
         </section>
     
-        <!-- =============================== -->
+    
+        <!-- ======================================== -->
+        <!-- LIST COMPREHENSIONS -->
+        <!-- ======================================== -->
+    
+        <section id="list-comprehensions">
+            <h2>List Comprehensions</h2>
+            <p>Uma forma elegante e rápida de criar listas.</p>
+    
+            <pre><code>quadrados = [x**2 for x in range(5)]
+    >> [0, 1, 4, 9, 16]</code></pre>
+    
+            <pre><code>pares = [n for n in range(10) if n % 2 == 0]
+    >> [0, 2, 4, 6, 8]</code></pre>
+        </section>
+    
+    
+        <!-- ======================================== -->
         <!-- ESTRUTURAS DE DADOS -->
-        <!-- =============================== -->
+        <!-- ======================================== -->
     
         <section id="estruturas-dados">
             <h2>Estruturas de Dados</h2>
-            <p>Python oferece estruturas versáteis para armazenar coleções de valores.</p>
     
             <h3>Listas</h3>
             <pre><code>frutas = ["maçã", "banana", "uva"]
     frutas.append("mamão")
-    print(frutas)
     
     >> ['maçã', 'banana', 'uva', 'mamão']</code></pre>
     
@@ -128,49 +149,147 @@
     
     >> Ana</code></pre>
     
-            <h3>Tuplas (imutáveis)</h3>
+            <h3>Tuplas</h3>
             <pre><code>coordenadas = (10, 20)
-    print(coordenadas[0])
-    
+    coordenadas[0]
     >> 10</code></pre>
     
-            <h3>Sets (não ordenados e sem duplicatas)</h3>
+            <h3>Sets</h3>
             <pre><code>numeros = {1, 2, 2, 3}
-    print(numeros)
-    
     >> {1, 2, 3}</code></pre>
         </section>
     
-        <!-- =============================== -->
-        <!-- LOOPS -->
-        <!-- =============================== -->
     
-        <section id="loops">
-            <h2>Loops</h2>
-            <p>Loops permitem repetir ações enquanto uma condição for verdadeira.</p>
-            
-            <h3>Loop for</h3>
-            <pre><code>for i in range(3):
-        print(f"Iteração {i}")
+        <!-- ======================================== -->
+        <!-- TRATAMENTO DE ERROS -->
+        <!-- ======================================== -->
     
-    >> Iteração 0
-    >> Iteração 1
-    >> Iteração 2</code></pre>
-            
-            <h3>Loop while</h3>
-            <pre><code>contador = 0
+        <section id="tratamento-erros">
+            <h2>Tratamento de Erros</h2>
     
-    while contador < 3:
-        print(contador)
-        contador += 1
-    
-    >> 0
-    >> 1
-    >> 2</code></pre>
+            <pre><code>try:
+        numero = int("abc")
+    except ValueError:
+        print("Erro: isso não é um número")</code></pre>
         </section>
     
-        <!-- =============================== -->
-        <!-- ARQUIVOS -->
+    
+        <!-- ======================================== -->
+        <!-- ARGUMENTOS DE LINHA DE COMANDO -->
+        <!-- ======================================== -->
+    
+        <section id="argumentos-cli">
+            <h2>Argumentos de Linha de Comando</h2>
+    
+            <h3>sys.argv</h3>
+            <pre><code>import sys
+    print(sys.argv)
+    
+    $ python script.py Ana 23</code></pre>
+    
+            <h3>argparse</h3>
+            <pre><code>import argparse
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("nome")
+    parser.add_argument("--idade", default=25)
+    args = parser.parse_args()
+    
+    print(args.nome, args.idade)</code></pre>
+        </section>
+    
+    
+        <!-- ======================================== -->
+        <!-- DATAS -->
+        <!-- ======================================== -->
+    
+        <section id="datas">
+            <h2>Datas e Horários</h2>
+    
+            <pre><code>from datetime import datetime
+    
+    agora = datetime.now()
+    print(agora.strftime("%d/%m/%Y %H:%M"))</code></pre>
+        </section>
+    
+    
+        <!-- ======================================== -->
+        <!-- JSON -->
+        <!-- ======================================== -->
+    
+        <section id="json">
+            <h2>JSON</h2>
+    
+            <pre><code>import json
+    
+    dados = {"nome": "Ana", "idade": 23}
+    json_str = json.dumps(dados)
+    
+    print(json_str)</code></pre>
+    
+            <pre><code>obj = json.loads(json_str)
+    print(obj["nome"])
+    >> Ana</code></pre>
+        </section>
+    
+    
+        <!-- ======================================== -->
+        <!-- REQUESTS -->
+        <!-- ======================================== -->
+    
+        <section id="requests">
+            <h2>Requests</h2>
+    
+            <pre><code>import requests
+    
+    r = requests.get("https://api.github.com")
+    print(r.status_code)</code></pre>
+        </section>
+    
+    
+        <!-- ======================================== -->
+        <!-- MANIPULAÇÃO DE ARQUIVOS -->
+        <!-- ======================================== -->
+    
+        <section id="arquivos">
+            <h2>Manipulação de Arquivos</h2>
+    
+            <h3>Ler arquivo</h3>
+            <pre><code>with open("dados.txt") as f:
+        print(f.read())</code></pre>
+    
+            <h3>Escrever arquivo</h3>
+            <pre><code>with open("saida.txt", "w") as f:
+        f.write("Python é incrível!")</code></pre>
+        </section>
+    
+    
+        <!-- ======================================== -->
+        <!-- PATHLIB -->
+        <!-- ======================================== -->
+    
+        <section id="caminhos">
+            <h2>Caminhos e arquivos (pathlib)</h2>
+    
+            <pre><code>from pathlib import Path
+    
+    p = Path("/home/ana")
+    print(p.exists())</code></pre>
+        </section>
+    
+    
+        <!-- ======================================== -->
+        <!-- SUBPROCESS -->
+        <!-- ======================================== -->
+    
+        <section id="subprocessos">
+            <h2>Rodar comandos do sistema</h2>
+    
+            <pre><code>import subprocess
+    subprocess.run(["ls", "-l"])</code></pre>
+        </section>
+    
+    </main>
     
 
     <footer>
