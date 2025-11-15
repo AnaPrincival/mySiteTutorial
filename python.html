@@ -104,7 +104,8 @@
     
             <h3>Formatting messages with variables</h3>
             <p>Very useful when mixing text and numbers.</p>
-            <pre><code>name = "Ana"
+            <pre><code>
+    name = "Ana"
     age = 23
     
     print(f"My name is {name} and I am {age} years old.")
@@ -121,8 +122,8 @@
             <p>Functions help organize code, avoid repetition, and make logic reusable. Even in simple scripts, it's worth breaking tasks into functions. Here are some basic examples.</p>
     
             <pre><code>
-        def greet(name):
-        return f"Hello, {name}!"
+    def greet(name):
+    return f"Hello, {name}!"
     
     print(greet("Ana"))
     
@@ -134,8 +135,8 @@
             <p>Useful when we want a function to work even without all arguments provided.</p>
     
             <pre><code>
-        def add(a, b=0):
-        return a + b
+    def add(a, b=0):
+    return a + b
     
     print(add(5))      # 5
     print(add(5, 7))   # 12
@@ -173,7 +174,8 @@
             <p>Python offers several ways to store collections of values. These are the ones I use most frequently.</p>
     
             <h3>Lists</h3>
-            <pre><code>fruits = ["apple", "banana", "grape"]
+            <pre><code>
+    fruits = ["apple", "banana", "grape"]
     fruits.append("papaya")
     print(fruits)
     
@@ -329,17 +331,17 @@
     
             <h3>Reading files</h3>
             <pre><code>
-        with open("data.txt") as f:
-        print(f.read())
-    
+    with open("data.txt") as f:
+    print(f.read())
+
     # Output example:
     # (contents of data.txt)
     </code></pre>
     
             <h3>Writing files</h3>
             <pre><code>
-        with open("output.txt", "w") as f:
-        f.write("Python is amazing!")
+    with open("output.txt", "w") as f:
+    f.write("Python is amazing!")
     
     # After running, output.txt contains:
     # Python is amazing!
