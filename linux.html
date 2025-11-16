@@ -39,6 +39,9 @@
                 <li><a href="#sourcing-files">Sourcing Files</a></li>
                 <li><a href="#aliases">Aliases</a></li>
                 <li><a href="#shell-startup-vs-source">Shell Startup Files vs. Manual Sourcing</a></li>
+                <li><a href="#file-navigation">Navigation and File Manipulation</a></li>
+                <li><a href="#permissions">Permissions</a></li>
+                <li><a href="#process-management">Process Management</a></li>
 
                 
 
@@ -158,6 +161,106 @@ alias proj 'cd ~/projects/main'</code></pre>
                 In contrast, sourcing a file is a deliberate, manual action. When a file is sourced, its contents are executed inside the current shell, extending or overriding the environment dynamically. This is typically used for project-specific configurations, tools that require custom paths, or environments that should not load globally. While startup files define the baseline behavior of the shell, sourced files activate additional layers of configuration only when explicitly requested. Understanding this distinction is essential for keeping environments clean, reproducible and predictable.
             </p>
         </section>
+
+        <section id="file-navigation">
+            <h2>Navigation and File Manipulation</h2>
+            <p>
+                Navigating the filesystem is a fundamental part of working in Linux. Directories and files are manipulated through simple commands that behave consistently across distributions. Although Bash and tcsh share the same underlying commands, shell syntax may differ in how paths or variables are expanded. Understanding how to move through directories, list contents and manipulate files provides the foundation for more advanced command-line usage.
+            </p>
+
+            <h3>Bash</h3>
+            <pre><code># navigate directories
+cd /home/ana
+cd ..
+
+# list files
+ls
+ls -lh
+
+# copy, move, remove
+cp source.txt backup.txt
+mv file.txt newname.txt
+rm oldfile.txt
+
+# create directories
+mkdir newfolder</code></pre>
+
+            <h3>tcsh/csh</h3>
+            <pre><code># navigate directories
+cd /home/ana
+cd ..
+
+# list files
+ls
+ls -lh
+
+# copy, move, remove
+cp source.txt backup.txt
+mv file.txt newname.txt
+rm oldfile.txt
+
+# create directories
+mkdir newfolder</code></pre>
+        </section>
+
+        <section id="permissions">
+            <h2>File Permissions</h2>
+            <p>
+                Linux enforces a permission model that defines which users can read, write or execute a file. Permissions apply to three categories: the file owner, members of the owner's group and all other users. Managing permissions is crucial not only for security but also for workflows involving scripts, tools or shared directories. The commands themselves are identical across Bash and tcsh, since they operate at the system level rather than within the shell language.
+            </p>
+
+            <h3>Bash</h3>
+            <pre><code># view permissions
+ls -l
+
+# change permissions
+chmod 755 script.sh
+chmod u+rwx file.txt
+
+# change owner (requires privileges)
+sudo chown ana file.txt</code></pre>
+
+            <h3>tcsh/csh</h3>
+            <pre><code># view permissions
+ls -l
+
+# change permissions
+chmod 755 script.sh
+chmod u+rwx file.txt
+
+# change owner (requires privileges)
+sudo chown ana file.txt</code></pre>
+        </section>
+
+        <section id="process-management">
+            <h2>Process Management</h2>
+            <p>
+                Processes represent running programs in the system, each identified by a process ID (PID). Managing processes involves inspecting what is running, terminating tasks and monitoring resource usage. These operations rely on core Unix tools that behave identically regardless of the shell being used. The shell only affects how variables or substitutions are written, not how process commands operate.
+            </p>
+
+            <h3>Bash</h3>
+            <pre><code># list processes
+ps aux
+top
+
+# terminate a process by PID
+kill 12345
+
+# terminate forcefully
+kill -9 12345</code></pre>
+
+            <h3>tcsh/csh</h3>
+            <pre><code># list processes
+ps aux
+top
+
+# terminate a process by PID
+kill 12345
+
+# terminate forcefully
+kill -9 12345</code></pre>
+        </section>
+
 
 
     </main>
