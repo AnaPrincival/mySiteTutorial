@@ -93,6 +93,12 @@ html = template.render(context)
     &lt;p&gt;She is taking a break.&lt;/p&gt;
 {% endif %}
 </code></pre>
+
+            <h3>Output</h3>
+            <pre><code><p>Name: Ana</p>
+<p>Country: France</p>
+<p>She is studying.</p></code></pre>
+
         </section>
 
         <!-- LISTS AND DICTS -->
@@ -146,12 +152,18 @@ html = template.render(user=user)
         <section id="filters">
             <h2>Filters</h2>
             <p>Filters allow you to transform values in-line using the pipe symbol. Jinja includes a wide range of built-in filters.</p>
-
+        
             <h3>Uppercase</h3>
             <pre><code>{{ name | upper }}</code></pre>
-
+        
+            <h4>Output</h4>
+            <pre><code>ANA</code></pre>
+        
             <h3>Rounding</h3>
             <pre><code>{{ price | round(2) }}</code></pre>
+        
+            <h4>Output</h4>
+            <pre><code>12.35</code></pre>
         </section>
 
         <!-- MACROS -->
