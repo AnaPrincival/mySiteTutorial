@@ -31,10 +31,41 @@
             </p>
 
             <p>
-                In Linux, interaction with the system often happens through a <em>shell</em>, which is the command interpreter that processes user instructions. Multiple shells exist, each with its own syntax and configuration model. The most widely used today is <strong>Bash</strong> (Bourne-Again Shell), standard in most modern distributions and known for its scripting capabilities and POSIX-style syntax. Research infrastructures and older EDA workflows, however, still rely on <strong>tcsh/csh</strong>, shells with a different grammar and separate initialization files. Understanding which shell is active is essential, because environment variables, startup files and even simple expressions differ significantly between them.
+                In Linux, interaction with the system often happens through a <em>shell</em>, which is the command interpreter that processes user instructions. Multiple shells exist, each with its own syntax and configuration model. The most widely used today is <strong>Bash</strong> (Bourne-Again Shell), standard in most modern distributions and known for its scripting capabilities and POSIX-style grammar. Some environments still rely on <strong>tcsh/csh</strong>, which have a different syntax and load configuration from separate initialization files. Knowing which shell is active is essential, because variable assignment, flow control and even basic syntax can behave differently between them.
+            </p>
+        </section>
+
+        <section id="distros">
+            <h2>Linux Distributions</h2>
+            <p>
+                Although all Linux systems share the same kernel, they are packaged into different distributions depending on their goals and design choices. <strong>Ubuntu</strong>, derived from Debian, emphasizes accessibility and rapid development cycles, making it popular for research and personal computing. <strong>Red Hat Enterprise Linux</strong> (RHEL) focuses on long-term stability and certified enterprise support. <strong>Fedora</strong> serves as a cutting-edge testing ground for new features, while <strong>Arch Linux</strong> offers a minimal, rolling-release model aimed at users who want fine-grained control over every component. Despite their differences, all distributions provide the same fundamental Linux tools and structure.
+            </p>
+        </section>
+
+        <section id="env-vars">
+            <h2>Environment Variables</h2>
+            <p>
+                Environment variables are key-value pairs stored in the shell's process environment. They define paths, tool configurations, user preferences and system behavior. Variables such as <em>PATH</em> determine where the shell looks for executable files, while others define library paths, locale settings or custom parameters for specific applications. Because variables live inside the shell environment, they only persist for the current session unless defined in a startup file. Managing environment variables is a central part of working efficiently with Linux, especially when switching between different projects or software stacks.
+            </p>
+        </section>
+
+        <section id="shell-config">
+            <h2>Shell Configuration Files</h2>
+            <p>
+                Each shell has its own initialization files that are executed when a new session starts. Bash typically reads files such as <strong>.bashrc</strong> or <strong>.bash_profile</strong>, while tcsh/csh uses <strong>.cshrc</strong>. These files define environment variables, aliases, functions and other customizations that shape the user's command-line environment. Understanding which file belongs to which shell is essential, because the configuration syntax is not interchangeable: a variable assignment valid in Bash may be invalid in tcsh. These files are the backbone of a reproducible and predictable workflow in Linux.
+            </p>
+        </section>
+
+        <section id="filesystem">
+            <h2>Linux File System Overview</h2>
+            <p>
+                The Linux file system is organized into a hierarchical structure, starting from the root directory <strong>/</strong>. Directories such as <strong>/home</strong> store user data, <strong>/etc</strong> contains system configuration files, <strong>/usr</strong> holds shared executables and libraries, and <strong>/var</strong> keeps logs and runtime data. Unlike operating systems that rely heavily on drive letters or registry systems, Linux maintains a clean, uniform directory hierarchy. Every file, device and process is exposed as part of the same tree, which makes the system both powerful and predictable from the command-line perspective.
             </p>
         </section>
     </main>
+</body>
+</html>
+
 
     <footer>
         <p>&copy; 2025 Ana Princival</p>
