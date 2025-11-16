@@ -24,6 +24,23 @@
     </header>
 
     <main>
+
+        <!-- INDEX -->
+        <section>
+            <h2>Index</h2>
+            <p>History, explanations and commands.</p>
+            <ul>
+                <li><a href="#intro">Linux</a></li>
+                <li><a href="#distros">Linux Distributions</a></li>
+                <li><a href="#env-vars">Environment Variables</a></li>
+                <li><a href="#shell-config">Shell Configuration Files</a></li>
+                <li><a href="#filesystem">Linux File System Overview</a></li>
+
+            </ul>
+        </section>
+
+
+
         <section id="intro">
             <h2>Linux</h2>
             <p>
@@ -62,6 +79,69 @@
                 The Linux file system is organized into a hierarchical structure, starting from the root directory <strong>/</strong>. Directories such as <strong>/home</strong> store user data, <strong>/etc</strong> contains system configuration files, <strong>/usr</strong> holds shared executables and libraries, and <strong>/var</strong> keeps logs and runtime data. Unlike operating systems that rely heavily on drive letters or registry systems, Linux maintains a clean, uniform directory hierarchy. Every file, device and process is exposed as part of the same tree, which makes the system both powerful and predictable from the command-line perspective.
             </p>
         </section>
+
+        <section id="env-vars-commands">
+            <h2>Setting Environment Variables</h2>
+            <p>
+                Environment variables define parameters that the shell and applications rely on, such as executable search paths, library locations or user-specific configuration options. They live inside the shell's environment and therefore depend on the syntax of the active shell. Although conceptually identical, Bash and tcsh use different grammar for assignment and exporting.
+            </p>
+
+            <h3>Bash</h3>
+            <pre><code># temporary (current session)
+export PATH="$PATH:/opt/tools/bin"
+export PROJECT_ROOT="/home/ana/project"
+
+# persistent (added to ~/.bashrc)
+export LD_LIBRARY_PATH="/usr/local/lib"</code></pre>
+
+            <h3>tcsh/csh</h3>
+            <pre><code># temporary (current session)
+setenv PATH "$PATH:/opt/tools/bin"
+setenv PROJECT_ROOT "/home/ana/project"
+
+# persistent (added to ~/.cshrc)
+setenv LD_LIBRARY_PATH "/usr/local/lib"</code></pre>
+        </section>
+
+        <section id="sourcing-files">
+            <h2>Sourcing Files</h2>
+            <p>
+                Sourcing a file means executing it inside the current shell session so that its variable definitions and settings remain active. This differs from running a script normally, which spawns a subshell and discards any changes when it terminates. Sourcing is essential for activating toolchains, virtual environments or project-specific setups.
+            </p>
+
+            <h3>Bash</h3>
+            <pre><code># two equivalent forms
+source setup.sh
+. setup.sh</code></pre>
+
+            <h3>tcsh/csh</h3>
+            <pre><code># single form
+source setup</code></pre>
+        </section>
+
+        <section id="aliases">
+            <h2>Aliases</h2>
+            <p>
+                Aliases are lightweight shortcuts that replace long or repetitive commands with a custom keyword. They are resolved directly by the shell before command execution and are useful for streamlining workflows or encapsulating common command sequences. As with variables, Bash and tcsh define aliases using different syntax.
+            </p>
+
+            <h3>Bash</h3>
+            <pre><code># temporary (current session)
+alias ll='ls -lh'
+alias py='python3'
+
+# persistent (add to ~/.bashrc)
+alias proj='cd ~/projects/main'</code></pre>
+
+            <h3>tcsh/csh</h3>
+            <pre><code># temporary (current session)
+alias ll 'ls -lh'
+alias py 'python3'
+
+# persistent (add to ~/.cshrc)
+alias proj 'cd ~/projects/main'</code></pre>
+        </section>
+
     </main>
 </body>
 </html>
