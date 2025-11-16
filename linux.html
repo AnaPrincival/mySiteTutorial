@@ -42,13 +42,13 @@
                 <li><a href="#file-navigation">Navigation and File Manipulation</a></li>
                 <li><a href="#permissions">Permissions</a></li>
                 <li><a href="#process-management">Process Management</a></li>
-
-                
-
+                <li><a href="#networking">Basic Networking</a></li>
+                <li><a href="#package-managers">Package Managers</a></li>
+                <li><a href="#pipes-redirection">Pipes and Redirection</a></li>
+                <li><a href="#search-filter">Search and Filtering</a></li>
+                <li><a href="#compression"> Compression and Extraction</a></li>
             </ul>
         </section>
-
-
 
         <section id="intro">
             <h2>Linux</h2>
@@ -261,7 +261,115 @@ kill 12345
 kill -9 12345</code></pre>
         </section>
 
+        <section id="networking">
+            <h2>Basic Networking</h2>
+            <p>
+                Linux provides a set of command-line tools for remote access, file transfer and connectivity testing. These utilities behave consistently across shells, since they operate at the system level. Mastering them is fundamental for interacting with remote servers, transferring data securely and diagnosing network issues.
+            </p>
 
+            <h3>Commands (Bash and tcsh/csh)</h3>
+            <pre><code># check connectivity
+ping google.com
+
+# connect to a remote machine
+ssh user@hostname
+
+# copy files securely (local → remote)
+scp file.txt user@hostname:/path/
+
+# copy files securely (remote → local)
+scp user@hostname:/path/file.txt .
+</code></pre>
+        </section>
+
+        <section id="package-managers">
+            <h2>Package Managers</h2>
+            <p>
+                Linux distributions include package managers responsible for installing, updating and removing software. Each distribution family uses a different tool: Debian-based systems use <strong>apt</strong>, Red Hat-based systems use <strong>dnf</strong>, and Arch-based systems rely on <strong>pacman</strong>. Although their syntax differs, they all provide a structured way to maintain system software and dependencies.
+            </p>
+
+            <pre><code># Debian/Ubuntu (apt)
+sudo apt update
+sudo apt install vim
+sudo apt remove package
+
+# Fedora/Red Hat (dnf)
+sudo dnf install vim
+sudo dnf remove package
+
+# Arch Linux (pacman)
+sudo pacman -Syu
+sudo pacman -S vim
+sudo pacman -R package
+</code></pre>
+        </section>
+
+        <section id="pipes-redirection">
+            <h2>Pipes and Redirection</h2>
+            <p>
+                Pipes connect the output of one command to the input of another, enabling command chaining and data transformation. Redirection, by contrast, routes output to files or reads input from files. These mechanisms are central to the Unix philosophy of composing small tools into more complex operations. Their syntax is identical in Bash and tcsh, since they are interpreted directly by the shell parser.
+            </p>
+
+            <h3>Bash and tcsh/csh</h3>
+            <pre><code># pipe output of one command into another
+ls -l | grep ".txt"
+
+# redirect output to a file (overwrite)
+echo "Hello" > file.txt
+
+# redirect output to a file (append)
+echo "More text" >> file.txt
+
+# redirect input from a file
+wc -l < file.txt
+</code></pre>
+        </section>
+
+        <section id="search-filter">
+            <h2>Search and Filtering</h2>
+            <p>
+                Linux provides powerful tools for searching and filtering data. <strong>grep</strong> scans text for patterns, while <strong>find</strong> searches the filesystem based on name, type or other attributes. These tools enable fast inspection of directories, logs and large datasets. Their behavior is the same across shells, with no syntax differences.
+            </p>
+
+            <h3>Bash and tcsh/csh</h3>
+            <pre><code># search for a pattern in a file
+grep "error" logfile.txt
+
+# recursive search
+grep -R "TODO" .
+
+# find files by name
+find . -name "*.txt"
+
+# find directories only
+find /path -type d
+</code></pre>
+        </section>
+
+        <section id="compression">
+            <h2>Compression and Extraction</h2>
+            <p>
+                Linux supports multiple compression formats, with <strong>tar</strong> being the most common for packaging directories and <strong>gzip</strong> or <strong>zip</strong> providing lightweight compression. These tools are essential for archiving, transferring and storing data efficiently. Their syntax is identical across shells.
+            </p>
+
+            <h3>Bash and tcsh/csh</h3>
+            <pre><code># create a compressed tar archive
+tar -czvf archive.tar.gz folder/
+
+# extract a tar archive
+tar -xzvf archive.tar.gz
+
+# gzip a single file
+gzip data.txt
+
+# unzip a .gz file
+gunzip data.txt.gz
+
+# zip and unzip
+zip archive.zip file1 file2
+unzip archive.zip
+</code></pre>
+        </section>
 
     </main>
 </body>
