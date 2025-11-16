@@ -95,9 +95,9 @@ html = template.render(context)
 </code></pre>
 
             <h3>Output</h3>
-            <pre><code><p>Name: Ana</p>
-<p>Country: France</p>
-<p>She is studying.</p></code></pre>
+            <pre><code><p>Name: Ana
+Country: France
+She is studying.</p></code></pre>
 
         </section>
 
@@ -157,13 +157,17 @@ html = template.render(user=user)
             <pre><code>{{ name | upper }}</code></pre>
         
             <h4>Output</h4>
-            <pre><code>ANA</code></pre>
+            <pre><code><p>name = "ana"</p>
+                <p>output = ANA</p>
+            </code></pre>
         
             <h3>Rounding</h3>
             <pre><code>{{ price | round(2) }}</code></pre>
-        
+            
             <h4>Output</h4>
-            <pre><code>12.35</code></pre>
+            <pre><code><p>price = 12.3485</p>
+                <p>output = 12.35</p>
+            </code></pre>
         </section>
 
         <!-- MACROS -->
