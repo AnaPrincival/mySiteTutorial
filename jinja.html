@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jinja - Tutorial</title>
+    <title>Jinja Tutorial</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -23,126 +23,184 @@
     </header>
 
     <main>
-
         <!-- INDEX -->
         <section>
             <h2>Index</h2>
-            <p>This page summarizes the essential features of Jinja — a template language used mainly with Python to generate dynamic HTML. Jinja helps separate logic from presentation, which keeps the code cleaner and more organized, especially in web applications.</p>
+            <p>This page presents a complete and practical introduction to Jinja as a standalone templating engine. The focus is on how to use Jinja directly with Python: loading templates, passing variables, iterating through data, using filters, and building reusable structures.</p>
             <ul>
-                <li><a href="#intro">Introduction to Jinja</a></li>
-                <li><a href="#variables">Variables</a></li>
-                <li><a href="#control-structures">Control Structures</a></li>
+                <li><a href="#intro">What is Jinja?</a></li>
+                <li><a href="#loading">Loading a Template in Python</a></li>
+                <li><a href="#variables">Passing Variables</a></li>
+                <li><a href="#lists-dicts">Lists and Dictionaries</a></li>
+                <li><a href="#logic">Conditionals and Loops</a></li>
                 <li><a href="#filters">Filters</a></li>
                 <li><a href="#macros">Macros</a></li>
-                <li><a href="#blocks-inheritance">Blocks and Template Inheritance</a></li>
+                <li><a href="#inheritance">Template Inheritance</a></li>
             </ul>
         </section>
 
-
         <!-- INTRO -->
         <section id="intro">
-            <h2>Introduction to Jinja</h2>
-            <p>Jinja is a modern and flexible templating engine widely used in Python frameworks such as Flask. It allows you to embed dynamic content into HTML, making it easy to combine data and interface without mixing everything into a single file.</p>
-            <p>Its syntax is simple and expressive, making template logic readable while still keeping the structure of your pages clean.</p>
+            <h2>What is Jinja?</h2>
+            <p>Jinja is a powerful templating engine for Python. It allows you to generate dynamic text files, usually HTML, while keeping the logic separated from the layout. Jinja is often used inside web frameworks, but it can also be used completely standalone for any type of templating.</p>
+            <p>Jinja syntax is expressive and readable, enabling clean page structures without mixing large amounts of Python logic directly into the file.</p>
         </section>
 
+        <!-- LOADING TEMPLATES IN PYTHON -->
+        <section id="loading">
+            <h2>Loading a Template in Python</h2>
+            <p>Below is the simplest example of loading and rendering a template using only Python and Jinja.</p>
+
+            <pre><code>from jinja2 import Environment, FileSystemLoader
+
+# Load templates from the 'templates' directory
+env = Environment(loader=FileSystemLoader("templates"))
+
+# Select template file
+template = env.get_template("example.html")
+
+# Render output with variables
+html_output = template.render(name="Ana", age=24)
+
+# Save result
+with open("output.html", "w") as f:
+    f.write(html_output)
+</code></pre>
+        </section>
 
         <!-- VARIABLES -->
         <section id="variables">
-            <h2>Variables</h2>
-            <p>Inside a Jinja template, you can display values passed from Python simply by placing the variable name between double curly braces:</p>
+            <h2>Passing Variables to the Template</h2>
+            <p>All variables provided in <code>template.render()</code> become accessible inside the Jinja file using double curly braces.</p>
 
-            <pre><code>{{ user }}</code></pre>
+            <h3>Python</h3>
+            <pre><code>context = {
+    "name": "Ana",
+    "country": "France",
+    "studying": True
+}
 
-            <p><strong>Output (if <code>user = "Ana"</code>):</strong></p>
-            <pre><code>Ana</code></pre>
+html = template.render(context)
+</code></pre>
 
-            <p>You can also access dictionary keys, object attributes, and list indices directly:</p>
+            <h3>Jinja</h3>
+            <pre><code>&lt;p&gt;Name: {{ name }}&lt;/p&gt;
+&lt;p&gt;Country: {{ country }}&lt;/p&gt;
 
-            <pre><code>{{ person.name }}
-{{ product["price"] }}
-{{ items[0] }}</code></pre>
+{% if studying %}
+    &lt;p&gt;She is studying.&lt;/p&gt;
+{% else %}
+    &lt;p&gt;She is taking a break.&lt;/p&gt;
+{% endif %}
+</code></pre>
         </section>
 
+        <!-- LISTS AND DICTS -->
+        <section id="lists-dicts">
+            <h2>Lists and Dictionaries</h2>
+            <p>You can pass any Python structure to a Jinja template: lists, dictionaries, or even objects. They can be iterated and accessed naturally.</p>
 
-        <!-- CONTROL STRUCTURES -->
-        <section id="control-structures">
-            <h2>Control Structures</h2>
-            <p>Jinja supports logical structures such as conditionals and loops. These are enclosed in <code>{% ... %}</code> tags and allow you to create dynamic sections of HTML based on the data you receive.</p>
+            <h3>Python</h3>
+            <pre><code>user = {
+    "name": "Ana",
+    "projects": [
+        {"title": "Tutorial Website", "status": "ongoing"},
+        {"title": "FIR Filter SSE", "status": "done"},
+        {"title": "FPGA Project", "status": "ongoing"}
+    ]
+}
+
+html = template.render(user=user)
+</code></pre>
+
+            <h3>Jinja</h3>
+            <pre><code>&lt;h2&gt;Projects of {{ user.name }}&lt;/h2&gt;
+
+{% for p in user.projects %}
+    &lt;p&gt;&lt;strong&gt;{{ p.title }}&lt;/strong&gt; — {{ p.status }}&lt;/p&gt;
+{% endfor %}
+</code></pre>
+        </section>
+
+        <!-- LOGIC -->
+        <section id="logic">
+            <h2>Conditionals and Loops</h2>
+            <p>Jinja supports <code>if</code>, <code>elif</code>, <code>else</code>, and <code>for</code> structures. They enable dynamic rendering based on the data passed from Python.</p>
 
             <h3>If / Else</h3>
-            <pre><code>{% if age >= 18 %}
-    You may access this website.
+            <pre><code>{% if age &gt;= 18 %}
+    You are an adult.
 {% else %}
-    Access denied.
-{% endif %}</code></pre>
+    You are not an adult.
+{% endif %}
+</code></pre>
 
-            <p><strong>Output (if <code>age = 20</code>):</strong></p>
-            <pre><code>You may access this website.</code></pre>
-
-            <h3>For Loops</h3>
-            <p>Loops make it easy to iterate through lists and display repeated HTML elements.</p>
-            <pre><code>{% for item in fruits %}
-    {{ item }}
-{% endfor %}</code></pre>
-
-            <p><strong>Output (if <code>fruits = ["apple", "banana", "grape"]</code>):</strong></p>
-            <pre><code>apple
-banana
-grape</code></pre>
+            <h3>For Loop</h3>
+            <pre><code>{% for fruit in fruits %}
+    {{ fruit }}
+{% endfor %}
+</code></pre>
         </section>
-
 
         <!-- FILTERS -->
         <section id="filters">
             <h2>Filters</h2>
-            <p>Filters allow you to modify values directly in the template. They are written using the pipe (<code>|</code>) symbol and are very useful for formatting text, numbers, or lists.</p>
+            <p>Filters allow you to transform values in-line using the pipe symbol. Jinja includes a wide range of built-in filters.</p>
 
-            <h3>Uppercase text</h3>
+            <h3>Uppercase</h3>
             <pre><code>{{ name | upper }}</code></pre>
 
-            <p><strong>Output (if <code>name = "ana"</code>):</strong></p>
-            <pre><code>ANA</code></pre>
-
-            <h3>Rounding numbers</h3>
+            <h3>Rounding</h3>
             <pre><code>{{ price | round(2) }}</code></pre>
-
-            <p><strong>Output (if <code>price = 5.6789</code>):</strong></p>
-            <pre><code>5.68</code></pre>
         </section>
-
 
         <!-- MACROS -->
         <section id="macros">
             <h2>Macros</h2>
-            <p>Macros work like small functions inside templates. They are useful for repeating patterns of HTML without duplicating code.</p>
+            <p>Macros are reusable template functions. They help avoid repeating HTML structures.</p>
 
-            <pre><code>{% macro greet(name) %}
-    Hello, {{ name }}!
+            <pre><code>{% macro card(title, text) %}
+&lt;div class="card"&gt;
+    &lt;h3&gt;{{ title }}&lt;/h3&gt;
+    &lt;p&gt;{{ text }}&lt;/p&gt;
+&lt;/div&gt;
 {% endmacro %}
 
-{{ greet("Ana") }}</code></pre>
-
-            <p><strong>Output:</strong></p>
-            <pre><code>Hello, Ana!</code></pre>
+{{ card("Introduction", "Welcome to the Jinja tutorial!") }}
+{{ card("Python", "Learn how to connect Python with templates.") }}
+</code></pre>
         </section>
 
+        <!-- TEMPLATE INHERITANCE -->
+        <section id="inheritance">
+            <h2>Template Inheritance</h2>
+            <p>Template inheritance allows you to define a base structure and extend it from other templates.</p>
 
-        <!-- BLOCKS AND INHERITANCE -->
-        <section id="blocks-inheritance">
-            <h2>Blocks and Template Inheritance</h2>
-            <p>One of Jinja’s most powerful features is template inheritance. You can create a base layout (for example, a shared header and footer) and extend it in other pages without rewriting the entire structure.</p>
+            <h3>Base Template</h3>
+            <pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;{% block title %}{% endblock %} – Tutorial&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;&lt;h1&gt;My Tutorial Website&lt;/h1&gt;&lt;/header&gt;
+    &lt;main&gt;
+        {% block content %}{% endblock %}
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
-            <p>In your child template, you extend a base file like this:</p>
+            <h3>Child Template</h3>
             <pre><code>{% extends "base.html" %}
 
+{% block title %}Jinja{% endblock %}
+
 {% block content %}
-    <h1>Welcome to the website!</h1>
-{% endblock %}</code></pre>
-
-            <p>This approach keeps large projects organized, avoids duplicated markup, and makes updates much easier.</p>
+&lt;h2&gt;Learning Jinja&lt;/h2&gt;
+&lt;p&gt;Examples and essential concepts.&lt;/p&gt;
+{% endblock %}
+</code></pre>
         </section>
-
     </main>
 
     <footer>
