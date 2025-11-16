@@ -35,6 +35,12 @@
                 <li><a href="#env-vars">Environment Variables</a></li>
                 <li><a href="#shell-config">Shell Configuration Files</a></li>
                 <li><a href="#filesystem">Linux File System Overview</a></li>
+                <li><a href="#env-vars-commands">Setting Environment Variables</a></li>
+                <li><a href="#sourcing-files">Sourcing Files</a></li>
+                <li><a href="#aliases">Aliases</a></li>
+                <li><a href="#shell-startup-vs-source">Shell Startup Files vs. Manual Sourcing</a></li>
+
+                
 
             </ul>
         </section>
@@ -141,6 +147,18 @@ alias py 'python3'
 # persistent (add to ~/.cshrc)
 alias proj 'cd ~/projects/main'</code></pre>
         </section>
+
+        <section id="shell-startup-vs-source">
+            <h2>Shell Startup Files vs. Manual Sourcing</h2>
+            <p>
+                Shells load part of their configuration automatically when a new terminal session begins. These files are known as startup files and their names depend on the shell: Bash reads <strong>.bashrc</strong> or <strong>.bash_profile</strong>, while tcsh/csh reads <strong>.cshrc</strong>. Because these files are executed by the shell itself at startup, any variables, aliases or functions defined there become available immediately, without further action from the user. They establish the default environment for every session.
+            </p>
+
+            <p>
+                In contrast, sourcing a file is a deliberate, manual action. When a file is sourced, its contents are executed inside the current shell, extending or overriding the environment dynamically. This is typically used for project-specific configurations, tools that require custom paths, or environments that should not load globally. While startup files define the baseline behavior of the shell, sourced files activate additional layers of configuration only when explicitly requested. Understanding this distinction is essential for keeping environments clean, reproducible and predictable.
+            </p>
+        </section>
+
 
     </main>
 </body>
