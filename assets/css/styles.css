@@ -176,3 +176,43 @@ footer {
 .pdf-icon {
     font-size: 1.2em;
 }
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Esconde a lista interna inicialmente */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 10;
+}
+
+/* Estilo dos itens dentro do dropdown */
+.dropdown-content li a {
+    display: block;
+    padding: 10px 15px;
+    color: #6c5b7b;
+    background: white;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content li a:hover {
+    background-color: #f1e8f5;
+}
+
+/* Exibe o menu quando o mouse passa */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
