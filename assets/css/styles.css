@@ -260,3 +260,19 @@ footer {
     background-color: #355c7d;  /* SAME hover as LinkedIn */
     transform: scale(1.05);
 }
+
+/* Layout for a single centered icon above the title */
+.header-container.single-icon {
+    display: flex;
+    flex-direction: column;      /* stack icon above title */
+    align-items: center;         /* center horizontally */
+    gap: 10px;                   /* spacing between icon and title */
+}
+
+.header-container.single-icon img {
+    width: 70px;                 /* same as before */
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+}
