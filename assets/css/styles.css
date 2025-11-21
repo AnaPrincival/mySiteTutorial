@@ -302,12 +302,11 @@ footer {
 
 
 
-
 /* Full banner */
 .home-banner {
     width: 100%;
     height: 260px; 
-    background-image: url("/home/ana/Documents/mySiteTutorial/assets/img/pine7.png");
+    background-image: url("/home/ana/Documents/mySiteTutorial/assets/img/Pine7.png");
     background-size: cover;          /* preenche sem distorcer */
     background-position: center;     /* mantém a pinha visível */
     background-repeat: no-repeat;
