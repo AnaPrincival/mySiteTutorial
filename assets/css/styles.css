@@ -282,6 +282,43 @@ footer {
     border: none !important;
 }
 
+/* ====================================================
+   Special Header Style for HOME Page Only
+   - Removes purple block
+   - Centers a large pine icon
+   - Ensures it NEVER becomes circular
+   - Other pages remain unchanged
+   ==================================================== */
+
+   .home-header {
+    background: none;                 /* Remove purple background only on Home */
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Structure for icon + title on Home */
+.home-header .header-container.single-icon {
+    display: flex;
+    flex-direction: column;           /* Icon above title */
+    align-items: center;
+    gap: 10px;
+}
+
+/* Large Pine Icon (Home Only) */
+.home-header .header-container.single-icon img {
+    width: 160px !important;          /* Bigger icon */
+    height: auto !important;
+    object-fit: contain;
+
+    border: none !important;          /* REMOVE white border */
+    border-radius: 0 !important;      /* REMOVE circular shape */
+    box-shadow: none !important;      /* Prevent any unwanted shadow */
+}
+
+
 /* =======================================================
    HOME PAGE BANNER
    - Full-width rectangular banner
@@ -290,18 +327,18 @@ footer {
    ======================================================= */
 
    .home-header {
-    background: none;  /* remove purple bar only on Home */
+    background: none;
     padding: 0;
     width: 100%;
 }
 
-/* Full banner image */
+/* Full banner */
 .home-banner {
     width: 100%;
-    height: 260px;  /* adjust if needed */
-    background-image: url("/home/ana/Documents/mySiteTutorial/assets/pine6.png"); /* correct path */
-    background-size: cover;         /* fill area without distortion */
-    background-position: center;    /* center the artwork */
+    height: 260px; 
+    background-image: url("/home/ana/Documents/mySiteTutorial/assets/img/pine6.png");
+    background-size: cover;          /* preenche sem distorcer */
+    background-position: center;     /* mantém a pinha visível */
     background-repeat: no-repeat;
-    margin-bottom: 20px;            /* space below banner */
+    margin-bottom: 20px;             /* separa do menu */
 }
