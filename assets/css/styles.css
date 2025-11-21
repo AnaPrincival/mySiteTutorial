@@ -277,3 +277,7 @@ footer {
     border: 3px solid white;
 }
 
+/* Remove white border only for specific icons */
+.no-border {
+    border: none !important;
+}
