@@ -317,3 +317,28 @@ footer {
     border-radius: 0 !important;      /* REMOVE circular shape */
     box-shadow: none !important;      /* Prevent any unwanted shadow */
 }
+
+
+/* =======================================================
+   HOME PAGE BANNER
+   - Full-width rectangular banner
+   - Uses the pine image as background
+   - Does NOT affect other pages
+   ======================================================= */
+
+   .home-header {
+    background: none;
+    padding: 0;
+    width: 100%;
+}
+
+/* Full banner */
+.home-banner {
+    width: 100%;
+    height: 260px; 
+    background-image: url("assets/img/pine3.png");
+    background-size: cover;          /* preenche sem distorcer */
+    background-position: center;     /* mantém a pinha visível */
+    background-repeat: no-repeat;
+    margin-bottom: 20px;             /* separa do menu */
+}
