@@ -334,8 +334,8 @@ footer {
 
 /* Full banner */
 .home-banner {
-    width: 100%;
-    height: 180px; 
+    width: 70%;
+    height: 260px; 
     background-image: url("/home/ana/Documents/mySiteTutorial/assets/img/pine3.png");
     background-size: cover;          /* preenche sem distorcer */
     background-position: center;     /* mantém a pinha visível */
