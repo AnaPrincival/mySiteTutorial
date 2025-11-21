@@ -281,3 +281,34 @@ footer {
 .no-border {
     border: none !important;
 }
+
+/* ====================================================
+   Special Header Style for HOME Page Only
+   - Removes purple block
+   - Centers a large pine icon
+   - Leaves all other pages unchanged
+   ==================================================== */
+
+   .home-header {
+    background: none;                 /* remove purple background ONLY on Home */
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Centered icon + title for Home */
+.home-header .header-container.single-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Large pine icon */
+.home-header .header-container.single-icon img {
+    width: 130px;                     /* bigger, elegant */
+    height: auto;
+    border: none !important;          /* remove white circle ONLY on Home */
+    object-fit: contain;
+}
