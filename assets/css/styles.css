@@ -216,3 +216,45 @@ footer {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.social-btn.linkedin {
+    background-color: #6c5b7b;
+    color: white;
+    border-color: #4a4453;
+}
+
+.social-btn.linkedin:hover {
+    background-color: #355c7d;
+    transform: scale(1.05);
+}
+
+.social-btn.lattes {
+    background-color: #355c7d;
+    color: white;
+    border-color: #2b475e;
+}
+
+.social-btn.lattes:hover {
+    background-color: #6c5b7b;
+    transform: scale(1.05);
+}
