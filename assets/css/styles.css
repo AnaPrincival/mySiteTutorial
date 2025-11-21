@@ -282,43 +282,6 @@ footer {
     border: none !important;
 }
 
-/* ====================================================
-   Special Header Style for HOME Page Only
-   - Removes purple block
-   - Centers a large pine icon
-   - Ensures it NEVER becomes circular
-   - Other pages remain unchanged
-   ==================================================== */
-
-   .home-header {
-    background: none;                 /* Remove purple background only on Home */
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-/* Structure for icon + title on Home */
-.home-header .header-container.single-icon {
-    display: flex;
-    flex-direction: column;           /* Icon above title */
-    align-items: center;
-    gap: 10px;
-}
-
-/* Large Pine Icon (Home Only) */
-.home-header .header-container.single-icon img {
-    width: 160px !important;          /* Bigger icon */
-    height: auto !important;
-    object-fit: contain;
-
-    border: none !important;          /* REMOVE white border */
-    border-radius: 0 !important;      /* REMOVE circular shape */
-    box-shadow: none !important;      /* Prevent any unwanted shadow */
-}
-
-
 /* =======================================================
    HOME PAGE BANNER
    - Full-width rectangular banner
@@ -327,18 +290,18 @@ footer {
    ======================================================= */
 
    .home-header {
-    background: none;
+    background: none;  /* remove purple bar only on Home */
     padding: 0;
     width: 100%;
 }
 
-/* Full banner */
+/* Full banner image */
 .home-banner {
-    width: 70%;
-    height: 260px; 
-    background-image: url("/home/ana/Documents/mySiteTutorial/assets/img/pine5.png");
-    background-size: cover;          /* preenche sem distorcer */
-    background-position: center;     /* mantém a pinha visível */
+    width: 100%;
+    height: 260px;  /* adjust if needed */
+    background-image: url("assets/img/pine5.png"); /* correct path */
+    background-size: cover;         /* fill area without distortion */
+    background-position: center;    /* center the artwork */
     background-repeat: no-repeat;
-    margin-bottom: 20px;             /* separa do menu */
+    margin-bottom: 20px;            /* space below banner */
 }
