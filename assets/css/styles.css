@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Basic Reset*/
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,7 +11,7 @@ body {
     flex-direction: column;
 }
 
-/* Cabeçalho */
+/* Header */
 header {
     background-color: #6c5b7b;
     color: white;
@@ -153,108 +153,42 @@ footer {
     width: 100%;
 }
 
-.pdf-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border-radius: 30px;
-    background-color: #6c5b7b;
-    color: white;
-    text-decoration: none;
-    font-size: 0.9em;
-    font-weight: bold;
-    border: 2px solid #4a4453;
-    transition: 0.3s;
+/* ===========================================
+   Unified Button Style (PDF / LinkedIn / Lattes)
+   - Same colors, shape, hover effect
+   - Easy to reuse for any external link
+   =========================================== */
+
+   .unified-button {
+    display: inline-flex;              /* icon + text aligned */
+    align-items: center;               /* center vertically */
+    gap: 6px;                          /* space between icon and text */
+    padding: 8px 14px;                 /* button size */
+    border-radius: 30px;               /* rounded pill shape */
+    background-color: #6c5b7b;         /* main purple color */
+    color: white;                      /* white text */
+    text-decoration: none;             /* remove underline */
+    font-size: 0.9em;                  /* match your site typography */
+    font-weight: bold;                 /* slight emphasis */
+    border: 2px solid #4a4453;         /* subtle border to match theme */
+    transition: 0.3s;                  /* smooth hover */
 }
 
-.pdf-button:hover {
-    background-color: #355c7d;
-    transform: scale(1.05);
+/* Hover animation */
+.unified-button:hover {
+    background-color: #355c7d;         /* darker shade on hover */
+    transform: scale(1.05);            /* light zoom effect */
 }
 
-.pdf-icon {
-    font-size: 1.2em;
+/* Icon size adjustment */
+.unified-icon {
+    font-size: 1.2em;                  /* slightly bigger than text */
 }
 
-/* Dropdown container */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Esconde a lista interna inicialmente */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 150px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    text-align: left;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    z-index: 10;
-}
-
-/* Estilo dos itens dentro do dropdown */
-.dropdown-content li a {
-    display: block;
-    padding: 10px 15px;
-    color: #6c5b7b;
-    background: white;
-    text-decoration: none;
-    border-bottom: 1px solid #eee;
-}
-
-.dropdown-content li a:hover {
-    background-color: #f1e8f5;
-}
-
-/* Exibe o menu quando o mouse passa */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
+/* Wrapper for social buttons (LinkedIn + Lattes) */
 .social-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-    flex-wrap: wrap;
-}
-
-.social-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: 0.3s;
-    border: 2px solid transparent;
-}
-
-.social-btn.linkedin {
-    background-color: #6c5b7b;
-    color: white;
-    border-color: #4a4453;
-}
-
-.social-btn.linkedin:hover {
-    background-color: #355c7d;
-    transform: scale(1.05);
-}
-
-.social-btn.lattes {
-    background-color: #355c7d;
-    color: white;
-    border-color: #2b475e;
-}
-
-.social-btn.lattes:hover {
-    background-color: #6c5b7b;
-    transform: scale(1.05);
+    display: flex;                     /* align in a row */
+    gap: 15px;                         /* spacing between buttons */
+    margin-top: 15px;                  /* spacing from text above */
+    flex-wrap: wrap;                   /* allow break on small screens */
 }
