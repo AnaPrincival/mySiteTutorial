@@ -261,6 +261,17 @@ footer {
     transform: scale(1.05);
 }
 
+.social-btn.eletrica {
+    background-color: #6c5b7b;  /* SAME as PDF + LinkedIn */
+    color: white;
+    border-color: #4a4453;
+}
+
+.social-btn.eletrica:hover {
+    background-color: #355c7d;  /* SAME hover as LinkedIn */
+    transform: scale(1.05);
+}
+
 /* Layout for a single centered icon above the title */
 .header-container.single-icon {
     display: flex;
