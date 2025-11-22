@@ -281,31 +281,3 @@ footer {
 .no-border {
     border: none !important;
 }
-
-/* ====================================================
-   Special Header Style for HOME Page Only
-   - Removes purple block
-   - Centers a large pine icon
-   - Ensures it NEVER becomes circular
-   - Other pages remain unchanged
-   ==================================================== */
-
-   .home-header {
-    background: none;                 /* Remove purple background only on Home */
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-/* Full banner */
-.home-banner {
-    width: 100%;
-    height: 260px; 
-    background-image: url("/home/ana/Documents/mySiteTutorial/assets/img/Pine7.png");
-    background-size: cover;          /* preenche sem distorcer */
-    background-position: center;     /* mantém a pinha visível */
-    background-repeat: no-repeat;
-    margin-bottom: 20px;             /* separa do menu */
-}
