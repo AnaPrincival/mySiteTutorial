@@ -282,9 +282,19 @@ footer {
     border: none !important;
 }
 
+
+
 .section-image {
     display: block;
     margin: 20px auto; /* centraliza */
     max-width: 100%;   /* não ultrapassa a largura da seção */
     height: auto;      /* preserva proporção */
+}
+
+.small-section-image {
+    display: block;
+    margin: 20px auto;
+    width: 40%;          /* imagem menor */
+    max-width: 300px;    /* limite para não crescer demais */
+    height: auto;
 }
