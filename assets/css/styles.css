@@ -33,6 +33,10 @@ header {
     flex-wrap: wrap; /* Permite que os elementos se ajustem em telas pequenas */
 }
 
+.first-parag {
+    color: #6c5b7b;
+}
+
 /* Ajuste do título */
 header h1 {
     margin: 0;
