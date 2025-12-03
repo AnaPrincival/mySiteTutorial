@@ -73,6 +73,12 @@
             <p>Gradient Descent can be understood as navigating a high-dimensional landscape, where the height represents the loss value and the coordinates represent the parameters of the network. The optimizer attempts to move downhill, step by step, until it reaches a region of low loss. However, the landscape of deep neural networks is not a smooth bowl; it contains plateaus, narrow valleys, steep cliffs, and many local minima. Because of this complexity, the basic version of Gradient Descent, which uses the entire dataset to compute an exact gradient at each step, is rarely used in practice. It is computationally expensive and can struggle to escape certain undesirable regions of the loss surface.</p>
             <p>Instead, modern training relies on stochastic variants of Gradient Descent that approximate gradients using small subsets of the data. These methods introduce noise into the optimization process, which often helps the model escape shallow local minima and converge faster. Nevertheless, the underlying principle remains the same: compute gradients, adjust the parameters, and repeat the process until the model improves.</p>
             <p>Gradient Descent is therefore not just an algorithm—it is the fundamental mechanism that enables neural networks to learn from data. Its simplicity and mathematical elegance make it the backbone of nearly every training procedure in deep learning, and understanding it provides the foundation for grasping more advanced optimization techniques such as momentum, adaptive methods, and second-order approaches.</p>
+            <li>
+                More about Gradient Descent
+                <a class="pdf-button" href="assets/tablet_pdfs/Gradient Descent.pdf" target="_blank">
+                    <span class="pdf-icon">📄</span> EAF    
+                </a>
+            </li>
         </section>
 
         <section id="sgd">
