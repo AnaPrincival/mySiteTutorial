@@ -181,6 +181,7 @@
         
         <section>
             <h3>EMJEL</h3>
+            <img src="assets/img/emjel.png" alt="emjel" class="small-section-image"> 
             <p>I also took part, from August 2020 to April 2021, in the Electrical Engineering Junior Enterprise. A Junior Enterprise is a student-run organization that provides consulting services and real-world engineering solutions, allowing students to apply their academic knowledge in professional-level projects. At EMJEL, I worked in the commercial division, preparing proposals and defining the scope of projects. I also participated in the execution of a project involving the design of a brown-spider venom extractor based on controlled electric stimulation, developed and sold to a clinical analysis laboratory in the state of Paraná.</p>
             <div class="social-buttons">
                 <a class="social-btn eletrica" href="https://emjel.com.br/" target="_blank">
@@ -201,6 +202,23 @@
                 </a>
             </div>
             <img src="assets/img/gmdh.png" alt="gmdh" class="small-section-image"> 
+        </section>
+
+        <section>
+            <h3>Electronic Instrumentation</h3>
+            <p>In my sixth semester, I took a course in Electronic Instrumentation taught by Prof. Marlio Bonfim. As part of the final project, we were required to design and implement a complete instrumentation and control system for a small-scale setup. The system assigned to me and my project partner, Matheus Santana, was a temperature-control module based on a Peltier element, capable of both heating and cooling.</p>
+            <img src="assets/img/circuit_ponte_h.png" alt="ponte_h" class="small-section-image"> 
+            <p>Our objective was to measure temperature using an analog sensor (TMP36) and regulate the thermal behavior of the Peltier device through a closed-loop control strategy. To achieve this, we designed the acquisition circuitry, implemented signal conditioning, and built a full H-bridge using relays to reverse current flow through the Peltier plate. This polarity reversal allows the same device to operate as either a heater or a cooler, depending on the direction of the applied current.</p>
+            <p>We began by characterizing the temperature sensor to ensure stable and low-noise readings. After validating its linearity and improving measurement precision through an external voltage reference, we integrated the sensor with an Arduino-based control platform. The Peltier module was then tested to determine its optimal operating voltage for both heating and cooling modes.</p>
+            <img src="assets/img/peltier.png" alt="ponte_h" class="small-section-image"> 
+            <p>Once the hardware was validated, we developed the full control system. Temperature readings were filtered using oversampling and exponential moving-average techniques to reduce noise, as documented in our analysis. We then implemented a PID controller, tuning separate sets of parameters for the heating and cooling regions, since the system behaves as a second-order dynamic process in both modes. After system identification and MATLAB-assisted modeling, we refined the controller gains through iterative testing to minimize overshoot and steady-state error.</p>
+            <p>The final system successfully maintained the target temperature within the expected accuracy range for both heating and cooling. The project allowed me to work through every stage of an embedded-instrumentation system: sensor characterization, analog and digital signal conditioning, power-electronics design, system modeling, and control implementation. It was one of the first projects that made me feel genuinely immersed in engineering practice, going from theory to a fully functioning prototype.</p>
+            <li>
+                Refer to our full report for details:
+                <a class="pdf-button" href="assets/circuits/peltier.pdf" target="_blank">
+                    <span class="pdf-icon">📄</span> Peltier System
+                </a>
+            </li>
         </section>
 
     </section>
