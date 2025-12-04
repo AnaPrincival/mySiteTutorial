@@ -43,17 +43,17 @@
         <section>
             <h2>Index</h2>
             <ul>
-                <li><a href="#optimization">Optimization</a></li>
-                <li><a href="#grad">Gradient Descent</a></li>
-                <li><a href="#sgd">Minibatch SGD</a></li>
-                <li><a href="#momentum">Momentum</a></li>
-                <li><a href="#adam">Adam</a></li>
-                <li><a href="#rate">Learning Rate</a></li>
+                <li><a href="#optimization">1. Optimization</a></li>
+                <li><a href="#grad">1.1. Gradient Descent</a></li>
+                <li><a href="#sgd">1.2. Minibatch SGD</a></li>
+                <li><a href="#momentum">1.3. Momentum</a></li>
+                <li><a href="#adam">1.4. Adam</a></li>
+                <li><a href="#rate">1.5. Learning Rate</a></li>
             </ul>
         </section>
 
         <section id="optimization">
-            <h2>Optimization</h2>
+            <h2>1. Optimization</h2>
             <p class="first-parag">Optimization refers to the process by which a neural network adjusts its parameters to minimize a loss function that measures prediction error. Because deep learning models operate in enormous, irregular loss landscapes, optimization relies on gradient-based algorithms that iteratively update weights in directions that reduce the loss. Modern techniques balance computational efficiency, stability, and generalization, turning the static architecture of a network into a system capable of learning meaningful patterns from data.</p>        
             <p>Optimization is the process through which a neural network learns to perform a task. Instead of manually choosing the values of the parameters, we rely on an algorithm that gradually adjusts the network’s weights so that its predictions become more accurate over time. At the heart of this process is the idea of minimizing a loss function, a mathematical expression that quantifies how far the model’s current predictions are from the desired outputs. The goal of optimization is to find the set of parameters that makes this loss as small as possible.</p>
             <p>In deep learning, the loss landscape is typically high-dimensional and complex, shaped by millions of parameters interacting through multiple layers. Because of this, exhaustive search or analytical solutions are impossible. Instead, neural networks use gradient-based methods: by computing the gradient of the loss with respect to each weight, the network can determine in which direction the parameters should move to reduce the error. This computation is performed efficiently through the backpropagation algorithm, which propagates error information backwards through the network to update each weight according to its contribution to the total loss.</p>
@@ -64,7 +64,7 @@
 
 
         <section id="grad">
-            <h3>Gradient Descent</h3>
+            <h3>1.1. Gradient Descent</h3>
             <p class="first-parag">Gradient Descent is the basic method for training neural networks, updating parameters by moving them in the direction that locally decreases the loss. By computing gradients through backpropagation, the optimizer determines how each weight contributes to prediction error. Although conceptually simple, Gradient Descent must navigate high-dimensional landscapes filled with local minima, flat regions, and steep slopes, making its performance highly dependent on choices like learning rate and data usage.</p>
             <p>Gradient Descent is the foundational optimization method used in training neural networks. Its purpose is to find the set of parameters that minimize a loss function, which measures how far the model’s predictions are from the desired outputs. At its core, Gradient Descent relies on a simple idea: if we can compute the slope of the loss function with respect to each parameter, then we can move the parameters in the opposite direction of this slope in order to reduce the loss. This slope is called the gradient, and it tells us how small changes in each weight affect the overall error</p>
             <p>The process begins by initializing the network’s weights, usually with small random values. After a forward pass through the network, the model produces predictions. These predictions are compared to the ground truth through the loss function, generating a numerical value that reflects the model’s performance. The next step is to compute the gradient of the loss with respect to every weight in the network. This is done efficiently using the backpropagation algorithm, which applies the chain rule of calculus to propagate errors backward through the network’s layers. Once the gradients are computed, each weight is updated by subtracting a fraction of its gradient. This fraction is controlled by a parameter called the learning rate, which determines the size of each update step.</p>
@@ -81,7 +81,7 @@
         </section>
 
         <section id="sgd">
-            <h3>Minibatch SGD</h3>
+            <h3>1.2. Minibatch SGD</h3>
             <p class="first-parag">Minibatch SGD improves upon full-batch Gradient Descent by estimating gradients using small, randomly chosen subsets of data. This makes training dramatically faster and introduces helpful stochasticity that can improve generalization and escape poor local minima. The method balances efficiency and stability, forming the foundation of nearly all modern deep learning optimizers.</p>
             <p>Minibatch Stochastic Gradient Descent (often simply called “minibatch SGD”) is the most widely used method for training neural networks in practice. It is a refinement of basic Gradient Descent that balances computational efficiency, stability, and the ability to generalize. Instead of computing the gradient of the loss function using the entire dataset at once, minibatch SGD computes the gradient using only a small subset of the data at each update step. This subset is called a minibatch, and its size is typically much smaller than the full dataset, often ranging from a dozen to a few hundred samples.</p>
             <p>The motivation for using minibatches comes from the structure of modern datasets. Large datasets can contain tens or hundreds of thousands of examples, making it computationally expensive to calculate the exact gradient for every iteration of training. Minibatch SGD circumvents this limitation by estimating the gradient from a small, randomly selected subset. This estimate is not exact, but it is statistically reliable enough to guide the learning process effectively. The randomness introduced by the minibatch selection injects controlled noise into the optimization process, which can help the network escape shallow minima or avoid becoming trapped in flat regions of the loss surface.</p>
@@ -92,7 +92,7 @@
         </section>
 
         <section id="momentum">
-            <h3>Momentum</h3>
+            <h3>1.3. Momentum</h3>
             <p class="first-parag">Momentum enhances SGD by accumulating a velocity term that reflects past gradients, allowing the optimizer to maintain direction and smooth out oscillations in the loss landscape. This creates faster convergence along shallow directions and more stable updates in regions with steep curvature, making Momentum a simple yet powerful improvement over basic gradient methods.</p>
             <p>Momentum is an extension of Stochastic Gradient Descent designed to accelerate training and to stabilize the optimization trajectory in neural networks. While basic SGD updates the parameters solely based on the current gradient, Momentum incorporates information from past updates, acting as a form of “memory” that helps the optimizer maintain direction in the loss landscape. This idea is inspired by classical mechanics: instead of treating each step as an isolated movement, the optimizer behaves like a particle with inertia, accumulating velocity as it descends the loss surface.</p>
             <p>The motivation behind Momentum arises from the geometry of neural network loss surfaces. Many regions contain narrow valleys: directions where the loss changes quickly and others where it changes very slowly. In such landscapes, vanilla SGD tends to oscillate from side to side along the steep dimension while making very slow progress along the shallow one. This zig-zagging wastes computation and makes convergence inefficient. Momentum mitigates this issue by smoothing the optimization path: it encourages the parameters to continue moving in directions that consistently reduce the loss, while dampening oscillations in directions where the gradient repeatedly changes sign.</p>
@@ -102,7 +102,7 @@
         </section>
 
         <section id="adam">
-            <h3>Adam</h3>
+            <h3>1.4. Adam</h3>
             <p class="first-parag">Adam combines the benefits of Momentum with adaptive learning rates by tracking both the mean and the variance of gradients for each parameter. With bias correction and per-parameter scaling, Adam offers fast, stable convergence even in noisy or sparse gradient regimes. Its versatility and reliability have made it one of the most widely adopted optimization algorithms in deep learning.</p>
             <p>Adam (Adaptive Moment Estimation) is one of the most widely used optimization algorithms in deep learning because it combines the benefits of two important ideas: Momentum and adaptive learning rates. Its goal is to provide fast, stable convergence even in complex, noisy, or highly non-stationary optimization landscapes. Whereas basic SGD updates each parameter using only the current gradient, Adam maintains a richer set of internal statistics that help the optimizer make better-informed decisions at every step.</p>
             <p>The foundation of Adam is the idea of tracking two types of “moments” of the gradient. The first moment is essentially a running average of the gradient itself, similar to the velocity term used in Momentum. This term captures the general direction in which the optimizer should move. The second moment is a running average of the squared gradient, which provides information about the gradient’s magnitude and variability. By combining these two sources of information, Adam adapts the size of each parameter update based not only on the slope of the loss surface but also on how uncertain or volatile the gradients are at each parameter.</p>
@@ -113,7 +113,7 @@
         </section>
 
         <section id="rate">
-            <h3>Learning Rate and Learning Rate Scheduling</h3>
+            <h3>1.5. Learning Rate and Learning Rate Scheduling</h3>
             <p class="first-parag">The learning rate controls the size of parameter updates during training, shaping how quickly or cautiously a model learns. Because different stages of training benefit from different step sizes, learning rate schedules adjust this value over time—via decay, warmup, or adaptive triggers—to balance exploration and fine-tuning. Effective scheduling is essential for stable and efficient neural network training.</p>
             <p>The learning rate is one of the most influential hyperparameters in neural network optimization. It determines the size of each update step during training, controlling how quickly or cautiously the model adjusts its parameters in response to the computed gradients. A high learning rate makes the optimizer take bold steps through the loss landscape, potentially speeding up convergence but also risking overshooting minima or diverging entirely. A low learning rate leads to more careful updates, which can improve stability but may slow progress to a crawl, especially in flat regions of the loss surface where gradients carry little information. Because the geometry of deep learning loss surfaces is highly irregular—full of steep walls, shallow basins, plateaus, and winding valleys—the choice of learning rate directly shapes the entire training trajectory.</p>
             <p>A fixed learning rate throughout training is rarely ideal. Early in training, the optimizer benefits from large steps that allow it to explore the parameter space aggressively, escaping poor initial regions and quickly reducing gross errors. As training progresses, however, the model enters more refined regions of the loss landscape where gradient information becomes subtler. At this stage, large updates can destabilize convergence or prevent the optimizer from settling into a good local minimum. For these reasons, modern neural network training strategies rely on learning rate schedules—predefined or adaptive mechanisms that adjust the learning rate over time to better match the evolving needs of the optimization process.</p>
