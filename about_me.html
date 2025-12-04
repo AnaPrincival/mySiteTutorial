@@ -222,36 +222,55 @@
 
         <section>
             <h3>Analog Electronics</h3>
+
             <p>In my fifth semester, I took the course Analog Electronics Laboratory II, taught by Prof. Bernardo Leite. The goal of the course was to design a 4-bit flash analog-to-digital converter, implemented entirely in the Synopsys circuit simulation environment. Each team received a unique set of transistor dimensions, and the project was evaluated competitively: the pair achieving the highest ENOB (Effective Number of Bits) in their ADC design would obtain the maximum grade in the course.</p>
             <img src="assets/img/adc.png" alt="adc" class="small-section-image"> 
-            <li>First Report - Sampling and Hold Circuit
+            <li><strong>First Report - Sampling and Hold Circuit</strong>
             <a class="pdf-button" href="assets/adc/r1_adc.pdf" target="_blank">
-                <span class="pdf-icon">📄</span> First Report ADC
+                <span class="pdf-icon">📄</span> ADC 1
             </a>
+            
             </li>
+
             <p>In our first report, we analyzed the behavior of MOSFET switches (NMOS, PMOS, and CMOS) through DC and transient simulations in Synopsys, identifying their operating regions and evaluating their performance as voltage-controlled switches . After characterizing each device individually, we implemented a CMOS transmission gate, which demonstrated a much more ideal switching behavior across the full input range. Finally, we designed and simulated a sample-and-hold stage using the CMOS switch and a capacitor, comparing different capacitor values to determine the configuration that best preserved the input signal during the hold phase.</p>
             
-            <li>Second Report - Current Mirrors
+            <li><strong>Second Report - Current Mirrors</strong>
             <a class="pdf-button" href="assets/adc/r2_adc.pdf" target="_blank">
-                <span class="pdf-icon">📄</span> Second Report ADC
+                <span class="pdf-icon">📄</span> ADC 2 
             </a>
             </li>
             <p>In our second report, we designed, analyzed, and dimensioned NMOS and PMOS current mirrors, including both simple and Wilson topologies, using DC simulations to evaluate output compliance, output resistance, and current-copying accuracy . We compared the operating ranges of each mirror and observed, for instance, that the Wilson architecture provides significantly higher output resistance and better current stability across Vout. Using graphical sweep methods, we optimized transistor widths to ensure that each mirror delivered the target 25 µA with less than 0.5% error. In the final stage, we designed current-reference circuits by selecting appropriate input resistances for both NMOS and PMOS mirrors, iteratively adjusting values until the simulated input and output currents matched the desired specification at Vout = Vdd/2.</p>
             
-            <li>Third Report - Voltage References and Differential Pair
+            <li><strong>Third Report - Voltage References and Differential Pair</strong>
             <a class="pdf-button" href="assets/adc/r3_adc.pdf" target="_blank">
-                <span class="pdf-icon">📄</span> Third Report ADC
+                <span class="pdf-icon">📄</span> ADC 3
             </a>
             </li>
             <p>In our third report, we implemented a voltage-reference network composed of sixteen matched resistors designed to dissipate 120 µW at 1.2 V, generating evenly spaced reference levels for later ADC stages, and verified its correct operation through transient simulations . We then designed and analyzed NMOS and PMOS differential pairs, plotting their transfer characteristics and differential outputs across the full input range. The simulations revealed the expected behavior: constant-output regions at low and high input voltages, and a linear region around mid-supply where the pair operates as a differential amplifier. We also evaluated transient response, determining maximum/minimum differential peaks, settling time within 3% of the final value, and slew rate, which reached approximately 5 GV/s for the NMOS pair. Similar analyses were repeated for the PMOS differential pair, confirming symmetrical behavior with polarity inversion.</p>
             
-            <li>Fourth Report - Comparators and Current References
+            <li><strong>Fourth Report - Comparators and Current References</strong>
             <a class="pdf-button" href="assets/adc/r4_adc.pdf" target="_blank">
-                <span class="pdf-icon">📄</span> Fourth Report ADC
+                <span class="pdf-icon">📄</span> ADC 4
             </a>
             </li>
             <p>In our fourth report, we designed and simulated NMOS and PMOS comparators, beginning with the creation of their full transistor-level schematics, test benches, and behavioral analyses under DC sweeps to observe switching thresholds relative to VREF . We then resized the internal current mirrors to tune the switching point to 600 mV, iterating over transistor widths with progressively finer steps and addressing simulator quantization limits. After characterizing both comparator types, we evaluated which behaved more accurately for each of the 15 reference voltages, selecting PMOS for the lower eight thresholds and NMOS for the upper seven. We then constructed a global comparator array with 15 cells, created a current-reference block delivering fifteen matched bias currents, and verified through DC simulations that all comparator outputs switched precisely at their assigned reference levels. The final integrated test showed correct alignment between output transitions and the intended reference voltages, resolving previous offset errors.</p>
             
+            <li><strong>Fifth Report - Digital Circuits</strong>
+                <a class="pdf-button" href="assets/adc/r5_adc.pdf" target="_blank">
+                    <span class="pdf-icon">📄</span> ADC 5
+                </a>
+            </li>
+            <p>In our fifth report, we designed and verified a complete set of digital building blocks—NAND2, NAND4, AOI21, and AOI22 gates—by implementing their transistor-level schematics, creating symbols, and confirming their truth tables through DC sweeps and multi-input simulations. Using these gates, we constructed a thermometer-to-binary decoder for a 4-bit flash ADC, mapping comparator outputs (T1–T15) into binary codes B3–B0 and validating correct transitions at every 75 mV reference step. We then implemented sequential logic: first a D latch, then a rising-edge triggered D flip-flop built in a master–slave configuration, and finally a 4-bit register. Transient simulations with a 12 MHz clock confirmed proper edge-triggered behavior, with Q updating only on rising edges and matching the expected digital timing. Altogether, this report completed the digital portion of the ADC chain, integrating combinational and sequential logic consistent with the system’s reference architecture.</p>
+
+            <li><strong>Sixth Report - Complete ADC</strong>
+                <a class="pdf-button" href="assets/adc/r6_adc.pdf" target="_blank">
+                    <span class="pdf-icon">📄</span> ADC 6
+                </a>
+            </li>
+            <p>In our sixth report, we assembled the full 4-bit flash ADC by integrating all previously designed blocks—sample-and-hold circuit, current and voltage references, differential pairs, NMOS/PMOS comparators, thermometer-to-binary decoder, and the digital register—into a complete transistor-level system, whose schematics are shown throughout the report. We then validated the entire converter through extensive simulations using DC levels, triangular inputs, and sinusoidal signals. The tests confirmed correct thermometer-code transitions across all 15 comparators and proper binary encoding at each rising clock edge, demonstrating functional interaction among all subcircuits. Finally, an ENOB of 3.38 bits was obtained from the sinusoidal test—slightly below the ideal 4 bits due to non-idealities accumulated during device sizing and integration, yet still demonstrating a coherent and fully operating flash ADC architecture.</p>
+
+            <p><strong>With this, we achieved the highest ENOB in the class and received the maximum grade in the course.</strong></p>
+
         </section>
 
     </section>
