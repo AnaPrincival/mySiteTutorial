@@ -55,7 +55,14 @@
                 <li><a href="#dropout">2.3. Dropout</a></li>
                 <li><a href="#lasso">2.4. L1 (LASSO)</a></li>
                 <li><a href="#ridge">2.5. L2 (Weight Decay or Ridge)</a></li>
-
+                <li><a href="#basic_archi">3. Basic Architecture Concepts</a></li>
+                <li><a href="#ac_functions">3.1. Activation Functions</a></li>
+                <li><a href="#loss_functions">3.2. Loss Functions</a></li>
+                <li><a href="#weight">3.3. Weight Initialization</a></li>
+                <li><a href="#exploding">3.4. Vanishing and Exploding Gradients</a></li>
+                <li><a href="#epoch">3.5. Epoch</a></li>
+                <li><a href="#backpropagation">3.6. Backpropagation</a></li>
+                <li><a href="#mac">3.7. Multiply-Accumulate (MAC)</a></li>
             </ul>
         </section>
 
@@ -175,8 +182,83 @@
 
         <p>L1 regularization forms a diamond-shaped constraint region with corners aligned to the axes, which makes it likely that the optimal solution lies on one of these axes—forcing some coefficients to zero. L2 creates a circular region, whose smooth boundary shrinks weights but rarely drives them exactly to zero.</p>
         <img src="assets/img/l1_l2.jpg" alt="regularization" class="section-image">
+    </section>
+
+    <section id = "basic_archi">
+        <h2>3. Basic Architecture Concepts</h2>
+        <p class="first-parag">Neural networks rely on a set of core architectural ideas that define how information flows through the model and how learning happens. These concepts provide the structural foundation for training, stability, and performance, shaping everything from how signals are transformed to how errors propagate backward. Understanding them is essential for interpreting how a network behaves and why certain design choices matter.</p>
+        <p>A neural network operates by applying a sequence of transformations to input data. Each layer performs computations using weights, biases, and activation functions, gradually converting raw features into higher-level representations. The architecture determines how these computations are organized: how many layers exist, how wide they are, how their outputs connect, and how parameters are initialized before training begins. These choices strongly influence how easily the network can learn and whether the optimization process will converge smoothly.</p>
+        <p>Training depends on the interplay between several key mechanisms. Loss functions define what the network is trying to minimize; gradients indicate how parameters must change; and backpropagation provides the algorithmic structure for computing these gradients efficiently. The learning process progresses in cycles, or epochs, where the network iteratively adjusts its parameters to reduce error. As the model learns, phenomena such as vanishing or exploding gradients may arise, affecting how well signals move through deep architectures.</p>
+        <p>Another crucial idea is model capacity, which refers to how expressive the network is—how complex the patterns it can learn. A model with insufficient capacity underfits the data, failing to grasp its structure, while an overly flexible model risks overfitting by memorizing details that do not generalize. Balancing this capacity, along with controlling the numerical behavior of computations such as multiply–accumulate operations (MACs), is essential to achieve stable and reliable performance.</p>
+        <p>These architectural concepts work together to define how a neural network transforms data, learns patterns, and ultimately generalizes to new inputs. They provide the conceptual map needed before diving into the individual components—activation functions, loss functions, initialization strategies, gradient behavior, and more.</p>
+    
+        <section id = "ac_functions">
+            <h3>3.1. Activation Functions</h3>
+            <p class="first-parag">Activation functions introduce non-linearity into neural networks, allowing them to learn complex patterns that simple linear models cannot capture. Without activation functions, every layer would collapse into a single linear transformation, making the entire network incapable of representing real-world relationships.</p>
+            <p>At their core, activation functions determine how each neuron transforms its inputs before passing information forward. This transformation can amplify, suppress, or threshold signals, shaping how the network interprets data at different layers. Functions like sigmoid and tanh compress values into bounded ranges, while ReLU and its variants selectively zero out negative inputs, enabling sparse and efficient representations. Each activation function has unique properties that influence gradient flow, training stability, and model expressiveness.</p>
+            <p>The choice of activation function profoundly affects how easily a network can learn. Saturating functions, such as sigmoid or tanh, tend to produce small gradients in certain regions, potentially leading to slow or stalled learning. In contrast, piecewise-linear functions like ReLU maintain stronger gradients and often allow deeper architectures to train more reliably. More specialized activations—Leaky ReLU, ELU, GELU—aim to address limitations such as dead neurons or instability in early training stages.</p>
+            <p>Activation functions also shape the geometry of the loss landscape. By altering how signals propagate, they can make optimization either easier or harder. Networks with poorly chosen activations may suffer from vanishing gradients, exploding activations, or overly rigid representations. Conversely, appropriate activations support smooth gradient flow, enabling the model to extract richer and more abstract features as depth increases.</p>
+            <p>Ultimately, activation functions act as the decision-making mechanisms of individual neurons. They determine how information flows, how features evolve across layers, and how effectively the network can learn the patterns embedded in data. Choosing the right activation function is therefore fundamental to building stable, expressive, and efficient neural architectures.</p>            
+        </section>
+
+        <section id="loss_functions">
+            <h3>3.2. Loss Functions</h3>
+            <p class="first-parag">Loss functions quantify how far a neural network’s predictions are from the desired outputs. They act as the objective the model tries to minimize, guiding the optimizer toward parameter values that produce more accurate results.</p>
+            <p>A loss function evaluates the discrepancy between predicted and true values for each training example, then aggregates these errors into a single scalar that represents overall performance. For regression problems, losses such as Mean Squared Error measure how close predictions are to continuous targets, penalizing large deviations more severely. In classification, functions like cross-entropy assess how well the predicted probability distribution aligns with the correct class, rewarding confident and accurate predictions while penalizing uncertainty or mistakes.</p>
+            <p>The choice of loss function strongly shapes the learning dynamics. Different losses emphasize different types of errors, influence gradient magnitude, and affect how sensitive the model becomes to outliers. A loss that grows sharply for large mistakes may accelerate correction but also destabilize training; a smoother loss may provide robustness at the cost of slower convergence. This interaction between the loss landscape and the optimizer determines how easily the model finds meaningful patterns.</p>
+            <p>Loss functions also define what “success” means for a model. Even with the same architecture, changing the loss can lead the network to learn very different behaviors, highlighting the loss function’s role as a form of inductive bias. A well-chosen loss aligns the mathematical optimization process with the actual task the model needs to perform, ensuring that improvements in training correspond to better real-world performance.</p>
+            <p>Ultimately, the loss function is the central feedback signal that drives learning. It provides the quantitative criterion the network seeks to minimize and shapes the gradient information that guides every update. Without a clear and appropriate loss function, no training procedure—even the most advanced—can produce a reliable or meaningful model.</p>
+        </section> 
+
+        <section id="weight">
+            <h3>3.3. Weight Initialization</h3>
+            <p class="first-parag">Weight initialization determines the starting values of a neural network’s parameters, setting the conditions under which learning begins. Good initialization helps gradients flow through the network, while poor initialization can stall learning or make training unstable.</p>
+            <p>Because neural networks rely on gradient-based optimization, the initial scale of the weights has a direct effect on how signals propagate forward and how gradients propagate backward. If the weights start too small, activations may collapse toward zero, leading to weak or vanishing gradients. If they start too large, activations can explode, producing erratic gradients that destabilize training. Initialization strategies aim to place the weights in a range that keeps both activations and gradients at reasonable magnitudes from the very first iteration.</p>
+            <p>Modern initialization methods, such as Xavier (Glorot) and He initialization, explicitly account for the number of incoming and outgoing connections in each layer. By controlling the variance of the initial weights, they ensure that the scale of the activations remains consistent across layers, preventing early saturation or blow-up. These methods allow deep architectures to begin training with balanced signal propagation, making optimization significantly more reliable.</p>
+            <p>Initialization also influences the symmetry of the network. If all weights were initialized identically, neurons within a layer would produce identical outputs and receive identical gradients, preventing the network from learning diverse features. Random initialization breaks this symmetry, allowing each neuron to specialize in different aspects of the data.</p>
+            <p>Ultimately, weight initialization provides the foundation upon which training dynamics unfold. Even though the weights will change dramatically during learning, their initial configuration shapes how quickly and effectively the network converges. Proper initialization is therefore essential for enabling deep models to train efficiently and reach their full representational power.</p>
+        </section> 
+
+        <section id="exploding">
+            <h3>3.4. Vanishing and Exploding Gradients</h3>
+            <p class="first-parag">Vanishing and exploding gradients describe situations in which gradients become extremely small or extremely large as they propagate backward through deep neural networks. Both phenomena disrupt learning: vanishing gradients slow or stall training, while exploding gradients make updates unstable.</p>
+            <p>During backpropagation, gradients are computed by repeatedly applying the chain rule across layers. If the transformations in each layer consistently shrink values—due to small weights, saturating activations, or poor initialization—the gradients diminish exponentially. When they become too small, early layers stop learning entirely, even though these layers may be crucial for representing low-level features. This is the vanishing gradient problem, a major obstacle in training deep networks with sigmoid or tanh activations.</p>
+            <p>The opposite issue arises when transformations amplify values at each step. Large weights or certain activation regimes can cause gradients to grow exponentially as they move backward. Exploding gradients lead to erratic updates, numerical instability, and sudden divergence in the loss. Training may become chaotic, with parameters jumping between extreme values rather than converging smoothly.</p>
+            <p>These problems are not merely numerical quirks—they reflect the difficulty of maintaining stable signal propagation through many layers. Solutions include careful weight initialization, the use of non-saturating activations like ReLU, normalization techniques such as BatchNorm, gradient clipping to control extreme updates, and architectural innovations like residual connections that create more reliable pathways for gradients.</p>
+            <p>Vanishing and exploding gradients fundamentally shaped the evolution of deep learning. Understanding them clarifies why certain activation functions, initialization schemes, and network designs succeed where others fail, and highlights the importance of maintaining stable gradients for effective learning.</p>
+        </section>  
+        
+        <section id="epoch">
+            <h3>3.5. Epoch</h3>
+            <p class="first-parag">An epoch represents one full pass of the training dataset through the neural network. It marks a complete cycle of learning, during which the model sees every example at least once and updates its parameters based on the gradients computed throughout that pass.</p>
+            <p>Although an epoch includes all training samples, the model typically processes the data in smaller batches rather than all at once. Each batch produces a gradient estimate and triggers a weight update, so a single epoch is composed of many incremental learning steps. The number of batches per epoch depends on the dataset size and the chosen batch size; more batches mean more updates and a more finely grained learning trajectory.</p>
+            <p>The concept of epochs is central to understanding how training progresses. Early epochs often produce rapid improvements as the model learns coarse patterns in the data. Later epochs refine these patterns, reducing error more slowly as the network approaches better solutions. Tracking metrics such as loss or accuracy per epoch provides a clear view of convergence and helps identify issues like underfitting, overfitting, or plateauing.</p>
+            <p>Choosing the number of epochs is a balance. Too few and the model may not learn enough; too many and it may begin to memorize the training data, harming generalization. Techniques like early stopping monitor performance on validation data and automatically halt training once further epochs stop providing meaningful gains.</p>
+            <p>Ultimately, epochs define the rhythm of training. They segment the learning process into interpretable units, letting us measure progress, adjust hyperparameters, and understand how the model evolves from initial randomness to structured, meaningful behavior.</p>
+        </section>
+
+        <section id="backpropagation">
+            <h3>3.6. Backpropagation</h3>
+            <p class="first-parag">Backpropagation is the algorithm that computes how each parameter in a neural network contributes to the total loss. It provides the gradients needed for optimization by efficiently propagating error information backward from the output layer to all preceding layers.</p>
+            <p>The method relies on the chain rule of calculus. When the network produces a prediction, the loss function measures how far that prediction is from the correct target. Backpropagation then determines how small changes in each weight would affect the loss. It does this layer by layer, starting from the output and moving backward, multiplying local derivatives to obtain gradients for every parameter in the network. This systematic reuse of intermediate results makes the algorithm computationally efficient, even for deep architectures with millions of parameters.</p>
+            <p>As gradients move backward, they reveal how strongly each weight influenced the error. These gradients drive the optimizer’s updates: weights that contributed to a higher error are adjusted to reduce it, while those that helped the model make accurate predictions are reinforced. Without backpropagation, there would be no practical way to train deep networks, since computing gradients manually or through brute force would be impossibly slow.</p>
+            <p>Backpropagation also shapes many of the challenges in deep learning. Because it repeatedly multiplies derivatives, certain combinations of weights and activations can shrink or amplify gradients dramatically, leading to vanishing or exploding gradients. This behavior motivated advancements in activation functions, initialization schemes, normalization layers, and architectural designs that ensure more stable gradient flow.</p>
+            <p>Overall, backpropagation is the computational foundation of modern neural network training. It transforms the abstract objective defined by the loss function into concrete parameter updates, enabling the network to learn meaningful patterns from data with speed and precision.</p>
+        </section>
+
+        <section id="mac">
+            <h3>3.7. Multiply-Accumulate (MAC)</h3>
+            <p class="first-parag">A Multiply–Accumulate (MAC) operation is the fundamental computation performed inside neural networks. Each neuron relies on MACs to combine inputs with their corresponding weights, making this operation the core building block of both forward and backward passes.</p>
+            <p>A MAC operation consists of two steps: multiplying an input value by its associated weight and then adding the result to an accumulator. For a single neuron, this process is repeated for every input connection, producing the weighted sum that is later passed through an activation function. In matrix form—common in deep learning—entire layers perform thousands or millions of MACs simultaneously, turning simple linear algebra into the engine that drives neural computation.</p>
+            <p>Because neural networks are composed of many layers, each with potentially large matrices of parameters, MAC operations dominate the computational cost of training and inference. The number of MACs grows with layer width, depth, and input dimensionality, which is why specialized hardware such as GPUs, TPUs, and neural accelerators are designed to execute MACs extremely efficiently. These devices exploit parallelism and optimized memory hierarchies to perform massive amounts of multiply–accumulate operations with minimal latency and energy consumption.</p>
+            <p>MAC operations also play a key role in understanding model complexity. The total number of MACs required for inference is often used as a proxy for computational cost, influencing decisions about network architecture, pruning, quantization, and deployment on resource-constrained devices. Efficient models aim to reduce MAC count while maintaining accuracy, enabling faster and more energy-efficient execution.</p>
+            <p>In essence, the MAC is the atomic unit of work in neural networks. It captures the linear portion of a neuron’s computation, underlies the scalability of deep learning systems, and connects mathematical models with practical hardware performance. A clear understanding of MAC operations helps bridge the gap between network design and real-world implementation.</p>
+        </section>
+
+
 
     </section>
+
 
 
     </main>
