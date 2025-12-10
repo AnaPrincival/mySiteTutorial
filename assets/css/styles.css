@@ -313,3 +313,8 @@ footer {
     max-width: 300px;    /* limite para não crescer demais */
     height: auto;
 }
+
+.subtopic {
+    margin-left: 20px;  /* More to the right*/
+    list-style-type: circle; /* discret point */
+}
