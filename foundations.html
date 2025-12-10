@@ -49,6 +49,13 @@
                 <li><a href="#momentum">1.3. Momentum</a></li>
                 <li><a href="#adam">1.4. Adam</a></li>
                 <li><a href="#rate">1.5. Learning Rate</a></li>
+                <li><a href="#regularization">2. Regularization</a></li>
+                <li><a href="#over">2.1. Overfitting</a></li>
+                <li><a href="#under">2.2. Underfitting</a></li>
+                <li><a href="#dropout">2.3. Dropout</a></li>
+                <li><a href="#lasso">2.4. L1 (LASSO)</a></li>
+                <li><a href="#ridge">2.5. L2 (Weight Decay or Ridge)</a></li>
+
             </ul>
         </section>
 
@@ -111,10 +118,67 @@
             <p>There are many scheduling strategies. Some reduce the learning rate at fixed intervals, while others respond directly to training performance—for instance, lowering the rate when the loss plateaus. More advanced approaches modify the rate in smooth curves, such as exponential decay or cosine annealing, allowing the training dynamics to evolve more gradually. Despite their differences, all schedules share the same intention: match the step size to the needs of each phase of learning.</p>
             <p>A well-chosen schedule can dramatically improve training stability and final accuracy. It helps avoid the pitfalls of a single fixed learning rate, which is often too large for late training and too small for early exploration. By controlling how aggressively the optimizer moves through the loss landscape, learning rate scheduling becomes a key mechanism for efficient and reliable convergence.</p>
         </section>
-
-    
-    
     </section>
+
+    <section id="regularization">
+        <h2>2. Regularization</h2>
+        <p class="first-parag">Regularization refers to the set of techniques used to prevent a neural network from memorizing the training data instead of learning meaningful patterns. Its goal is to guide the model toward solutions that generalize well, reducing overfitting by discouraging overly complex or unstable parameter configurations.</p>        
+        <p>In deep learning, a network with many parameters can easily fit noise, outliers, or accidental correlations present in the training set. When this happens, the model performs extremely well on the data it has seen but fails to make accurate predictions on new data. Regularization works by introducing constraints or penalties that push the model toward simpler, more robust representations. Instead of freely adjusting all parameters to match every detail in the training set, the network is encouraged to find smoother, more stable connections between inputs and outputs.</p>
+        <p>These constraints can be applied in different ways: by modifying the loss function, altering how parameters evolve during training, or introducing controlled randomness in the learning process. Although each regularization method uses a different mechanism, they all share the same purpose: prevent the network from relying on features that are too specific to the training data.</p>
+        <p>Regularization is fundamental because high-capacity models—especially deep networks—are naturally prone to overfitting. Without some form of regularization, even large datasets may not be enough to guide the model toward the underlying structure of the problem. By shaping the training dynamics and limiting unnecessary complexity, regularization enables neural networks to achieve better accuracy, stability, and reliability when applied to real-world data.</p>
+
+        <section id="over">
+            <h3>2.1. Overfitting</h3>
+            <p class="first-parag">Overfitting occurs when a neural network learns the training data too precisely, capturing noise, outliers, and irrelevant patterns instead of the underlying structure of the problem. A model that overfits performs extremely well on the data it has already seen but fails to generalize to new examples.</p>
+            <img src="assets/img/over.jpg" alt="overfitting" class="small-section-image"> 
+            <p>This happens because deep networks have enough capacity to memorize almost anything presented to them. When the training set contains accidental correlations, measurement errors, or rare cases that do not reflect the true distribution of the data, an unconstrained model can adapt its parameters to reproduce these details perfectly. As a result, the loss on the training set continues to decrease, while performance on validation or test data begins to degrade—a classic sign that the model is not learning meaningful patterns.</p>
+            <p>Overfitting also tends to produce unstable and overly complex decision boundaries. Instead of forming smooth relationships between inputs and outputs, the model twists itself around the specific samples it has encountered, creating fragile representations that easily break when exposed to new conditions. This fragility is usually invisible during training but becomes evident when the model faces slightly different data.</p>
+            <p>To avoid this scenario, regularization techniques are essential. They limit unnecessary complexity, introduce constraints, or add controlled randomness that prevents the model from relying on overly specific features. Techniques such as dropout, L1 and L2 penalties, early stopping, and data augmentation act in different ways but share the same purpose: help the network focus on patterns that generalize.</p>
+            <p>Overfitting is therefore not a failure of the model, but a natural consequence of its expressive power. Understanding how and why it occurs is a key step in training neural networks that are not just accurate on paper, but reliable in practice.</p>
+        </section>
+        
+        <section id="under">
+            <h3>2.2. Underfitting</h3>
+            <p class="first-parag">Overfitting occurs when a neural network learns the training data too precisely, capturing noise, outliers, and irrelevant patterns instead of the underlying structure of the problem. A model that overfits performs extremely well on the data it has already seen but fails to generalize to new examples.</p>
+            <img src="assets/img/under.jpg" alt="underfitting" class="small-section-image"> 
+            <p>This situation often arises when the model is too simple relative to the complexity of the task. A network with too few layers or too few neurons may lack the representational power required to approximate the target function. In such cases, even extensive training cannot overcome the architectural limitations, and the model remains stuck producing generic or overly smoothed predictions.</p>
+            <p>Underfitting can also occur when training is insufficient or poorly configured. An overly small number of epochs may prevent the network from refining its parameters, while a learning rate that is too high may cause the optimization process to skip over meaningful solutions. Excessive regularization can also push the model to oversimplify its internal representations, effectively constraining it more than necessary.</p>
+            <p>The symptoms of underfitting are straightforward: high training loss, high validation loss, and little improvement over time. Unlike overfitting, where performance diverges between training and validation sets, underfitting shows consistently weak results across both. Addressing it typically involves increasing model capacity, extending training, tuning hyperparameters, or reducing unnecessary regularization.</p>
+            <p>Underfitting highlights the balance required in designing neural networks. A model must be complex enough to capture true patterns in the data, yet still capable of generalization. When a network underfits, the solution lies in giving it the expressive power and training conditions needed to learn effectively.</p>        
+        </section>
+
+        <section id="dropout">
+            <h3>2.3. Dropout</h3>
+            <p class="first-parag">Dropout is a regularization technique that prevents overfitting by temporarily removing a random subset of neurons during training. By forcing the network to learn in the presence of missing units, it encourages more robust and distributed representations instead of relying on specific pathways or co-adapted features.</p>
+            <p>During each training step, dropout selects a fraction of neurons and sets their activations to zero. These neurons do not contribute to forward propagation, nor do they receive gradient updates. Because a different subset is removed at every iteration, the network effectively trains many slightly different architectures in parallel. This randomness weakens the model’s tendency to depend too heavily on any particular neuron or weight, improving generalization on unseen data.</p>
+            <p>One of the key benefits of dropout is that it promotes redundancy: multiple neurons learn to capture similar information so that the model can perform well even when some units are absent. This makes the learned features more stable and reduces the likelihood that the network memorizes noise in the training set. When dropout is disabled at test time, all neurons are active again, and their combined output tends to be more reliable than that of any single sub-model.</p>
+            <p>Although dropout introduces noise into the training process, this noise is precisely what helps the model generalize. It acts as a form of implicit ensemble learning, where many thinned versions of the network contribute to the final prediction. As a result, dropout is particularly effective in large architectures prone to overfitting, such as fully connected layers in deep neural networks.</p>
+        </section>
+
+        <section id = "lasso">
+            <h3>2.4. L1 (LASSO)</h3>
+            <p class="first-parag">L1 regularization, also known as LASSO (Least Absolute Shrinkage and Selection Operator), penalizes the absolute value of each weight in a neural network. Its defining effect is that it pushes many weights exactly to zero, encouraging the model to use only the most relevant features and producing sparse representations.</p>
+            <p>In practice, L1 regularization works by adding a term proportional to the sum of the absolute weights to the loss function. This penalty makes it costly for the model to maintain large or unnecessary parameters, so during training the optimizer naturally prefers solutions where many weights shrink toward zero. Because the absolute-value penalty is not smooth at zero, it creates a “pull” that can eliminate entire weights instead of merely reducing them.</p>
+            <p>This sparsity has two benefits. First, it reduces the tendency of the model to overfit by preventing it from distributing small, noisy adjustments across many parameters. Second, it effectively performs feature selection: the model learns to rely only on the most informative inputs or internal connections, simplifying its structure and improving interpretability.</p>
+            <p>L1 regularization is especially useful when the dataset contains many features but only a subset is truly important. By driving irrelevant weights to zero, LASSO helps reveal the underlying structure of the data while keeping the model compact. However, because the penalty treats all weights equally, it can sometimes be more unstable or sensitive to noise compared to L2 regularization.</p>
+            <p>Despite these nuances, L1 remains a powerful tool when sparsity and feature selection are desirable. It complements other regularization techniques by directly shaping the architecture into a leaner, more focused version of itself.</p>
+        </section>
+
+        <section id = "ridge">
+            <h3>2.5. L2 (Weight Decay or Ridge)</h3>
+            <p class="first-parag">L2 regularization, often called Weight Decay or Ridge, penalizes the squared magnitude of the weights in a neural network. Instead of driving parameters to zero like L1, L2 gently shrinks them, discouraging large or unstable values while keeping the overall structure of the model intact.</p>
+            <p>In practice, L1 regularization works by adding a term proportional to the sum of the absolute weights to the loss function. This penalty makes it costly for the model to maintain large or unnecessary parameters, so during training the optimizer naturally prefers solutions where many weights shrink toward zero. Because the absolute-value penalty is not smooth at zero, it creates a “pull” that can eliminate entire weights instead of merely reducing them.</p>
+            <p>This smooth decay stabilizes training by preventing the model from relying too heavily on specific connections. Large weights can make a network overly sensitive to small changes in the input, amplifying noise and leading to poor generalization. By keeping weights smaller and more evenly distributed, L2 regularization promotes representations that are more robust and less dependent on individual features.</p>
+            <p>Weight Decay is especially useful in deep networks because it acts as a gentle form of complexity control. Instead of removing features outright, it nudges the model toward more balanced and moderate parameter values, which often improves validation accuracy and reduces overfitting. Many optimizers, such as SGD and Adam (via decoupled variants), include built-in support for this technique.</p>
+            <p>Overall, L2 regularization provides a smooth, reliable way to limit model complexity without altering the architecture. It keeps the learning dynamics stable and helps neural networks generalize better to unseen data.</p>
+        </section>
+
+        <p>L1 regularization forms a diamond-shaped constraint region with corners aligned to the axes, which makes it likely that the optimal solution lies on one of these axes—forcing some coefficients to zero. L2 creates a circular region, whose smooth boundary shrinks weights but rarely drives them exactly to zero.</p>
+        <img src="assets/img/l1_l2.jpg" alt="regularization" class="small-section-image"> 
+
+    </section>
+
+
     </main>
  
 
