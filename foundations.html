@@ -71,7 +71,7 @@
         <section id="grad">
             <h3>1.1. Gradient Descent</h3>
             <p class="first-parag">Gradient Descent is the basic algorithm that guides how a neural network updates its parameters. It adjusts the weights in the direction that most reduces the loss, using the gradient as a compass. The goal is simple: move step by step toward values that make the model’s predictions more accurate.</p>
-            <img src="assets/img/gradient.png" alt="gradient" class="small-section-image"> 
+            <img src="assets/img/gradient.png" alt="gradient" class="section-image">
             <p>At the core of Gradient Descent is the gradient, which measures how the loss changes with respect to each parameter. If increasing a weight makes the loss grow, the gradient will indicate that the weight should decrease, and vice versa. Backpropagation allows the network to compute all these gradients efficiently, even for millions of parameters.</p>
             <p>The algorithm updates each weight by taking a step proportional to the gradient and to a scalar known as the learning rate. This learning rate determines how far the algorithm moves at each update: small steps lead to slow but stable progress, while large steps may cause oscillations or divergence. Choosing an appropriate learning rate is therefore essential for training to succeed.</p>
             <p>Although Gradient Descent is conceptually simple, the loss surface of deep networks is irregular and full of twists, which makes the descent pathway far from smooth. Flat regions can stall progress, steep directions can make updates unstable, and noisy gradients (from minibatches) can push the model in imperfect directions. Still, despite these limitations, Gradient Descent remains the foundation for virtually all modern optimization methods in deep learning.</p>
@@ -95,7 +95,7 @@
         <section id="momentum">
             <h3>1.3. Momentum</h3>
             <p class="first-parag">Momentum is an extension of Gradient Descent that makes learning smoother and faster by accumulating information from past updates. Instead of reacting only to the current gradient, the algorithm builds a sense of direction over time, helping the model move consistently toward lower loss.</p>
-            <img src="assets/img/momentum.jpg" alt="momentum" class="small-section-image"> 
+            <img src="assets/img/momentum.jpg" alt="momentum" class="section-image">
             <p>The core idea is simple: each update is influenced not only by the present gradient but also by a fraction of the previous update. This accumulated “velocity” allows the optimization to flow through shallow regions and resist oscillations in directions where the gradient frequently changes sign. As a result, Momentum tends to accelerate progress along stable paths and dampen noisy, zigzag movements.</p>
             <p>Mathematically, the algorithm maintains a velocity term that keeps track of past gradients. When the model encounters a long, gentle slope in the loss landscape, this velocity grows and pushes the network forward more effectively than plain Gradient Descent. Conversely, in directions where the gradient fluctuates or forms steep walls, the accumulated momentum slows down the updates, providing stability and preventing erratic jumps.</p>
             <p>Momentum is particularly helpful when the loss surface has narrow valleys—common in deep networks—where one direction is steep and the other is shallow. Plain Gradient Descent wastes time oscillating across the steep direction, advancing very slowly along the shallow one. By remembering the consistent component of the gradient, Momentum helps the model move forward steadily instead of vibrating sideways.</p>
@@ -130,7 +130,7 @@
         <section id="over">
             <h3>2.1. Overfitting</h3>
             <p class="first-parag">Overfitting occurs when a neural network learns the training data too precisely, capturing noise, outliers, and irrelevant patterns instead of the underlying structure of the problem. A model that overfits performs extremely well on the data it has already seen but fails to generalize to new examples.</p>
-            <img src="assets/img/over.jpg" alt="overfitting" class="small-section-image"> 
+            <img src="assets/img/over.jpg" alt="overfitting" class="section-image">
             <p>This happens because deep networks have enough capacity to memorize almost anything presented to them. When the training set contains accidental correlations, measurement errors, or rare cases that do not reflect the true distribution of the data, an unconstrained model can adapt its parameters to reproduce these details perfectly. As a result, the loss on the training set continues to decrease, while performance on validation or test data begins to degrade—a classic sign that the model is not learning meaningful patterns.</p>
             <p>Overfitting also tends to produce unstable and overly complex decision boundaries. Instead of forming smooth relationships between inputs and outputs, the model twists itself around the specific samples it has encountered, creating fragile representations that easily break when exposed to new conditions. This fragility is usually invisible during training but becomes evident when the model faces slightly different data.</p>
             <p>To avoid this scenario, regularization techniques are essential. They limit unnecessary complexity, introduce constraints, or add controlled randomness that prevents the model from relying on overly specific features. Techniques such as dropout, L1 and L2 penalties, early stopping, and data augmentation act in different ways but share the same purpose: help the network focus on patterns that generalize.</p>
@@ -140,7 +140,7 @@
         <section id="under">
             <h3>2.2. Underfitting</h3>
             <p class="first-parag">Overfitting occurs when a neural network learns the training data too precisely, capturing noise, outliers, and irrelevant patterns instead of the underlying structure of the problem. A model that overfits performs extremely well on the data it has already seen but fails to generalize to new examples.</p>
-            <img src="assets/img/under.jpg" alt="underfitting" class="small-section-image"> 
+            <img src="assets/img/under.jpg" alt="underfitting" class="section-image">
             <p>This situation often arises when the model is too simple relative to the complexity of the task. A network with too few layers or too few neurons may lack the representational power required to approximate the target function. In such cases, even extensive training cannot overcome the architectural limitations, and the model remains stuck producing generic or overly smoothed predictions.</p>
             <p>Underfitting can also occur when training is insufficient or poorly configured. An overly small number of epochs may prevent the network from refining its parameters, while a learning rate that is too high may cause the optimization process to skip over meaningful solutions. Excessive regularization can also push the model to oversimplify its internal representations, effectively constraining it more than necessary.</p>
             <p>The symptoms of underfitting are straightforward: high training loss, high validation loss, and little improvement over time. Unlike overfitting, where performance diverges between training and validation sets, underfitting shows consistently weak results across both. Addressing it typically involves increasing model capacity, extending training, tuning hyperparameters, or reducing unnecessary regularization.</p>
@@ -174,7 +174,7 @@
         </section>
 
         <p>L1 regularization forms a diamond-shaped constraint region with corners aligned to the axes, which makes it likely that the optimal solution lies on one of these axes—forcing some coefficients to zero. L2 creates a circular region, whose smooth boundary shrinks weights but rarely drives them exactly to zero.</p>
-        <img src="assets/img/l1_l2.jpg" alt="regularization" class="small-section-image"> 
+        <img src="assets/img/l1_l2.jpg" alt="regularization" class="section-image">
 
     </section>
 
