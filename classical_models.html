@@ -101,6 +101,35 @@
         <p>Although modern deep learning rarely uses GMDH directly, its concepts remain influential. Ideas such as layer-wise construction, validation-based selection, and automatic complexity control reappear in contemporary methods, including neural architecture search and some regularization strategies. GMDH demonstrates that networks can be designed to organize and refine themselves, without relying entirely on manual architectural choices.</p>
         <p>GMDH was the foundational model for my research at the GICS laboratory during my years at UFPR. Over the course of three years, I authored six papers in which I developed GMDH-based neural networks for the linearization of power amplifier output signals. <a href="about_me.html#publi">Read more about my research.</a></p>
     </section>
+    
+    <section id="bnns">
+        <h2>3. BNNs</h2>
+        <p class="first-parag">Bayesian Neural Networks (BNNs) extend standard neural networks by treating their weights as probability distributions instead of fixed values. This allows the model to express uncertainty about its predictions, making BNNs especially useful when data is limited, noisy, or when decisions require confidence estimates.</p>        
+        <img src="assets/img/bayes.jpg" alt="bayes" class="section-image">
+        <p>In a traditional neural network, each weight has a single learned value. In a Bayesian network, each weight has a distribution—usually parameterized by a mean and a variance—that reflects how uncertain the model is about that parameter. During training, the goal is not simply to find the best individual weights but to learn the entire distribution of possible weight values that fit the data.</p>
+        <p>To achieve this, BNNs use Bayesian inference. The model starts with a prior belief about the weights and updates this belief using the observed data to obtain a posterior distribution. Exact inference is impossible for deep networks, so practical methods rely on approximations such as variational inference or Monte Carlo sampling. These methods produce samples of weights that can be used to estimate prediction uncertainty.</p>
+        <p>When making a prediction, the network does not rely on a single forward pass. Instead, it samples several sets of weights and averages the predictions. If the samples agree, the model reports high confidence; if they vary widely, the model signals uncertainty. This behavior makes BNNs valuable in safety-critical applications, scientific measurements, and situations where understanding how sure the model is matters as much as the prediction itself.</p>
+        <p>Although BNNs are computationally heavier than classical networks, their ability to quantify uncertainty provides a powerful perspective on learning. They link neural networks with probabilistic reasoning and open paths to more reliable and interpretable predictive models.</p>
+        <li>
+            Read more about Bayes Theorem:
+            <a class="pdf-button" href="assets/tablet_pdfs/Teorema de Bayes_2.pdf" target="_blank">
+                <span class="pdf-icon">📄</span> Bayes Theorem   
+            </a>
+        </li>
+    </section>
+
+    <section id="cnns">
+        <h2>4. CNNs</h2>
+        <p class="first-parag">Convolutional Neural Networks (CNNs) are neural networks designed to learn patterns from spatially structured data, especially images. Instead of using fully connected layers for everything, CNNs exploit the idea of local receptive fields and shared weights, making them far more efficient and effective for visual tasks.</p>        
+        <p>A CNN processes an image by applying small filters that slide across the input, computing local features such as edges, textures, or color variations. Each filter produces a feature map that highlights the presence of certain patterns in different regions of the image. Because the same filter is used everywhere, CNNs learn features that generalize well and require far fewer parameters than dense architectures.</p>
+        <p>As data moves through deeper convolutional layers, the network learns increasingly abstract representations. Early layers capture simple structures like edges or corners, middle layers detect shapes or textures, and deeper layers identify high-level concepts such as objects. Pooling layers are often used to reduce spatial resolution, helping the network focus on essential information and making computation more efficient.</p>
+        <p>Training a CNN follows the same principles as other neural networks: backpropagation computes gradients, and an optimizer updates the filters to improve performance. What makes CNNs particularly powerful is their ability to capture spatial hierarchies—patterns made of patterns—which is something fully connected networks struggle to learn from raw images.</p>
+        <p>CNNs became the foundation of modern computer vision. They power applications such as image classification, object detection, face recognition, medical imaging, and many other tasks where understanding visual structure is essential. Their efficiency and representational strength make them one of the most influential architectures in deep learning.</p>
+        <img src="assets/img/cnns.jpg" alt="cnn" class="section-image">
+        <p>The diagram shows how a Convolutional Neural Network transforms an input image into a final classification. The first part, called feature extraction, begins with convolution layers that slide small filters over the image to detect local patterns such as edges or textures. Each filter produces a feature map, which is why several stacked layers appear in the figure. After that, pooling reduces the spatial size of these maps, keeping only the most important information and making the representation more compact.</p>
+        <p>In the second part, classification, the pooled features are flattened and passed into fully connected layers, which combine all extracted patterns to produce the final output. This stage behaves like a traditional multilayer perceptron, using the learned features to decide the class of the input image.</p>
+    </section>
+
 
     </main>
 
