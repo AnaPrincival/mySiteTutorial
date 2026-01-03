@@ -265,6 +265,7 @@
             <p>As gradients move backward, they reveal how strongly each weight influenced the error. These gradients drive the optimizer’s updates: weights that contributed to a higher error are adjusted to reduce it, while those that helped the model make accurate predictions are reinforced. Without backpropagation, there would be no practical way to train deep networks, since computing gradients manually or through brute force would be impossibly slow.</p>
             <p>Backpropagation also shapes many of the challenges in deep learning. Because it repeatedly multiplies derivatives, certain combinations of weights and activations can shrink or amplify gradients dramatically, leading to vanishing or exploding gradients. This behavior motivated advancements in activation functions, initialization schemes, normalization layers, and architectural designs that ensure more stable gradient flow.</p>
             <p>Overall, backpropagation is the computational foundation of modern neural network training. It transforms the abstract objective defined by the loss function into concrete parameter updates, enabling the network to learn meaningful patterns from data with speed and precision.</p>
+            <img src="assets/img/backprop.jpg" alt="backprop" class="section-image">
         </section>
 
         <section id="mac">
@@ -274,6 +275,7 @@
             <p>Because neural networks are composed of many layers, each with potentially large matrices of parameters, MAC operations dominate the computational cost of training and inference. The number of MACs grows with layer width, depth, and input dimensionality, which is why specialized hardware such as GPUs, TPUs, and neural accelerators are designed to execute MACs extremely efficiently. These devices exploit parallelism and optimized memory hierarchies to perform massive amounts of multiply–accumulate operations with minimal latency and energy consumption.</p>
             <p>MAC operations also play a key role in understanding model complexity. The total number of MACs required for inference is often used as a proxy for computational cost, influencing decisions about network architecture, pruning, quantization, and deployment on resource-constrained devices. Efficient models aim to reduce MAC count while maintaining accuracy, enabling faster and more energy-efficient execution.</p>
             <p>In essence, the MAC is the atomic unit of work in neural networks. It captures the linear portion of a neuron’s computation, underlies the scalability of deep learning systems, and connects mathematical models with practical hardware performance. A clear understanding of MAC operations helps bridge the gap between network design and real-world implementation.</p>
+            <img src="assets/img/MAC.jpg" alt="MAC" class="section-image">
         </section>
 
 
