@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classical Models</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -48,7 +49,54 @@
          <!-------------------------------- NAV ----------------------------------->
     </header>
 
- 
+    <main>
+        <!-- INDEX -->
+        <section>
+            <h2>Index</h2>
+            <ul>
+                <li><a href="#mlp">1. MLP</a></li>
+                <li><a href="#gmdh">2. GMDH</a></li>
+                <li><a href="#bnns">3. BNNs</a></li>
+                <li><a href="#cnns">4. CNNs</a></li>
+                <li><a href="#rnns">5. RNNs</a></li>
+                <ul class="subtopic">
+                    <li><a href="#lstm">5.1. LSTM (Long Short-Term Memory)</a></li>
+                    <li><a href="#gru">5.2. GRU (Gated Recurrent Unit)</a></li>
+                </ul>
+            </ul>
+        </section>
+    </main>
+    
+    
+    <section id="mlp">
+        <h2>1. MLP</h2>
+        <p class="first-parag">A Multilayer Perceptron (MLP) is the simplest form of a deep neural network. It consists of layers of neurons where each layer transforms its inputs through weighted sums and activation functions. Despite its simplicity, an MLP can approximate a wide range of nonlinear functions and serves as the foundational architecture for many modern models.</p>        
+        <p>An MLP is organized into three main parts: an input layer, one or more hidden layers, and an output layer. Each neuron in a layer connects to all neurons in the next layer, forming what is called a fully connected or dense structure. During a forward pass, each neuron computes a weighted sum of its inputs and applies an activation function to introduce non-linearity. Without these nonlinearities, the entire network would reduce to a single linear operation.</p>
+        <p>Training an MLP relies on backpropagation, which computes gradients for all weights, and an optimizer that updates these parameters to reduce the loss. Through repeated exposure to data, the network adjusts its internal connections to capture patterns and relationships.</p>
+        <p>MLPs are flexible but can become inefficient for high-dimensional or structured data, such as images or sequences, because they ignore spatial or temporal relationships. This limitation motivated the development of more specialized architectures like CNNs and RNNs. Still, the MLP remains a fundamental model: it is simple, expressive, and a perfect entry point to understanding neural network mechanics.</p>
+        <p>The bias term in a perceptron is a constant input (usually fixed at 1) whose only purpose is to allow the neuron to shift its decision boundary. Without this bias, the neuron could only learn functions that pass through the origin, which would severely limit its flexibility.</p>
+        <p>Think of the perceptron as computing:</p>
+        <p>
+            \[
+            Y = f(w_1 x_1 + w_2 x_2 + \cdots + w_n x_n + b)
+            \]
+        </p>
+        <p>The bias b acts like an adjustable offset. It lets the neuron decide where the activation threshold should lie, independent of the input values. Without this offset, the model could only separate classes using hyperplanes anchored at zero, which is almost never what we want in real data.</p>
+        <p>One way to implement the bias is to treat it as an extra input whose value is always 1. In that case, the bias weight behaves exactly like the other weights, and training updates it using the same gradient rules. This trick simplifies the math and makes the implementation cleaner:</p>
+        <p>\[
+            W_0 = b,\quad x_0 = 1
+            \]
+        </p>
+        <p>By including a bias, the perceptron can shift its activation boundary in any direction, making it much more expressive and capable of fitting a wider range of patterns.</p>
+    </section>
+
+    <section id="mlp">
+        <h2>1. MLP</h2>
+        <p class="first-parag">A Multilayer Perceptron (MLP) is the simplest form of a deep neural network. It consists of layers of neurons where each layer transforms its inputs through weighted sums and activation functions. Despite its simplicity, an MLP can approximate a wide range of nonlinear functions and serves as the foundational architecture for many modern models.</p>        
+        <p>An MLP is organized into three main parts: an input layer, one or more hidden layers, and an output layer. Each neuron in a layer connects to all neurons in the next layer, forming what is called a fully connected or dense structure. During a forward pass, each neuron computes a weighted sum of its inputs and applies an activation function to introduce non-linearity. Without these nonlinearities, the entire network would reduce to a single linear operation.</p>
+        <p>Training an MLP relies on backpropagation, which computes gradients for all weights, and an optimizer that updates these parameters to reduce the loss. Through repeated exposure to data, the network adjusts its internal connections to capture patterns and relationships.</p>
+        <p>MLPs are flexible but can become inefficient for high-dimensional or structured data, such as images or sequences, because they ignore spatial or temporal relationships. This limitation motivated the development of more specialized architectures like CNNs and RNNs. Still, the MLP remains a fundamental model: it is simple, expressive, and a perfect entry point to understanding neural network mechanics.</p>
+    </section>
 
     <footer>
         <p>&copy; 2025 Ana Princival</p>
