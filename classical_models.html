@@ -75,6 +75,7 @@
         <p>An MLP is organized into three main parts: an input layer, one or more hidden layers, and an output layer. Each neuron in a layer connects to all neurons in the next layer, forming what is called a fully connected or dense structure. During a forward pass, each neuron computes a weighted sum of its inputs and applies an activation function to introduce non-linearity. Without these nonlinearities, the entire network would reduce to a single linear operation.</p>
         <p>Training an MLP relies on backpropagation, which computes gradients for all weights, and an optimizer that updates these parameters to reduce the loss. Through repeated exposure to data, the network adjusts its internal connections to capture patterns and relationships.</p>
         <p>MLPs are flexible but can become inefficient for high-dimensional or structured data, such as images or sequences, because they ignore spatial or temporal relationships. This limitation motivated the development of more specialized architectures like CNNs and RNNs. Still, the MLP remains a fundamental model: it is simple, expressive, and a perfect entry point to understanding neural network mechanics.</p>
+        <img src="assets/img/perceptron.jpg" alt="perceptron" class="section-image">
         <p>The bias term in a perceptron is a constant input (usually fixed at 1) whose only purpose is to allow the neuron to shift its decision boundary. Without this bias, the neuron could only learn functions that pass through the origin, which would severely limit its flexibility.</p>
         <p>Think of the perceptron as computing:</p>
         <p>
@@ -91,12 +92,14 @@
         <p>By including a bias, the perceptron can shift its activation boundary in any direction, making it much more expressive and capable of fitting a wider range of patterns.</p>
     </section>
 
-    <section id="mlp">
-        <h2>1. MLP</h2>
-        <p class="first-parag">A Multilayer Perceptron (MLP) is the simplest form of a deep neural network. It consists of layers of neurons where each layer transforms its inputs through weighted sums and activation functions. Despite its simplicity, an MLP can approximate a wide range of nonlinear functions and serves as the foundational architecture for many modern models.</p>        
-        <p>An MLP is organized into three main parts: an input layer, one or more hidden layers, and an output layer. Each neuron in a layer connects to all neurons in the next layer, forming what is called a fully connected or dense structure. During a forward pass, each neuron computes a weighted sum of its inputs and applies an activation function to introduce non-linearity. Without these nonlinearities, the entire network would reduce to a single linear operation.</p>
-        <p>Training an MLP relies on backpropagation, which computes gradients for all weights, and an optimizer that updates these parameters to reduce the loss. Through repeated exposure to data, the network adjusts its internal connections to capture patterns and relationships.</p>
-        <p>MLPs are flexible but can become inefficient for high-dimensional or structured data, such as images or sequences, because they ignore spatial or temporal relationships. This limitation motivated the development of more specialized architectures like CNNs and RNNs. Still, the MLP remains a fundamental model: it is simple, expressive, and a perfect entry point to understanding neural network mechanics.</p>
+    <section id="gmdh">
+        <h2>2. GMDH</h2>
+        <p class="first-parag">The Group Method of Data Handling (GMDH) is a self-organizing neural network model that builds its own architecture during training. Instead of starting with a fixed number of layers or neurons, GMDH creates, selects, and combines simple models to form more complex ones, keeping only the structures that improve prediction.</p>        
+        <p>GMDH trains by generating many small polynomial models, often using pairs of input features at a time. Each model predicts the output using a polynomial function, and these candidates are evaluated on a separate validation set to avoid overfitting. Only the best-performing models are kept and become inputs for the next layer. Through this selection process, the network grows layer by layer, discarding weak models and reinforcing strong ones.</p>
+        <img src="assets/img/gmdh_art.png" alt="gmdh" class="section-image">
+        <p>The key idea is that the architecture is not predefined. Instead, the network decides how many layers to build, which models to keep, and when to stop expanding. Training ends when adding more layers no longer improves validation performance. This makes GMDH one of the earliest examples of automated model selection and structural learning.</p>
+        <p>Although modern deep learning rarely uses GMDH directly, its concepts remain influential. Ideas such as layer-wise construction, validation-based selection, and automatic complexity control reappear in contemporary methods, including neural architecture search and some regularization strategies. GMDH demonstrates that networks can be designed to organize and refine themselves, without relying entirely on manual architectural choices.</p>
+        <p>GMDH was the foundational model for my research at the GICS laboratory during my years at UFPR. Over the course of three years, I authored six papers in which I developed GMDH-based neural networks for the linearization of power amplifier output signals. <a href="about_me.html#publi">Read more about my research.</a></p>
     </section>
 
     </main>
